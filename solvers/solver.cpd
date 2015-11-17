@@ -1,0 +1,6 @@
+"""
+Common solver interface in Cython.
+"""
+
+cdef class Solver_@index@_@type@:
+    pass

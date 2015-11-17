@@ -1,0 +1,4 @@
+
+
+cdef class Solver_@index@_@type@:
+    pass
