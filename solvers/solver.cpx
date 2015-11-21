@@ -1,4 +1,11 @@
 
 
 cdef class Solver_@index@_@type@:
-    pass
+    def solve(self, *args, **kwargs):
+        raise NotImplementedError()
+
+    def analyze(self, *args, **kwargs):
+        raise NotImplementedError()
+
+    def factorize(self, *args, **kwargs):
+        raise NotImplementedError()
