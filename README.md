@@ -9,6 +9,9 @@ integrated with `CySparse <https://github.com/PythonOptimizers/cysparse>`_.
 
 ## Dependencies
 
+Althought :program:`SuiteSparse.py` has been optimized to use sparse matrices from `CySparse <https://github.com/PythonOptimizers/cysparse>`_, 
+you don't have to install :program:`CySparse`!
+
 ## Installation
 
 ### Python version
