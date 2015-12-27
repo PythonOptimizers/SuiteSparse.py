@@ -5,13 +5,13 @@ Cython/Python interface to [SuiteSparse](http://faculty.cse.tamu.edu/davis/suite
 ## What is implemented?
 
 - [x] UMFPACK
-- [] CHOLMOD
-- [] SPQR
-- [] KLU
-- [] BTF
-- [] AMD
-- [] CAMD
-- [] COLAMD
-- [] CCOLAMD
+- [ ] CHOLMOD
+- [ ] SPQR
+- [ ] KLU
+- [ ] BTF
+- [ ] AMD
+- [ ] CAMD
+- [ ] COLAMD
+- [ ] CCOLAMD
 
 ## Release history
