@@ -19,9 +19,9 @@ import sys
 import shutil
 import logging
 
-#####################################################
-# PARSER
-#####################################################
+########################################################################################################################
+# ARGUMENT PARSER
+########################################################################################################################
 def make_parser():
     """
     Create a comment line argument parser.
@@ -89,16 +89,18 @@ def make_logger(cysparse_config):
 
     return logger
 
-#######################################
+########################################################################################################################
 # CONDITIONAL CODE GENERATION
-#######################################
+########################################################################################################################
 # type of platform? 32bits or 64bits?
 is_64bits = sys.maxsize > 2**32
 
-# read cysparse.cfg
+# read suitesparse.cfg
 cysparse_config = configparser.SafeConfigParser()
 cysparse_config.read('suitesparse.cfg')
 
+
+# [TO BE REWRITTEN]
 
 # index type for LLSparseMatrix
 DEFAULT_INDEX_TYPE = 'INT32_T'
@@ -128,14 +130,9 @@ else:
 # COMMON STUFF
 #####################################################
 
-# ======================================================================================================================
-# As of 22nd of December 2015, we no longer support COMPLEX256_T as it is too problematic to work with in Cython.
-#
-# ======================================================================================================================
-
 # TODO: grab this from common_types.pxd or at least from a one common file
 BASIC_TYPES = ['INT32_t', 'UINT32_t', 'INT64_t', 'UINT64_t', 'FLOAT32_t', 'FLOAT64_t', 'FLOAT128_t', 'COMPLEX64_t', 'COMPLEX128_t'] #, 'COMPLEX256_t']
-ELEMENT_TYPES = ['INT32_t', 'INT64_t', 'FLOAT32_t', 'FLOAT64_t', 'FLOAT128_t', 'COMPLEX64_t', 'COMPLEX128_t'] #, 'COMPLEX256_t']
+ELEMENT_TYPES = ['INT32_t', 'INT64_t', 'FLOAT32_t', 'FLOAT64_t']
 INDEX_TYPES = ['INT32_t', 'INT64_t']
 INTEGER_ELEMENT_TYPES = ['INT32_t', 'INT64_t']
 REAL_ELEMENT_TYPES = ['FLOAT32_t', 'FLOAT64_t', 'FLOAT128_t']
@@ -150,15 +147,74 @@ MM_ELEMENT_TYPES = ['INT64_t', 'FLOAT64_t'] #, 'COMPLEX128_t']
 #ELEMENT_TYPES = ['COMPLEX64_t']
 #ELEMENT_TYPES = ['COMPLEX256_t']
 
+# Contexts
+# SuiteSparse
+# Umfpack
+UMFPACK_INDEX_TYPES = ['INT32_t', 'INT64_t']
+UMFPACK_ELEMENT_TYPES = ['FLOAT64_t', 'COMPLEX128_t']
+# Cholmod
+CHOLMOD_INDEX_TYPES = ['INT32_t', 'INT64_t']
+CHOLMOD_ELEMENT_TYPES = ['FLOAT64_t', 'COMPLEX128_t']
+# SPQR
+SPQR_INDEX_TYPES = ['INT32_t', 'INT64_t']
+SPQR_ELEMENT_TYPES = ['FLOAT64_t', 'COMPLEX128_t']
+
+
 GENERAL_CONTEXT = {
-                    'basic_type_list' : BASIC_TYPES,
-                    'type_list': ELEMENT_TYPES,
-                    'index_list' : INDEX_TYPES,
-                    'default_index_type' : DEFAULT_INDEX_TYPE,
-                    'default_element_type' : DEFAULT_ELEMENT_TYPE,
-                    'integer_list' : INTEGER_ELEMENT_TYPES,
-                    'real_list' : REAL_ELEMENT_TYPES,
-                    'complex_list' : COMPLEX_ELEMENT_TYPES,
-                    'mm_index_list' : MM_INDEX_TYPES,
-                    'mm_type_list' : MM_ELEMENT_TYPES,
-                  }
+    'basic_type_list' : BASIC_TYPES,
+    'type_list': ELEMENT_TYPES,
+    'index_list' : INDEX_TYPES,
+    'default_index_type' : DEFAULT_INDEX_TYPE,
+    'integer_list' : INTEGER_ELEMENT_TYPES,
+    'real_list' : REAL_ELEMENT_TYPES,
+    'complex_list' : COMPLEX_ELEMENT_TYPES,
+    'mm_index_list' : MM_INDEX_TYPES,
+    'mm_type_list' : MM_ELEMENT_TYPES,
+    'umfpack_index_list': UMFPACK_INDEX_TYPES,
+    'umfpack_type_list' : UMFPACK_ELEMENT_TYPES,
+    'cholmod_index_list': CHOLMOD_INDEX_TYPES,
+    'cholmod_type_list': CHOLMOD_ELEMENT_TYPES,
+    'spqr_index_list': SPQR_INDEX_TYPES,
+    'spqr_type_list': SPQR_ELEMENT_TYPES,
+    'spqr_export_mode' : SPQR_EXPERT_MODE,
+    'mumps_index_list': MUMPS_INDEX_TYPES,
+    'mumps_type_list': MUMPS_ELEMENT_TYPES,
+    }
+
+
+########################################################################################################################
+# JINJA2 FILTERS
+########################################################################################################################
+####################################
+# UMFPACK TYPES
+####################################
+def cysparse_real_type_to_umfpack_family(cysparse_type):
+    if cysparse_type in ['INT32_t']:
+        return 'i'
+    elif cysparse_type in ['INT64_t']:
+        return 'l'
+    elif cysparse_type in ['FLOAT64_t']:
+        return 'd'
+    elif cysparse_type in ['COMPLEX128_t']:
+        return 'z'
+    else:
+        raise TypeError("Not a recognized SuiteSparse Umfpack type")
+
+####################################
+# CHOLMOD TYPES
+####################################
+def cysparse_real_type_to_cholmod_prefix(cysparse_type):
+    if cysparse_type in ['INT32_t']:
+        return 'cholmod'
+    elif cysparse_type in ['INT64_t']:
+        return 'cholmod_l'
+    else:
+        raise TypeError("Not a recognized SuiteSparse Cholmod type for prefixing Cholmod routines")
+
+def cysparse_real_type_to_cholmod_type(cysparse_type):
+    if cysparse_type in ['FLOAT32_t', 'COMPLEX64_t']:
+        return 'CHOLMOD_SINGLE'
+    elif cysparse_type in ['FLOAT64_t', 'COMPLEX128_t']:
+        return 'CHOLMOD_DOUBLE'
+    else:
+        raise TypeError("Not a recognized SuiteSparse Cholmod type for prefixing Cholmod routines")
