@@ -114,13 +114,43 @@ else:
 ##########################
 context_ext_params = copy.deepcopy(ext_params)
 base_context_ext = [
-{% for index_type in index_list %}
-  {% for element_type in type_list %}
-        Extension(name="suitesparse.linalg.contexts.context_@index_type@_@element_type@",
-                  sources=['suitesparse/linalg/contexts/context_@index_type@_@element_type@.pxd',
-                           'suitesparse/linalg/contexts/context_@index_type@_@element_type@.pyx'], **context_ext_params),
-    {% endfor %}
-{% endfor %}
+
+  
+        Extension(name="suitesparse.linalg.contexts.context_INT32_t_INT32_t",
+                  sources=['suitesparse/linalg/contexts/context_INT32_t_INT32_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT32_t_INT32_t.pyx'], **context_ext_params),
+    
+        Extension(name="suitesparse.linalg.contexts.context_INT32_t_INT64_t",
+                  sources=['suitesparse/linalg/contexts/context_INT32_t_INT64_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT32_t_INT64_t.pyx'], **context_ext_params),
+    
+        Extension(name="suitesparse.linalg.contexts.context_INT32_t_FLOAT32_t",
+                  sources=['suitesparse/linalg/contexts/context_INT32_t_FLOAT32_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT32_t_FLOAT32_t.pyx'], **context_ext_params),
+    
+        Extension(name="suitesparse.linalg.contexts.context_INT32_t_FLOAT64_t",
+                  sources=['suitesparse/linalg/contexts/context_INT32_t_FLOAT64_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT32_t_FLOAT64_t.pyx'], **context_ext_params),
+    
+
+  
+        Extension(name="suitesparse.linalg.contexts.context_INT64_t_INT32_t",
+                  sources=['suitesparse/linalg/contexts/context_INT64_t_INT32_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT64_t_INT32_t.pyx'], **context_ext_params),
+    
+        Extension(name="suitesparse.linalg.contexts.context_INT64_t_INT64_t",
+                  sources=['suitesparse/linalg/contexts/context_INT64_t_INT64_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT64_t_INT64_t.pyx'], **context_ext_params),
+    
+        Extension(name="suitesparse.linalg.contexts.context_INT64_t_FLOAT32_t",
+                  sources=['suitesparse/linalg/contexts/context_INT64_t_FLOAT32_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT64_t_FLOAT32_t.pyx'], **context_ext_params),
+    
+        Extension(name="suitesparse.linalg.contexts.context_INT64_t_FLOAT64_t",
+                  sources=['suitesparse/linalg/contexts/context_INT64_t_FLOAT64_t.pxd',
+                           'suitesparse/linalg/contexts/context_INT64_t_FLOAT64_t.pyx'], **context_ext_params),
+    
+
 
     ]
 ##########################
@@ -133,13 +163,27 @@ umfpack_ext_params['library_dirs'] = suitesparse_library_dirs
 umfpack_ext_params['libraries'] = ['umfpack', 'amd']
 
 umfpack_ext = [
-{% for index_type in umfpack_index_list %}
-  {% for element_type in umfpack_type_list %}
-        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_@index_type@_@element_type@",
-                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_@index_type@_@element_type@.pxd',
-                           'suitesparse/linalg/suitesparse/umfpack/umfpack_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
-    {% endfor %}
-{% endfor %}
+
+  
+        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT32_t_FLOAT64_t",
+                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_FLOAT64_t.pxd',
+                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+    
+        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT32_t_COMPLEX128_t",
+                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_COMPLEX128_t.pxd',
+                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+    
+
+  
+        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT64_t_FLOAT64_t",
+                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_FLOAT64_t.pxd',
+                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+    
+        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT64_t_COMPLEX128_t",
+                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_COMPLEX128_t.pxd',
+                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+    
+
     ]
 
 
@@ -195,13 +239,13 @@ setup_args = {
     'long_description' : long_description,
     #Author details
     'author' : 'Nikolaj van Omme, Sylvain Arreckx, Dominique Orban',
-{% raw %}
+
     'author_email' : 'suitesparse\@TODO.com',
-{% endraw %}
+
     'maintainer' : "SuiteSparse.py Developers",
-{% raw %}
+
     'maintainer_email' : "nikolaj@funartech.com",
-{% endraw %}
+
     'summary' : "Fast sparse matrix library for Python",
     'url' : "https://github.com/PythonOptimizers/SuiteSparse.py",
     'download_url' : "https://github.com/PythonOptimizers/SuiteSparse.py",

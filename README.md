@@ -25,6 +25,8 @@ You need to install `SuiteSparse`. Pay attention to the fact that you **need** t
 Althought `SuiteSparse.py` has been optimized to use sparse matrices from [CySparse](https://github.com/PythonOptimizers/cysparse), 
 you don't have to install `CySparse`! It's strongly recommended but not mandatory.
 
+- NumPy
+
 ## Installation
 
 ### Python version
@@ -37,7 +39,7 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 
 ## What is implemented?
 
-- [ ] UMFPACK
+- [ ] UMFPACK Versions 
 - [ ] CHOLMOD
 - [ ] SPQR
 - [ ] KLU

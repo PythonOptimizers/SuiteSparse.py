@@ -52,18 +52,18 @@ LOG_LEVELS = {
     }
 
 
-def make_logger(cysparse_config):
+def make_logger(suitesparse_config):
     # create logger
-    logger_name = cysparse_config.get('CODE_GENERATION', 'log_name')
+    logger_name = suitesparse_config.get('CODE_GENERATION', 'log_name')
     if logger_name == '':
         logger_name = 'suitesparse_generate_code'
 
     logger = logging.getLogger(logger_name)
 
     # levels
-    log_level = LOG_LEVELS[cysparse_config.get('CODE_GENERATION', 'log_level')]
-    console_log_level = LOG_LEVELS[cysparse_config.get('CODE_GENERATION', 'console_log_level')]
-    file_log_level = LOG_LEVELS[cysparse_config.get('CODE_GENERATION', 'file_log_level')]
+    log_level = LOG_LEVELS[suitesparse_config.get('CODE_GENERATION', 'log_level')]
+    console_log_level = LOG_LEVELS[suitesparse_config.get('CODE_GENERATION', 'console_log_level')]
+    file_log_level = LOG_LEVELS[suitesparse_config.get('CODE_GENERATION', 'file_log_level')]
 
     logger.setLevel(log_level)
 
@@ -96,35 +96,14 @@ def make_logger(cysparse_config):
 is_64bits = sys.maxsize > 2**32
 
 # read suitesparse.cfg
-cysparse_config = configparser.SafeConfigParser()
-cysparse_config.read('suitesparse.cfg')
+suitesparse_config = configparser.SafeConfigParser()
+suitesparse_config.read('suitesparse.cfg')
+
+# SuiteSparse
+# SPQR
+SPQR_EXPERT_MODE = not suitesparse_config.getboolean('SUITESPARSE', 'NEXPERT')
 
 
-# [TO BE REWRITTEN]
-
-# index type for LLSparseMatrix
-DEFAULT_INDEX_TYPE = 'INT32_T'
-DEFAULT_ELEMENT_TYPE = 'FLOAT32_T'
-if is_64bits:
-    DEFAULT_INDEX_TYPE = 'INT64_T'
-    DEFAULT_ELEMENT_TYPE = 'FLOAT64_T'
-
-
-if cysparse_config.get('CODE_GENERATION', 'DEFAULT_INDEX_TYPE') == '32bits':
-    DEFAULT_INDEX_TYPE = 'INT32_T'
-elif cysparse_config.get('CODE_GENERATION', 'DEFAULT_INDEX_TYPE') == '64bits':
-    DEFAULT_INDEX_TYPE = 'INT64_T'
-else:
-    # don't do anything: use platform's default
-    pass
-
-if cysparse_config.get('CODE_GENERATION', 'DEFAULT_ELEMENT_TYPE') == '32bits':
-    DEFAULT_ELEMENT_TYPE = 'FLOAT32_T'
-elif cysparse_config.get('CODE_GENERATION', 'DEFAULT_ELEMENT_TYPE') == '64bits':
-    DEFAULT_ELEMENT_TYPE = 'FLOAT64_T'
-else:
-    # don't do anything: use platform's default
-    pass
 
 #####################################################
 # COMMON STUFF
@@ -164,7 +143,6 @@ GENERAL_CONTEXT = {
     'basic_type_list' : BASIC_TYPES,
     'type_list': ELEMENT_TYPES,
     'index_list' : INDEX_TYPES,
-    'default_index_type' : DEFAULT_INDEX_TYPE,
     'integer_list' : INTEGER_ELEMENT_TYPES,
     'real_list' : REAL_ELEMENT_TYPES,
     'complex_list' : COMPLEX_ELEMENT_TYPES,
@@ -177,10 +155,17 @@ GENERAL_CONTEXT = {
     'spqr_index_list': SPQR_INDEX_TYPES,
     'spqr_type_list': SPQR_ELEMENT_TYPES,
     'spqr_export_mode' : SPQR_EXPERT_MODE,
-    'mumps_index_list': MUMPS_INDEX_TYPES,
-    'mumps_type_list': MUMPS_ELEMENT_TYPES,
     }
 
+#####################################################
+# ACTION FUNCTION
+#####################################################
+# GENERAL
+def single_generation():
+    """
+    Only generate one file without any suffix.
+    """
+    yield '', GENERAL_CONTEXT
 
 ########################################################################################################################
 # JINJA2 FILTERS
@@ -218,3 +203,67 @@ def cysparse_real_type_to_cholmod_type(cysparse_type):
         return 'CHOLMOD_DOUBLE'
     else:
         raise TypeError("Not a recognized SuiteSparse Cholmod type for prefixing Cholmod routines")
+
+
+###############################################################################
+# MAIN
+###############################################################################
+if __name__ == "__main__":
+
+    ####################################################################################################################
+    # init
+    ####################################################################################################################
+    # line arguments
+    parser = make_parser()
+    arg_options = parser.parse_args()
+
+    # create logger
+    logger = make_logger(suitesparse_config=suitesparse_config)
+
+    # cygenja engine
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    jinja2_env = Environment(autoescape=False,
+                            loader=FileSystemLoader('/'), # we use absolute filenames
+                            trim_blocks=False,
+                            variable_start_string='@',
+                            variable_end_string='@')
+
+    cygenja_engine = Generator(current_directory, jinja2_env, logger=logger)
+
+    # register filters
+    # CySparse: by default
+    cygenja_engine.register_common_type_filters()
+    # UMFPACK
+    cygenja_engine.register_filter('cysparse_real_type_to_umfpack_family', cysparse_real_type_to_umfpack_family)
+    # CHOLMOD
+    cygenja_engine.register_filter('cysparse_real_type_to_cholmod_prefix', cysparse_real_type_to_cholmod_prefix)
+    cygenja_engine.register_filter('cysparse_real_type_to_cholmod_type', cysparse_real_type_to_cholmod_type)
+
+
+    # register extensions
+    cygenja_engine.register_extension('.cpy', '.py')
+    cygenja_engine.register_extension('.cpx', '.pyx')
+    cygenja_engine.register_extension('.cpd', '.pxd')
+    cygenja_engine.register_extension('.cpi', '.pxi')
+
+    ####################################################################################################################
+    # register actions
+    ####################################################################################################################
+    ########## Setup ############
+    cygenja_engine.register_action('config', '*.*', single_generation)
+    ########## TYPES ############
+    #cygenja_engine.register_action('cysparse/common_types', '*.*', single_generation)
+
+
+
+    ####################################################################################################################
+    # Generation
+    ####################################################################################################################
+    if arg_options.dry_run:
+        cygenja_engine.generate(arg_options.dir_pattern, arg_options.file_pattern, action_ch='d', recursively=arg_options.recursive, force=arg_options.force)
+    elif arg_options.clean:
+        cygenja_engine.generate(arg_options.dir_pattern, arg_options.file_pattern, action_ch='c', recursively=arg_options.recursive, force=arg_options.force)
+    else:
+        cygenja_engine.generate(arg_options.dir_pattern, arg_options.file_pattern, action_ch='g', recursively=arg_options.recursive, force=arg_options.force)
+        # special case for the setup.py file
+        shutil.copy2(os.path.join('config', 'setup.py'), '.')
