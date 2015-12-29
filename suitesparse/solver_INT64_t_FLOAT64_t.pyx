@@ -1,4 +1,7 @@
+import sys
 
+# TODO: add stats
+# TODO: add timing
 
 cdef class Solver_INT64_t_FLOAT64_t:
     def __cinit__(self, A, **kwargs):
@@ -41,11 +44,32 @@ cdef class Solver_INT64_t_FLOAT64_t:
             self._factorize(*args, **kwargs)
             self.__factorized = True
 
+    ####################################################################################################################
+    # Special functions
+    ####################################################################################################################
     def __call__(self, B):
         return self.solve(B)
 
     def __mul__(self, B):
         return self.solve(B)
+
+    ####################################################################################################################
+    # Common statistics
+    ####################################################################################################################
+    def stats(self, *args, **kwargs):
+        """
+        General statistics about the last factorization.
+
+        Args:
+            OUT: output stream.
+        """
+        lines = []
+        lines.append("General statistics")
+
+        lines.append("Specialized statistics")
+        lines.append(self._stats(*args, **kwargs))
+
+        return '\n'.join(lines)
 
     ####################################################################################################################
     # Callbacks
@@ -57,4 +81,10 @@ cdef class Solver_INT64_t_FLOAT64_t:
         raise NotImplementedError()
 
     def _factorize(self, *args, **kwargs):
+        raise NotImplementedError()
+
+    def _stats(self, *args, **kwargs):
+        """
+        Returns a string with specialized statistics about the factorization.
+        """
         raise NotImplementedError()
