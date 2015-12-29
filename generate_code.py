@@ -104,6 +104,8 @@ suitesparse_config.read('suitesparse.cfg')
 SPQR_EXPERT_MODE = not suitesparse_config.getboolean('SUITESPARSE', 'NEXPERT')
 
 
+# Compile for CySparse?
+use_cysparse = suitesparse_config.getboolean('CODE_GENERATION', 'use_cysparse')
 
 #####################################################
 # COMMON STUFF
@@ -116,10 +118,6 @@ INDEX_TYPES = ['INT32_t', 'INT64_t']
 INTEGER_ELEMENT_TYPES = ['INT32_t', 'INT64_t']
 REAL_ELEMENT_TYPES = ['FLOAT32_t', 'FLOAT64_t', 'FLOAT128_t']
 COMPLEX_ELEMENT_TYPES = ['COMPLEX64_t', 'COMPLEX128_t'] #, 'COMPLEX256_t']
-
-# Matrix market types
-MM_INDEX_TYPES = ['INT32_t', 'INT64_t']
-MM_ELEMENT_TYPES = ['INT64_t', 'FLOAT64_t'] #, 'COMPLEX128_t']
 
 # when coding
 #ELEMENT_TYPES = ['FLOAT64_t']
@@ -146,8 +144,6 @@ GENERAL_CONTEXT = {
     'integer_list' : INTEGER_ELEMENT_TYPES,
     'real_list' : REAL_ELEMENT_TYPES,
     'complex_list' : COMPLEX_ELEMENT_TYPES,
-    'mm_index_list' : MM_INDEX_TYPES,
-    'mm_type_list' : MM_ELEMENT_TYPES,
     'umfpack_index_list': UMFPACK_INDEX_TYPES,
     'umfpack_type_list' : UMFPACK_ELEMENT_TYPES,
     'cholmod_index_list': CHOLMOD_INDEX_TYPES,
@@ -155,6 +151,7 @@ GENERAL_CONTEXT = {
     'spqr_index_list': SPQR_INDEX_TYPES,
     'spqr_type_list': SPQR_ELEMENT_TYPES,
     'spqr_export_mode' : SPQR_EXPERT_MODE,
+    'use_cysparse': use_cysparse
     }
 
 #####################################################
@@ -166,6 +163,17 @@ def single_generation():
     Only generate one file without any suffix.
     """
     yield '', GENERAL_CONTEXT
+
+
+def generate_umfpack_following_index_and_element():
+    """
+    Generate files following the index and element types.
+    """
+    for index in UMFPACK_INDEX_TYPES:
+        GENERAL_CONTEXT['index'] = index
+        for type in UMFPACK_ELEMENT_TYPES:
+            GENERAL_CONTEXT['type'] = type
+            yield '_%s_%s' % (index, type), GENERAL_CONTEXT
 
 ########################################################################################################################
 # JINJA2 FILTERS
@@ -251,8 +259,13 @@ if __name__ == "__main__":
     ####################################################################################################################
     ########## Setup ############
     cygenja_engine.register_action('config', '*.*', single_generation)
-    ########## TYPES ############
-    #cygenja_engine.register_action('cysparse/common_types', '*.*', single_generation)
+    ########## Solvers ############
+    cygenja_engine.register_action('suitesparse', 'solver.*', generate_umfpack_following_index_and_element)
+    ########## UMFPACK ############
+    cygenja_engine.register_action('suitesparse/umfpack', 'umfpack_solver.cpy', single_generation)
+    cygenja_engine.register_action('suitesparse/umfpack', 'umfpack_solver_base.*', generate_umfpack_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/umfpack/cysparse', '*solver.*', generate_umfpack_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/umfpack/generic', '*solver.*', generate_umfpack_following_index_and_element)
 
 
 

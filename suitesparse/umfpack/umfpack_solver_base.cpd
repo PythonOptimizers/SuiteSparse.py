@@ -1,0 +1,4 @@
+from suitesparse.solver_@index@_@type@ cimport Solver_@index@_@type@
+
+cdef class UmfpackSolver_@index@_@type@(Solver_@index@_@type@):
+    pass

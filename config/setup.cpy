@@ -106,26 +106,23 @@ else:
     ext_params['extra_compile_args'] = ["-g", '-std=c99', '-Wno-unused-function']
     ext_params['extra_link_args'] = ["-g"]
 
-
-
-
-##########################
-# Base Solver
-##########################
-context_ext_params = copy.deepcopy(ext_params)
-base_context_ext = [
-{% for index_type in index_list %}
-  {% for element_type in type_list %}
-        Extension(name="suitesparse.linalg.contexts.context_@index_type@_@element_type@",
-                  sources=['suitesparse/linalg/contexts/context_@index_type@_@element_type@.pxd',
-                           'suitesparse/linalg/contexts/context_@index_type@_@element_type@.pyx'], **context_ext_params),
-    {% endfor %}
-{% endfor %}
-
-    ]
 ##########################
 # SuiteSparse
 ##########################
+# Base solver
+base_solver_ext_params = copy.deepcopy(ext_params)
+
+base_ext = [
+{% for index_type in umfpack_index_list %}
+  {% for element_type in umfpack_type_list %}
+        #TODO: remove linalg
+        Extension(name="suitesparse.solver_@index_type@_@element_type@",
+                  sources=['suitesparse/solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/solver_@index_type@_@element_type@.pyx'], **base_solver_ext_params),
+    {% endfor %}
+{% endfor %}
+]
+
 # UMFPACK
 umfpack_ext_params = copy.deepcopy(ext_params)
 umfpack_ext_params['include_dirs'].extend(suitesparse_include_dirs)
@@ -135,9 +132,15 @@ umfpack_ext_params['libraries'] = ['umfpack', 'amd']
 umfpack_ext = [
 {% for index_type in umfpack_index_list %}
   {% for element_type in umfpack_type_list %}
-        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_@index_type@_@element_type@",
-                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_@index_type@_@element_type@.pxd',
-                           'suitesparse/linalg/suitesparse/umfpack/umfpack_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.umfpack_solver_base_@index_type@_@element_type@",
+                  sources=['suitesparse/umfpack/umfpack_solver_base_@index_type@_@element_type@.pxd',
+                           'suitesparse/umfpack/umfpack_solver_base_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_@index_type@_@element_type@",
+                  sources=['suitesparse/umfpack/cysparse/umfpack_cysparse_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/umfpack/cysparse/umfpack_cysparse_solver_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_@index_type@_@element_type@",
+                  sources=['suitesparse/umfpack/generic/umfpack_generic_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/umfpack/generic/umfpack_generic_solver_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
     {% endfor %}
 {% endfor %}
     ]
@@ -149,13 +152,12 @@ umfpack_ext = [
 ########################################################################################################################
 packages_list = ['suitesparse',
             'suitesparse.umfpack',
-            'suitesparse.solvers',
+            'suitesparse.umfpack.cysparse',
+            'suitesparse.umfpack.generic',
             'tests'
             ]
 
-#packages_list=find_packages()
-
-ext_modules = umfpack_ext
+ext_modules = base_ext + umfpack_ext
 
 ########################################################################################################################
 # PACKAGE PREPARATION FOR EXCLUSIVE C EXTENSIONS

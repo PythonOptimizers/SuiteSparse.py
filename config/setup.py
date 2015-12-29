@@ -106,56 +106,40 @@ else:
     ext_params['extra_compile_args'] = ["-g", '-std=c99', '-Wno-unused-function']
     ext_params['extra_link_args'] = ["-g"]
 
-
-
-
-##########################
-# Base Solver
-##########################
-context_ext_params = copy.deepcopy(ext_params)
-base_context_ext = [
-
-  
-        Extension(name="suitesparse.linalg.contexts.context_INT32_t_INT32_t",
-                  sources=['suitesparse/linalg/contexts/context_INT32_t_INT32_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT32_t_INT32_t.pyx'], **context_ext_params),
-    
-        Extension(name="suitesparse.linalg.contexts.context_INT32_t_INT64_t",
-                  sources=['suitesparse/linalg/contexts/context_INT32_t_INT64_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT32_t_INT64_t.pyx'], **context_ext_params),
-    
-        Extension(name="suitesparse.linalg.contexts.context_INT32_t_FLOAT32_t",
-                  sources=['suitesparse/linalg/contexts/context_INT32_t_FLOAT32_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT32_t_FLOAT32_t.pyx'], **context_ext_params),
-    
-        Extension(name="suitesparse.linalg.contexts.context_INT32_t_FLOAT64_t",
-                  sources=['suitesparse/linalg/contexts/context_INT32_t_FLOAT64_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT32_t_FLOAT64_t.pyx'], **context_ext_params),
-    
-
-  
-        Extension(name="suitesparse.linalg.contexts.context_INT64_t_INT32_t",
-                  sources=['suitesparse/linalg/contexts/context_INT64_t_INT32_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT64_t_INT32_t.pyx'], **context_ext_params),
-    
-        Extension(name="suitesparse.linalg.contexts.context_INT64_t_INT64_t",
-                  sources=['suitesparse/linalg/contexts/context_INT64_t_INT64_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT64_t_INT64_t.pyx'], **context_ext_params),
-    
-        Extension(name="suitesparse.linalg.contexts.context_INT64_t_FLOAT32_t",
-                  sources=['suitesparse/linalg/contexts/context_INT64_t_FLOAT32_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT64_t_FLOAT32_t.pyx'], **context_ext_params),
-    
-        Extension(name="suitesparse.linalg.contexts.context_INT64_t_FLOAT64_t",
-                  sources=['suitesparse/linalg/contexts/context_INT64_t_FLOAT64_t.pxd',
-                           'suitesparse/linalg/contexts/context_INT64_t_FLOAT64_t.pyx'], **context_ext_params),
-    
-
-
-    ]
 ##########################
 # SuiteSparse
 ##########################
+# Base solver
+base_solver_ext_params = copy.deepcopy(ext_params)
+
+base_ext = [
+
+  
+        #TODO: remove linalg
+        Extension(name="suitesparse.solver_INT32_t_FLOAT64_t",
+                  sources=['suitesparse/solver_INT32_t_FLOAT64_t.pxd',
+                           'suitesparse/solver_INT32_t_FLOAT64_t.pyx'], **base_solver_ext_params),
+    
+        #TODO: remove linalg
+        Extension(name="suitesparse.solver_INT32_t_COMPLEX128_t",
+                  sources=['suitesparse/solver_INT32_t_COMPLEX128_t.pxd',
+                           'suitesparse/solver_INT32_t_COMPLEX128_t.pyx'], **base_solver_ext_params),
+    
+
+  
+        #TODO: remove linalg
+        Extension(name="suitesparse.solver_INT64_t_FLOAT64_t",
+                  sources=['suitesparse/solver_INT64_t_FLOAT64_t.pxd',
+                           'suitesparse/solver_INT64_t_FLOAT64_t.pyx'], **base_solver_ext_params),
+    
+        #TODO: remove linalg
+        Extension(name="suitesparse.solver_INT64_t_COMPLEX128_t",
+                  sources=['suitesparse/solver_INT64_t_COMPLEX128_t.pxd',
+                           'suitesparse/solver_INT64_t_COMPLEX128_t.pyx'], **base_solver_ext_params),
+    
+
+]
+
 # UMFPACK
 umfpack_ext_params = copy.deepcopy(ext_params)
 umfpack_ext_params['include_dirs'].extend(suitesparse_include_dirs)
@@ -165,23 +149,47 @@ umfpack_ext_params['libraries'] = ['umfpack', 'amd']
 umfpack_ext = [
 
   
-        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT32_t_FLOAT64_t",
-                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_FLOAT64_t.pxd',
-                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.umfpack_solver_base_INT32_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/umfpack_solver_base_INT32_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/umfpack_solver_base_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT32_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/generic/umfpack_generic_solver_INT32_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/generic/umfpack_generic_solver_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
     
-        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT32_t_COMPLEX128_t",
-                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_COMPLEX128_t.pxd',
-                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.umfpack_solver_base_INT32_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/umfpack_solver_base_INT32_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/umfpack_solver_base_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT32_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT32_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/generic/umfpack_generic_solver_INT32_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/generic/umfpack_generic_solver_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
     
 
   
-        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT64_t_FLOAT64_t",
-                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_FLOAT64_t.pxd',
-                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.umfpack_solver_base_INT64_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/umfpack_solver_base_INT64_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/umfpack_solver_base_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT64_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/generic/umfpack_generic_solver_INT64_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/generic/umfpack_generic_solver_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
     
-        Extension(name="suitesparse.linalg.suitesparse.umfpack.umfpack_INT64_t_COMPLEX128_t",
-                  sources=['suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_COMPLEX128_t.pxd',
-                           'suitesparse/linalg/suitesparse/umfpack/umfpack_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.umfpack_solver_base_INT64_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/umfpack_solver_base_INT64_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/umfpack_solver_base_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT64_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT64_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/generic/umfpack_generic_solver_INT64_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/generic/umfpack_generic_solver_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
     
 
     ]
@@ -193,13 +201,12 @@ umfpack_ext = [
 ########################################################################################################################
 packages_list = ['suitesparse',
             'suitesparse.umfpack',
-            'suitesparse.solvers',
+            'suitesparse.umfpack.cysparse',
+            'suitesparse.umfpack.generic',
             'tests'
             ]
 
-#packages_list=find_packages()
-
-ext_modules = umfpack_ext
+ext_modules = base_ext + umfpack_ext
 
 ########################################################################################################################
 # PACKAGE PREPARATION FOR EXCLUSIVE C EXTENSIONS
