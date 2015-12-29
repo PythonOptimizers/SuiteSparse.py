@@ -264,8 +264,8 @@ if __name__ == "__main__":
     ########## UMFPACK ############
     cygenja_engine.register_action('suitesparse/umfpack', 'umfpack_solver.cpy', single_generation)
     cygenja_engine.register_action('suitesparse/umfpack', 'umfpack_solver_base.*', generate_umfpack_following_index_and_element)
-    cygenja_engine.register_action('suitesparse/umfpack/cysparse', '*solver.*', generate_umfpack_following_index_and_element)
-    cygenja_engine.register_action('suitesparse/umfpack/generic', '*solver.*', generate_umfpack_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/umfpack/cysparse_solver', '*solver.*', generate_umfpack_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/umfpack/generic_solver', '*solver.*', generate_umfpack_following_index_and_element)
 
 
 

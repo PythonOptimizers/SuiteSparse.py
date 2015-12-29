@@ -461,6 +461,7 @@ struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64
   PyObject_HEAD
   PyObject *__pyx___solver_name;
   PyObject *__pyx___A;
+  int __pyx___verbose;
 };
 
 
@@ -553,6 +554,8 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
+static PyObject* __Pyx_PyDict_GetItemDefault(PyObject* d, PyObject* key, PyObject* default_value);
+
 static CYTHON_INLINE int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
 
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -617,18 +620,22 @@ int __pyx_module_is_main_suitesparse__solver_INT32_t_FLOAT64_t = 0;
 static PyObject *__pyx_builtin_property;
 static PyObject *__pyx_builtin_NotImplementedError;
 static char __pyx_k_A[] = "A";
+static char __pyx_k_get[] = "get";
 static char __pyx_k_main[] = "__main__";
 static char __pyx_k_test[] = "__test__";
+static char __pyx_k_verbose[] = "verbose";
 static char __pyx_k_property[] = "property";
 static char __pyx_k_solver_name[] = "solver_name";
 static char __pyx_k_NotImplementedError[] = "NotImplementedError";
 static PyObject *__pyx_n_s_A;
 static PyObject *__pyx_n_s_NotImplementedError;
+static PyObject *__pyx_n_s_get;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_property;
 static PyObject *__pyx_n_s_solver_name;
 static PyObject *__pyx_n_s_test;
-static int __pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t___cinit__(struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *__pyx_v_self, PyObject *__pyx_v_A); /* proto */
+static PyObject *__pyx_n_s_verbose;
+static int __pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t___cinit__(struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *__pyx_v_self, PyObject *__pyx_v_A, PyObject *__pyx_v_kwargs); /* proto */
 static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t_2solver_name(struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t_4A(struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t_6solve(CYTHON_UNUSED struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
@@ -639,21 +646,24 @@ static PyObject *__pyx_tp_new_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_IN
 /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":4
  * 
  * cdef class Solver_INT32_t_FLOAT64_t:
- *     def __cinit__(self, A):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, A, **kwargs):             # <<<<<<<<<<<<<<
  *         self.__A = A
- * 
+ *         self.__verbose = kwargs.get('verbose', False)
  */
 
 /* Python wrapper */
 static int __pyx_pw_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static int __pyx_pw_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_A = 0;
+  PyObject *__pyx_v_kwargs = 0;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  __pyx_v_kwargs = PyDict_New(); if (unlikely(!__pyx_v_kwargs)) return -1;
+  __Pyx_GOTREF(__pyx_v_kwargs);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_A,0};
     PyObject* values[1] = {0};
@@ -672,7 +682,7 @@ static int __pyx_pw_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FL
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -685,27 +695,34 @@ static int __pyx_pw_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FL
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
+  __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
   __Pyx_AddTraceback("suitesparse.solver_INT32_t_FLOAT64_t.Solver_INT32_t_FLOAT64_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t___cinit__(((struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *)__pyx_v_self), __pyx_v_A);
+  __pyx_r = __pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t___cinit__(((struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *)__pyx_v_self), __pyx_v_A, __pyx_v_kwargs);
 
   /* function exit code */
+  __Pyx_XDECREF(__pyx_v_kwargs);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t___cinit__(struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *__pyx_v_self, PyObject *__pyx_v_A) {
+static int __pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FLOAT64_t___cinit__(struct __pyx_obj_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t *__pyx_v_self, PyObject *__pyx_v_A, PyObject *__pyx_v_kwargs) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_t_2;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
   /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":5
  * cdef class Solver_INT32_t_FLOAT64_t:
- *     def __cinit__(self, A):
+ *     def __cinit__(self, A, **kwargs):
  *         self.__A = A             # <<<<<<<<<<<<<<
- * 
+ *         self.__verbose = kwargs.get('verbose', False)
  * 
  */
   __Pyx_INCREF(__pyx_v_A);
@@ -714,21 +731,40 @@ static int __pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT32_t_FL
   __Pyx_DECREF(__pyx_v_self->__pyx___A);
   __pyx_v_self->__pyx___A = __pyx_v_A;
 
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":6
+ *     def __cinit__(self, A, **kwargs):
+ *         self.__A = A
+ *         self.__verbose = kwargs.get('verbose', False)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs, __pyx_n_s_verbose, Py_False); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 6; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 6; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->__pyx___verbose = __pyx_t_2;
+
   /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":4
  * 
  * cdef class Solver_INT32_t_FLOAT64_t:
- *     def __cinit__(self, A):             # <<<<<<<<<<<<<<
+ *     def __cinit__(self, A, **kwargs):             # <<<<<<<<<<<<<<
  *         self.__A = A
- * 
+ *         self.__verbose = kwargs.get('verbose', False)
  */
 
   /* function exit code */
   __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("suitesparse.solver_INT32_t_FLOAT64_t.Solver_INT32_t_FLOAT64_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":9
+/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":10
  * 
  *     @property
  *     def solver_name(self):             # <<<<<<<<<<<<<<
@@ -754,7 +790,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("solver_name", 0);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":10
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":11
  *     @property
  *     def solver_name(self):
  *         return self.__solver_name             # <<<<<<<<<<<<<<
@@ -766,7 +802,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   __pyx_r = __pyx_v_self->__pyx___solver_name;
   goto __pyx_L0;
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":9
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":10
  * 
  *     @property
  *     def solver_name(self):             # <<<<<<<<<<<<<<
@@ -781,7 +817,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   return __pyx_r;
 }
 
-/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":14
+/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":15
  * 
  *     @property
  *     def A(self):             # <<<<<<<<<<<<<<
@@ -807,7 +843,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("A", 0);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":15
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":16
  *     @property
  *     def A(self):
  *         return self.__A             # <<<<<<<<<<<<<<
@@ -819,7 +855,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   __pyx_r = __pyx_v_self->__pyx___A;
   goto __pyx_L0;
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":14
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":15
  * 
  *     @property
  *     def A(self):             # <<<<<<<<<<<<<<
@@ -834,7 +870,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   return __pyx_r;
 }
 
-/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":17
+/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":18
  *         return self.__A
  * 
  *     def solve(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -871,20 +907,20 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("solve", 0);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":18
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":19
  * 
  *     def solve(self, *args, **kwargs):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
  * 
  *     def analyze(self, *args, **kwargs):
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":17
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":18
  *         return self.__A
  * 
  *     def solve(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -902,7 +938,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   return __pyx_r;
 }
 
-/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":20
+/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":21
  *         raise NotImplementedError()
  * 
  *     def analyze(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -939,20 +975,20 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("analyze", 0);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":21
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":22
  * 
  *     def analyze(self, *args, **kwargs):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
  * 
  *     def factorize(self, *args, **kwargs):
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 21; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 22; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 21; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 22; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":20
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":21
  *         raise NotImplementedError()
  * 
  *     def analyze(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -970,7 +1006,7 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   return __pyx_r;
 }
 
-/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":23
+/* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":24
  *         raise NotImplementedError()
  * 
  *     def factorize(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -1006,18 +1042,18 @@ static PyObject *__pyx_pf_11suitesparse_24solver_INT32_t_FLOAT64_t_24Solver_INT3
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("factorize", 0);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":24
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":25
  * 
  *     def factorize(self, *args, **kwargs):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 25; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":23
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":24
  *         raise NotImplementedError()
  * 
  *     def factorize(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -1175,15 +1211,17 @@ static struct PyModuleDef __pyx_moduledef = {
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_A, __pyx_k_A, sizeof(__pyx_k_A), 0, 0, 1, 1},
   {&__pyx_n_s_NotImplementedError, __pyx_k_NotImplementedError, sizeof(__pyx_k_NotImplementedError), 0, 0, 1, 1},
+  {&__pyx_n_s_get, __pyx_k_get, sizeof(__pyx_k_get), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_property, __pyx_k_property, sizeof(__pyx_k_property), 0, 0, 1, 1},
   {&__pyx_n_s_solver_name, __pyx_k_solver_name, sizeof(__pyx_k_solver_name), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_verbose, __pyx_k_verbose, sizeof(__pyx_k_verbose), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 19; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -1302,61 +1340,61 @@ PyMODINIT_FUNC PyInit_solver_INT32_t_FLOAT64_t(void)
   if (__Pyx_patch_abc() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":9
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":10
  * 
  *     @property
  *     def solver_name(self):             # <<<<<<<<<<<<<<
  *         return self.__solver_name
  * 
  */
-  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t, __pyx_n_s_solver_name); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t, __pyx_n_s_solver_name); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 10; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":8
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":9
  * 
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def solver_name(self):
  *         return self.__solver_name
  */
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t->tp_dict, __pyx_n_s_solver_name, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t->tp_dict, __pyx_n_s_solver_name, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 10; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":14
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":15
  * 
  *     @property
  *     def A(self):             # <<<<<<<<<<<<<<
  *         return self.__A
  * 
  */
-  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t, __pyx_n_s_A); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t, __pyx_n_s_A); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 15; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":13
+  /* "suitesparse/solver_INT32_t_FLOAT64_t.pyx":14
  * 
  * 
  *     @property             # <<<<<<<<<<<<<<
  *     def A(self):
  *         return self.__A
  */
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t->tp_dict, __pyx_n_s_A, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t->tp_dict, __pyx_n_s_A, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 15; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_11suitesparse_24solver_INT32_t_FLOAT64_t_Solver_INT32_t_FLOAT64_t);
 
@@ -1364,7 +1402,7 @@ PyMODINIT_FUNC PyInit_solver_INT32_t_FLOAT64_t(void)
  * 
  * 
  * cdef class Solver_INT32_t_FLOAT64_t:             # <<<<<<<<<<<<<<
- *     def __cinit__(self, A):
+ *     def __cinit__(self, A, **kwargs):
  *         self.__A = A
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -1562,6 +1600,33 @@ static void __Pyx_RaiseArgtupleInvalid(
                  "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
                  func_name, more_or_less, num_expected,
                  (num_expected == 1) ? "" : "s", num_found);
+}
+
+static PyObject* __Pyx_PyDict_GetItemDefault(PyObject* d, PyObject* key, PyObject* default_value) {
+    PyObject* value;
+#if PY_MAJOR_VERSION >= 3 && !CYTHON_COMPILING_IN_PYPY
+    value = PyDict_GetItemWithError(d, key);
+    if (unlikely(!value)) {
+        if (unlikely(PyErr_Occurred()))
+            return NULL;
+        value = default_value;
+    }
+    Py_INCREF(value);
+#else
+    if (PyString_CheckExact(key) || PyUnicode_CheckExact(key) || PyInt_CheckExact(key)) {
+        value = PyDict_GetItem(d, key);
+        if (unlikely(!value)) {
+            value = default_value;
+        }
+        Py_INCREF(value);
+    } else {
+        if (default_value == Py_None)
+            default_value = NULL;
+        value = PyObject_CallMethodObjArgs(
+            d, __pyx_n_s_get, key, default_value, NULL);
+    }
+#endif
+    return value;
 }
 
 static CYTHON_INLINE int __Pyx_CheckKeywordStrings(

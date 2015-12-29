@@ -6,3 +6,4 @@ cdef class Solver_@index@_@type@:
     cdef:
         str __solver_name
         object __A
+        bint __verbose

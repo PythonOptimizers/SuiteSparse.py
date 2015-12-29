@@ -1,8 +1,9 @@
 
 
 cdef class Solver_@index@_@type@:
-    def __cinit__(self, A):
+    def __cinit__(self, A, **kwargs):
         self.__A = A
+        self.__verbose = kwargs.get('verbose', False)
 
     {% raw %}
     @property

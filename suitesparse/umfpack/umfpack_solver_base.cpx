@@ -1,5 +1,5 @@
 from suitesparse.solver_@index@_@type@ cimport Solver_@index@_@type@
 
-cdef class UmfpackSolver_@index@_@type@(Solver_@index@_@type@):
-    def __cinit__(self):
-        pass
+cdef class UmfpackSolverBase_@index@_@type@(Solver_@index@_@type@):
+    def __cinit__(self, A, **kwargs):
+        self.__solver_name = 'UMFPACK'

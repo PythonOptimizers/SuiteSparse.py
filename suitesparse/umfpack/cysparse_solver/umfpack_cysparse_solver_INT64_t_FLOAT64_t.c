@@ -234,8 +234,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__suitesparse__umfpack__cysparse__umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t
-#define __PYX_HAVE_API__suitesparse__umfpack__cysparse__umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t
+#define __PYX_HAVE__suitesparse__umfpack__cysparse_solver__umfpack_cysparse_solver_INT64_t_FLOAT64_t
+#define __PYX_HAVE_API__suitesparse__umfpack__cysparse_solver__umfpack_cysparse_solver_INT64_t_FLOAT64_t
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -444,10 +444,51 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "arse.py/suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pyx",
+  "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx",
+  "suitesparse/solver_INT64_t_FLOAT64_t.pxd",
 };
 
 /*--- Type declarations ---*/
+struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t;
+struct __pyx_obj_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t;
+struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t;
+
+/* "suitesparse/solver_INT64_t_FLOAT64_t.pxd":5
+ * """
+ * 
+ * cdef class Solver_INT64_t_FLOAT64_t:             # <<<<<<<<<<<<<<
+ *     cdef:
+ *         str __solver_name
+ */
+struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t {
+  PyObject_HEAD
+  PyObject *__pyx___solver_name;
+  PyObject *__pyx___A;
+  int __pyx___verbose;
+};
+
+
+/* "suitesparse/umfpack/umfpack_solver_base_INT64_t_FLOAT64_t.pxd":3
+ * from suitesparse.solver_INT64_t_FLOAT64_t cimport Solver_INT64_t_FLOAT64_t
+ * 
+ * cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):             # <<<<<<<<<<<<<<
+ *     pass
+ */
+struct __pyx_obj_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t {
+  struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t __pyx_base;
+};
+
+
+/* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pxd":3
+ * from suitesparse.umfpack.umfpack_solver_base_INT64_t_FLOAT64_t cimport UmfpackSolverBase_INT64_t_FLOAT64_t
+ * 
+ * cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLOAT64_t):             # <<<<<<<<<<<<<<
+ *     pass
+ */
+struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t {
+  struct __pyx_obj_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t __pyx_base;
+};
+
 
 /* --- Runtime support code (head) --- */
 #ifndef CYTHON_REFNANNY
@@ -512,6 +553,21 @@ static const char *__pyx_f[] = {
 #define __Pyx_CLEAR(r)    do { PyObject* tmp = ((PyObject*)(r)); r = NULL; __Pyx_DECREF(tmp);} while(0)
 #define __Pyx_XCLEAR(r)   do { if((r) != NULL) {PyObject* tmp = ((PyObject*)(r)); r = NULL; __Pyx_DECREF(tmp);}} while(0)
 
+static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
+
+static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
+    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
+    const char* function_name);
+
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
+static void __Pyx_call_next_tp_dealloc(PyObject* obj, destructor current_tp_dealloc);
+
+static int __Pyx_call_next_tp_traverse(PyObject* obj, visitproc v, void *a, traverseproc current_tp_traverse);
+
+static void __Pyx_call_next_tp_clear(PyObject* obj, inquiry current_tp_dealloc);
+
 typedef struct {
     int code_line;
     PyCodeObject* code_object;
@@ -537,18 +593,209 @@ static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 static int __Pyx_check_binary_version(void);
 
+#if !defined(__Pyx_PyIdentifier_FromString)
+#if PY_MAJOR_VERSION < 3
+  #define __Pyx_PyIdentifier_FromString(s) PyString_FromString(s)
+#else
+  #define __Pyx_PyIdentifier_FromString(s) PyUnicode_FromString(s)
+#endif
+#endif
+
+static PyObject *__Pyx_ImportModule(const char *name);
+
+static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name, size_t size, int strict);
+
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t' */
-#define __Pyx_MODULE_NAME "suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t"
-int __pyx_module_is_main_suitesparse__umfpack__cysparse__umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t = 0;
+/* Module declarations from 'suitesparse.solver_INT64_t_FLOAT64_t' */
+static PyTypeObject *__pyx_ptype_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t = 0;
 
-/* Implementation of 'suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t' */
+/* Module declarations from 'suitesparse.umfpack.umfpack_solver_base_INT64_t_FLOAT64_t' */
+static PyTypeObject *__pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t = 0;
+
+/* Module declarations from 'suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t' */
+static PyTypeObject *__pyx_ptype_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t = 0;
+#define __Pyx_MODULE_NAME "suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t"
+int __pyx_module_is_main_suitesparse__umfpack__cysparse_solver__umfpack_cysparse_solver_INT64_t_FLOAT64_t = 0;
+
+/* Implementation of 'suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t' */
+static char __pyx_k_A[] = "A";
 static char __pyx_k_main[] = "__main__";
 static char __pyx_k_test[] = "__test__";
+static PyObject *__pyx_n_s_A;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_test;
+static int __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t___cinit__(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_tp_new_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+
+/* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":4
+ * 
+ * cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLOAT64_t):
+ *     def __cinit__(self, A, **kwargs):             # <<<<<<<<<<<<<<
+ *         pass
+ */
+
+/* Python wrapper */
+static int __pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  CYTHON_UNUSED PyObject *__pyx_v_A = 0;
+  CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  __pyx_v_kwargs = PyDict_New(); if (unlikely(!__pyx_v_kwargs)) return -1;
+  __Pyx_GOTREF(__pyx_v_kwargs);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_A,0};
+    PyObject* values[1] = {0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, __pyx_v_kwargs, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+    }
+    __pyx_v_A = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_L3_error:;
+  __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
+  __Pyx_AddTraceback("suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t.UmfpackCysparseSolver_INT64_t_FLOAT64_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t___cinit__(((struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *)__pyx_v_self), __pyx_v_A, __pyx_v_kwargs);
+
+  /* function exit code */
+  __Pyx_XDECREF(__pyx_v_kwargs);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t___cinit__(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_tp_new_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t(PyTypeObject *t, PyObject *a, PyObject *k) {
+  PyObject *o = __pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t->tp_new(t, a, k);
+  if (unlikely(!o)) return 0;
+  if (unlikely(__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_1__cinit__(o, a, k) < 0)) {
+    Py_DECREF(o); o = 0;
+  }
+  return o;
+}
+
+static void __pyx_tp_dealloc_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t(PyObject *o) {
+  #if PY_VERSION_HEX >= 0x030400a1
+  if (unlikely(Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
+    if (PyObject_CallFinalizerFromDealloc(o)) return;
+  }
+  #endif
+  PyObject_GC_UnTrack(o);
+  PyObject_GC_Track(o);
+  if (likely(__pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t)) __pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t->tp_dealloc(o); else __Pyx_call_next_tp_dealloc(o, __pyx_tp_dealloc_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t);
+}
+
+static int __pyx_tp_traverse_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t(PyObject *o, visitproc v, void *a) {
+  int e;
+  e = ((likely(__pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t)) ? ((__pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t->tp_traverse) ? __pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t->tp_traverse(o, v, a) : 0) : __Pyx_call_next_tp_traverse(o, v, a, __pyx_tp_traverse_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t)); if (e) return e;
+  return 0;
+}
+
+static int __pyx_tp_clear_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t(PyObject *o) {
+  if (likely(__pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t)) { if (__pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t->tp_clear) __pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t->tp_clear(o); } else __Pyx_call_next_tp_clear(o, __pyx_tp_clear_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t);
+  return 0;
+}
+
+static PyMethodDef __pyx_methods_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t[] = {
+  {0, 0, 0, 0}
+};
+
+static PyTypeObject __pyx_type_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t = {
+  PyVarObject_HEAD_INIT(0, 0)
+  "suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t.UmfpackCysparseSolver_INT64_t_FLOAT64_t", /*tp_name*/
+  sizeof(struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t), /*tp_basicsize*/
+  0, /*tp_itemsize*/
+  __pyx_tp_dealloc_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t, /*tp_dealloc*/
+  0, /*tp_print*/
+  0, /*tp_getattr*/
+  0, /*tp_setattr*/
+  #if PY_MAJOR_VERSION < 3
+  0, /*tp_compare*/
+  #endif
+  #if PY_MAJOR_VERSION >= 3
+  0, /*tp_as_async*/
+  #endif
+  0, /*tp_repr*/
+  0, /*tp_as_number*/
+  0, /*tp_as_sequence*/
+  0, /*tp_as_mapping*/
+  0, /*tp_hash*/
+  0, /*tp_call*/
+  0, /*tp_str*/
+  0, /*tp_getattro*/
+  0, /*tp_setattro*/
+  0, /*tp_as_buffer*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
+  0, /*tp_doc*/
+  __pyx_tp_traverse_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t, /*tp_traverse*/
+  __pyx_tp_clear_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t, /*tp_clear*/
+  0, /*tp_richcompare*/
+  0, /*tp_weaklistoffset*/
+  0, /*tp_iter*/
+  0, /*tp_iternext*/
+  __pyx_methods_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t, /*tp_methods*/
+  0, /*tp_members*/
+  0, /*tp_getset*/
+  0, /*tp_base*/
+  0, /*tp_dict*/
+  0, /*tp_descr_get*/
+  0, /*tp_descr_set*/
+  0, /*tp_dictoffset*/
+  0, /*tp_init*/
+  0, /*tp_alloc*/
+  __pyx_tp_new_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t, /*tp_new*/
+  0, /*tp_free*/
+  0, /*tp_is_gc*/
+  0, /*tp_bases*/
+  0, /*tp_mro*/
+  0, /*tp_cache*/
+  0, /*tp_subclasses*/
+  0, /*tp_weaklist*/
+  0, /*tp_del*/
+  0, /*tp_version_tag*/
+  #if PY_VERSION_HEX >= 0x030400a1
+  0, /*tp_finalize*/
+  #endif
+};
 
 static PyMethodDef __pyx_methods[] = {
   {0, 0, 0, 0}
@@ -561,7 +808,7 @@ static struct PyModuleDef __pyx_moduledef = {
   #else
     PyModuleDef_HEAD_INIT,
   #endif
-    "umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t",
+    "umfpack_cysparse_solver_INT64_t_FLOAT64_t",
     0, /* m_doc */
     -1, /* m_size */
     __pyx_methods /* m_methods */,
@@ -573,6 +820,7 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_n_s_A, __pyx_k_A, sizeof(__pyx_k_A), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
@@ -596,11 +844,11 @@ static int __Pyx_InitGlobals(void) {
 }
 
 #if PY_MAJOR_VERSION < 3
-PyMODINIT_FUNC initumfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void); /*proto*/
-PyMODINIT_FUNC initumfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
+PyMODINIT_FUNC initumfpack_cysparse_solver_INT64_t_FLOAT64_t(void); /*proto*/
+PyMODINIT_FUNC initumfpack_cysparse_solver_INT64_t_FLOAT64_t(void)
 #else
-PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void); /*proto*/
-PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
+PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_INT64_t_FLOAT64_t(void); /*proto*/
+PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_INT64_t_FLOAT64_t(void)
 #endif
 {
   PyObject *__pyx_t_1 = NULL;
@@ -617,7 +865,7 @@ PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
           Py_FatalError("failed to import 'refnanny' module");
   }
   #endif
-  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)", 0);
+  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_INT64_t_FLOAT64_t(void)", 0);
   if (__Pyx_check_binary_version() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -645,7 +893,7 @@ PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
   #endif
   /*--- Module creation code ---*/
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("umfpack_cysparse_solver_INT64_t_FLOAT64_t", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -662,14 +910,14 @@ PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  if (__pyx_module_is_main_suitesparse__umfpack__cysparse__umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t) {
+  if (__pyx_module_is_main_suitesparse__umfpack__cysparse_solver__umfpack_cysparse_solver_INT64_t_FLOAT64_t) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    if (!PyDict_GetItemString(modules, "suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t")) {
-      if (unlikely(PyDict_SetItemString(modules, "suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!PyDict_GetItemString(modules, "suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t")) {
+      if (unlikely(PyDict_SetItemString(modules, "suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
@@ -681,7 +929,14 @@ PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
+  __pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t = __Pyx_ImportType("suitesparse.umfpack.umfpack_solver_base_INT64_t_FLOAT64_t", "UmfpackSolverBase_INT64_t_FLOAT64_t", sizeof(struct __pyx_obj_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t), 1); if (unlikely(!__pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t.tp_base = __pyx_ptype_11suitesparse_7umfpack_37umfpack_solver_base_INT64_t_FLOAT64_t_UmfpackSolverBase_INT64_t_FLOAT64_t;
+  if (PyType_Ready(&__pyx_type_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t.tp_print = 0;
+  if (PyObject_SetAttrString(__pyx_m, "UmfpackCysparseSolver_INT64_t_FLOAT64_t", (PyObject *)&__pyx_type_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t = &__pyx_type_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t;
   /*--- Type import code ---*/
+  __pyx_ptype_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t = __Pyx_ImportType("suitesparse.solver_INT64_t_FLOAT64_t", "Solver_INT64_t_FLOAT64_t", sizeof(struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t), 1); if (unlikely(!__pyx_ptype_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 5; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   /*--- Variable import code ---*/
   /*--- Function import code ---*/
   /*--- Execution code ---*/
@@ -689,8 +944,10 @@ PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
   if (__Pyx_patch_abc() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
 
-  /* "suitesparse/umfpack/cysparse/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pyx":1
-             # <<<<<<<<<<<<<<
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":1
+ * from suitesparse.umfpack.umfpack_solver_base_INT64_t_FLOAT64_t cimport UmfpackSolverBase_INT64_t_FLOAT64_t             # <<<<<<<<<<<<<<
+ * 
+ * cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLOAT64_t):
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
@@ -704,11 +961,11 @@ PyMODINIT_FUNC PyInit_umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t(void)
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_INT32_t_FLOAT64_t");
+    PyErr_SetString(PyExc_ImportError, "init suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -735,6 +992,176 @@ end:
     return (__Pyx_RefNannyAPIStruct *)r;
 }
 #endif
+
+static void __Pyx_RaiseDoubleKeywordsError(
+    const char* func_name,
+    PyObject* kw_name)
+{
+    PyErr_Format(PyExc_TypeError,
+        #if PY_MAJOR_VERSION >= 3
+        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
+        #else
+        "%s() got multiple values for keyword argument '%s'", func_name,
+        PyString_AsString(kw_name));
+        #endif
+}
+
+static int __Pyx_ParseOptionalKeywords(
+    PyObject *kwds,
+    PyObject **argnames[],
+    PyObject *kwds2,
+    PyObject *values[],
+    Py_ssize_t num_pos_args,
+    const char* function_name)
+{
+    PyObject *key = 0, *value = 0;
+    Py_ssize_t pos = 0;
+    PyObject*** name;
+    PyObject*** first_kw_arg = argnames + num_pos_args;
+    while (PyDict_Next(kwds, &pos, &key, &value)) {
+        name = first_kw_arg;
+        while (*name && (**name != key)) name++;
+        if (*name) {
+            values[name-argnames] = value;
+            continue;
+        }
+        name = first_kw_arg;
+        #if PY_MAJOR_VERSION < 3
+        if (likely(PyString_CheckExact(key)) || likely(PyString_Check(key))) {
+            while (*name) {
+                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
+                        && _PyString_Eq(**name, key)) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    if ((**argname == key) || (
+                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
+                             && _PyString_Eq(**argname, key))) {
+                        goto arg_passed_twice;
+                    }
+                    argname++;
+                }
+            }
+        } else
+        #endif
+        if (likely(PyUnicode_Check(key))) {
+            while (*name) {
+                int cmp = (**name == key) ? 0 :
+                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                    (PyUnicode_GET_SIZE(**name) != PyUnicode_GET_SIZE(key)) ? 1 :
+                #endif
+                    PyUnicode_Compare(**name, key);
+                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                if (cmp == 0) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    int cmp = (**argname == key) ? 0 :
+                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                        (PyUnicode_GET_SIZE(**argname) != PyUnicode_GET_SIZE(key)) ? 1 :
+                    #endif
+                        PyUnicode_Compare(**argname, key);
+                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                    if (cmp == 0) goto arg_passed_twice;
+                    argname++;
+                }
+            }
+        } else
+            goto invalid_keyword_type;
+        if (kwds2) {
+            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
+        } else {
+            goto invalid_keyword;
+        }
+    }
+    return 0;
+arg_passed_twice:
+    __Pyx_RaiseDoubleKeywordsError(function_name, key);
+    goto bad;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    goto bad;
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+bad:
+    return -1;
+}
+
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
+}
+
+static void __Pyx_call_next_tp_dealloc(PyObject* obj, destructor current_tp_dealloc) {
+    PyTypeObject* type = Py_TYPE(obj);
+    while (type && type->tp_dealloc != current_tp_dealloc)
+        type = type->tp_base;
+    while (type && type->tp_dealloc == current_tp_dealloc)
+        type = type->tp_base;
+    if (type)
+        type->tp_dealloc(obj);
+}
+
+static int __Pyx_call_next_tp_traverse(PyObject* obj, visitproc v, void *a, traverseproc current_tp_traverse) {
+    PyTypeObject* type = Py_TYPE(obj);
+    while (type && type->tp_traverse != current_tp_traverse)
+        type = type->tp_base;
+    while (type && type->tp_traverse == current_tp_traverse)
+        type = type->tp_base;
+    if (type && type->tp_traverse)
+        return type->tp_traverse(obj, v, a);
+    return 0;
+}
+
+static void __Pyx_call_next_tp_clear(PyObject* obj, inquiry current_tp_clear) {
+    PyTypeObject* type = Py_TYPE(obj);
+    while (type && type->tp_clear != current_tp_clear)
+        type = type->tp_base;
+    while (type && type->tp_clear == current_tp_clear)
+        type = type->tp_base;
+    if (type && type->tp_clear)
+        type->tp_clear(obj);
+}
 
 static int __pyx_bisect_code_objects(__Pyx_CodeObjectCacheEntry* entries, int count, int code_line) {
     int start = 0, mid = 0, end = count - 1;
@@ -1328,6 +1755,87 @@ static int __Pyx_check_binary_version(void) {
     }
     return 0;
 }
+
+#ifndef __PYX_HAVE_RT_ImportModule
+#define __PYX_HAVE_RT_ImportModule
+static PyObject *__Pyx_ImportModule(const char *name) {
+    PyObject *py_name = 0;
+    PyObject *py_module = 0;
+    py_name = __Pyx_PyIdentifier_FromString(name);
+    if (!py_name)
+        goto bad;
+    py_module = PyImport_Import(py_name);
+    Py_DECREF(py_name);
+    return py_module;
+bad:
+    Py_XDECREF(py_name);
+    return 0;
+}
+#endif
+
+#ifndef __PYX_HAVE_RT_ImportType
+#define __PYX_HAVE_RT_ImportType
+static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class_name,
+    size_t size, int strict)
+{
+    PyObject *py_module = 0;
+    PyObject *result = 0;
+    PyObject *py_name = 0;
+    char warning[200];
+    Py_ssize_t basicsize;
+#ifdef Py_LIMITED_API
+    PyObject *py_basicsize;
+#endif
+    py_module = __Pyx_ImportModule(module_name);
+    if (!py_module)
+        goto bad;
+    py_name = __Pyx_PyIdentifier_FromString(class_name);
+    if (!py_name)
+        goto bad;
+    result = PyObject_GetAttr(py_module, py_name);
+    Py_DECREF(py_name);
+    py_name = 0;
+    Py_DECREF(py_module);
+    py_module = 0;
+    if (!result)
+        goto bad;
+    if (!PyType_Check(result)) {
+        PyErr_Format(PyExc_TypeError,
+            "%.200s.%.200s is not a type object",
+            module_name, class_name);
+        goto bad;
+    }
+#ifndef Py_LIMITED_API
+    basicsize = ((PyTypeObject *)result)->tp_basicsize;
+#else
+    py_basicsize = PyObject_GetAttrString(result, "__basicsize__");
+    if (!py_basicsize)
+        goto bad;
+    basicsize = PyLong_AsSsize_t(py_basicsize);
+    Py_DECREF(py_basicsize);
+    py_basicsize = 0;
+    if (basicsize == (Py_ssize_t)-1 && PyErr_Occurred())
+        goto bad;
+#endif
+    if (!strict && (size_t)basicsize > size) {
+        PyOS_snprintf(warning, sizeof(warning),
+            "%s.%s size changed, may indicate binary incompatibility",
+            module_name, class_name);
+        if (PyErr_WarnEx(NULL, warning, 0) < 0) goto bad;
+    }
+    else if ((size_t)basicsize != size) {
+        PyErr_Format(PyExc_ValueError,
+            "%.200s.%.200s has the wrong size, try recompiling",
+            module_name, class_name);
+        goto bad;
+    }
+    return (PyTypeObject *)result;
+bad:
+    Py_XDECREF(py_module);
+    Py_XDECREF(result);
+    return NULL;
+}
+#endif
 
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t) {
     while (t->p) {

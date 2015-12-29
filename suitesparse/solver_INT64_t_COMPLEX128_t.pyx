@@ -1,9 +1,10 @@
 
 
 cdef class Solver_INT64_t_COMPLEX128_t:
-    def __cinit__(self, A):
+    def __cinit__(self, A, **kwargs):
         self.__A = A
-        
+        self.__verbose = kwargs.get('verbose', False)
+
     
     @property
     def solver_name(self):

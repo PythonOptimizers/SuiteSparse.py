@@ -135,12 +135,12 @@ umfpack_ext = [
         Extension(name="suitesparse.umfpack.umfpack_solver_base_@index_type@_@element_type@",
                   sources=['suitesparse/umfpack/umfpack_solver_base_@index_type@_@element_type@.pxd',
                            'suitesparse/umfpack/umfpack_solver_base_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
-        Extension(name="suitesparse.umfpack.cysparse.umfpack_cysparse_solver_umfpack_@index_type@_@element_type@",
-                  sources=['suitesparse/umfpack/cysparse/umfpack_cysparse_solver_@index_type@_@element_type@.pxd',
-                           'suitesparse/umfpack/cysparse/umfpack_cysparse_solver_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
-        Extension(name="suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_@index_type@_@element_type@",
-                  sources=['suitesparse/umfpack/generic/umfpack_generic_solver_@index_type@_@element_type@.pxd',
-                           'suitesparse/umfpack/generic/umfpack_generic_solver_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_@index_type@_@element_type@",
+                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
+        Extension(name="suitesparse.umfpack.generic_solver.umfpack_generic_solver_@index_type@_@element_type@",
+                  sources=['suitesparse/umfpack/generic_solver/umfpack_generic_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/umfpack/generic_solver/umfpack_generic_solver_@index_type@_@element_type@.pyx'], **umfpack_ext_params),
     {% endfor %}
 {% endfor %}
     ]
@@ -152,8 +152,8 @@ umfpack_ext = [
 ########################################################################################################################
 packages_list = ['suitesparse',
             'suitesparse.umfpack',
-            'suitesparse.umfpack.cysparse',
-            'suitesparse.umfpack.generic',
+            'suitesparse.umfpack.cysparse_solver',
+            'suitesparse.umfpack.generic_solver',
             'tests'
             ]
 
