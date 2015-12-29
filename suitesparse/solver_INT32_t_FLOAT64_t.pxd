@@ -7,3 +7,6 @@ cdef class Solver_INT32_t_FLOAT64_t:
         str __solver_name
         object __A
         bint __verbose
+
+        bint __analyzed
+        bint __factorized

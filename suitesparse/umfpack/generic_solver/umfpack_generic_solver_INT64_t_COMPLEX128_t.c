@@ -234,8 +234,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__suitesparse__umfpack__generic__umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t
-#define __PYX_HAVE_API__suitesparse__umfpack__generic__umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t
+#define __PYX_HAVE__suitesparse__umfpack__generic_solver__umfpack_generic_solver_INT64_t_COMPLEX128_t
+#define __PYX_HAVE_API__suitesparse__umfpack__generic_solver__umfpack_generic_solver_INT64_t_COMPLEX128_t
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -444,7 +444,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "arse.py/suitesparse/umfpack/generic/umfpack_generic_solver_INT64_t_COMPLEX128_t.pyx",
+  "suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT64_t_COMPLEX128_t.pyx",
 };
 
 /*--- Type declarations ---*/
@@ -540,11 +540,11 @@ static int __Pyx_check_binary_version(void);
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 
-/* Module declarations from 'suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t' */
-#define __Pyx_MODULE_NAME "suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t"
-int __pyx_module_is_main_suitesparse__umfpack__generic__umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t = 0;
+/* Module declarations from 'suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t' */
+#define __Pyx_MODULE_NAME "suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t"
+int __pyx_module_is_main_suitesparse__umfpack__generic_solver__umfpack_generic_solver_INT64_t_COMPLEX128_t = 0;
 
-/* Implementation of 'suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t' */
+/* Implementation of 'suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t' */
 static char __pyx_k_main[] = "__main__";
 static char __pyx_k_test[] = "__test__";
 static PyObject *__pyx_n_s_main;
@@ -561,7 +561,7 @@ static struct PyModuleDef __pyx_moduledef = {
   #else
     PyModuleDef_HEAD_INIT,
   #endif
-    "umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t",
+    "umfpack_generic_solver_INT64_t_COMPLEX128_t",
     0, /* m_doc */
     -1, /* m_size */
     __pyx_methods /* m_methods */,
@@ -596,11 +596,11 @@ static int __Pyx_InitGlobals(void) {
 }
 
 #if PY_MAJOR_VERSION < 3
-PyMODINIT_FUNC initumfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void); /*proto*/
-PyMODINIT_FUNC initumfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)
+PyMODINIT_FUNC initumfpack_generic_solver_INT64_t_COMPLEX128_t(void); /*proto*/
+PyMODINIT_FUNC initumfpack_generic_solver_INT64_t_COMPLEX128_t(void)
 #else
-PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void); /*proto*/
-PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)
+PyMODINIT_FUNC PyInit_umfpack_generic_solver_INT64_t_COMPLEX128_t(void); /*proto*/
+PyMODINIT_FUNC PyInit_umfpack_generic_solver_INT64_t_COMPLEX128_t(void)
 #endif
 {
   PyObject *__pyx_t_1 = NULL;
@@ -617,7 +617,7 @@ PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)
           Py_FatalError("failed to import 'refnanny' module");
   }
   #endif
-  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)", 0);
+  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_umfpack_generic_solver_INT64_t_COMPLEX128_t(void)", 0);
   if (__Pyx_check_binary_version() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -645,7 +645,7 @@ PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)
   #endif
   /*--- Module creation code ---*/
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("umfpack_generic_solver_INT64_t_COMPLEX128_t", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -662,14 +662,14 @@ PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
-  if (__pyx_module_is_main_suitesparse__umfpack__generic__umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t) {
+  if (__pyx_module_is_main_suitesparse__umfpack__generic_solver__umfpack_generic_solver_INT64_t_COMPLEX128_t) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-    if (!PyDict_GetItemString(modules, "suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t")) {
-      if (unlikely(PyDict_SetItemString(modules, "suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    if (!PyDict_GetItemString(modules, "suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t")) {
+      if (unlikely(PyDict_SetItemString(modules, "suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t", __pyx_m) < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     }
   }
   #endif
@@ -689,7 +689,7 @@ PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)
   if (__Pyx_patch_abc() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
 
-  /* "suitesparse/umfpack/generic/umfpack_generic_solver_INT64_t_COMPLEX128_t.pyx":1
+  /* "suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT64_t_COMPLEX128_t.pyx":1
              # <<<<<<<<<<<<<<
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 1; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -704,11 +704,11 @@ PyMODINIT_FUNC PyInit_umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t(void)
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init suitesparse.umfpack.generic.umfpack_generic_solver_umfpack_INT64_t_COMPLEX128_t");
+    PyErr_SetString(PyExc_ImportError, "init suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();

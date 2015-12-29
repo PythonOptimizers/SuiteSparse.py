@@ -465,6 +465,8 @@ struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64
   PyObject *__pyx___solver_name;
   PyObject *__pyx___A;
   int __pyx___verbose;
+  int __pyx___analyzed;
+  int __pyx___factorized;
 };
 
 
@@ -562,6 +564,8 @@ static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
 static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
     Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
 
+static CYTHON_INLINE int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
+
 static void __Pyx_call_next_tp_dealloc(PyObject* obj, destructor current_tp_dealloc);
 
 static int __Pyx_call_next_tp_traverse(PyObject* obj, visitproc v, void *a, traverseproc current_tp_traverse);
@@ -584,6 +588,14 @@ static void __pyx_insert_code_object(int code_line, PyCodeObject* code_object);
 
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
+
+static int __Pyx_Print(PyObject*, PyObject *, int);
+#if CYTHON_COMPILING_IN_PYPY || PY_MAJOR_VERSION >= 3
+static PyObject* __pyx_print = 0;
+static PyObject* __pyx_print_kwargs = 0;
+#endif
+
+static int __Pyx_PrintOne(PyObject* stream, PyObject *o);
 
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
@@ -621,19 +633,38 @@ int __pyx_module_is_main_suitesparse__umfpack__cysparse_solver__umfpack_cysparse
 
 /* Implementation of 'suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t' */
 static char __pyx_k_A[] = "A";
+static char __pyx_k_end[] = "end";
+static char __pyx_k_file[] = "file";
 static char __pyx_k_main[] = "__main__";
 static char __pyx_k_test[] = "__test__";
+static char __pyx_k_print[] = "print";
+static char __pyx_k_I_m_talking_a_lot[] = "I'm talking a lot!";
+static char __pyx_k_Called_real_analyze[] = "Called real analyze";
+static char __pyx_k_Called_real_factorize[] = "Called real factorize";
+static char __pyx_k_Calling_real_solve_with[] = "Calling real solve with ";
 static PyObject *__pyx_n_s_A;
+static PyObject *__pyx_kp_s_Called_real_analyze;
+static PyObject *__pyx_kp_s_Called_real_factorize;
+static PyObject *__pyx_kp_s_Calling_real_solve_with;
+static PyObject *__pyx_kp_s_I_m_talking_a_lot;
+static PyObject *__pyx_n_s_end;
+static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_test;
-static int __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t___cinit__(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static int __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t___cinit__(struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_2_solve(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, PyObject *__pyx_v_b); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_4_factorize(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_6_analyze(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
 static PyObject *__pyx_tp_new_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tuple_;
 
 /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":4
  * 
  * cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLOAT64_t):
  *     def __cinit__(self, A, **kwargs):             # <<<<<<<<<<<<<<
- *         pass
+ *         if self.__verbose:
+ *             print "I'm talking a lot!"
  */
 
 /* Python wrapper */
@@ -693,13 +724,247 @@ static int __pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_
   return __pyx_r;
 }
 
-static int __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t___cinit__(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static int __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t___cinit__(struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":5
+ * cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLOAT64_t):
+ *     def __cinit__(self, A, **kwargs):
+ *         if self.__verbose:             # <<<<<<<<<<<<<<
+ *             print "I'm talking a lot!"
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_self->__pyx_base.__pyx_base.__pyx___verbose != 0);
+  if (__pyx_t_1) {
+
+    /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":6
+ *     def __cinit__(self, A, **kwargs):
+ *         if self.__verbose:
+ *             print "I'm talking a lot!"             # <<<<<<<<<<<<<<
+ * 
+ *     def _solve(self, b):
+ */
+    if (__Pyx_PrintOne(0, __pyx_kp_s_I_m_talking_a_lot) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 6; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+    /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":5
+ * cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLOAT64_t):
+ *     def __cinit__(self, A, **kwargs):
+ *         if self.__verbose:             # <<<<<<<<<<<<<<
+ *             print "I'm talking a lot!"
+ * 
+ */
+  }
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":4
+ * 
+ * cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLOAT64_t):
+ *     def __cinit__(self, A, **kwargs):             # <<<<<<<<<<<<<<
+ *         if self.__verbose:
+ *             print "I'm talking a lot!"
+ */
 
   /* function exit code */
   __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t.UmfpackCysparseSolver_INT64_t_FLOAT64_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":8
+ *             print "I'm talking a lot!"
+ * 
+ *     def _solve(self, b):             # <<<<<<<<<<<<<<
+ *         print "Calling real solve with ",
+ *         print b
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_3_solve(PyObject *__pyx_v_self, PyObject *__pyx_v_b); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_3_solve(PyObject *__pyx_v_self, PyObject *__pyx_v_b) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("_solve (wrapper)", 0);
+  __pyx_r = __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_2_solve(((struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *)__pyx_v_self), ((PyObject *)__pyx_v_b));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_2_solve(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, PyObject *__pyx_v_b) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_solve", 0);
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":9
+ * 
+ *     def _solve(self, b):
+ *         print "Calling real solve with ",             # <<<<<<<<<<<<<<
+ *         print b
+ * 
+ */
+  if (__Pyx_Print(0, __pyx_tuple_, 0) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":10
+ *     def _solve(self, b):
+ *         print "Calling real solve with ",
+ *         print b             # <<<<<<<<<<<<<<
+ * 
+ *     def _factorize(self, **kwargs):
+ */
+  if (__Pyx_PrintOne(0, __pyx_v_b) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 10; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":8
+ *             print "I'm talking a lot!"
+ * 
+ *     def _solve(self, b):             # <<<<<<<<<<<<<<
+ *         print "Calling real solve with ",
+ *         print b
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t.UmfpackCysparseSolver_INT64_t_FLOAT64_t._solve", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":12
+ *         print b
+ * 
+ *     def _factorize(self, **kwargs):             # <<<<<<<<<<<<<<
+ *         print "Called real factorize"
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_5_factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_5_factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("_factorize (wrapper)", 0);
+  if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
+    __Pyx_RaiseArgtupleInvalid("_factorize", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return NULL;}
+  if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "_factorize", 1))) return NULL;
+  __pyx_r = __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_4_factorize(((struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *)__pyx_v_self), __pyx_v_kwargs);
+
+  /* function exit code */
+  __Pyx_XDECREF(__pyx_v_kwargs);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_4_factorize(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_factorize", 0);
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":13
+ * 
+ *     def _factorize(self, **kwargs):
+ *         print "Called real factorize"             # <<<<<<<<<<<<<<
+ * 
+ *     def _analyze(self, **kwargs):
+ */
+  if (__Pyx_PrintOne(0, __pyx_kp_s_Called_real_factorize) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":12
+ *         print b
+ * 
+ *     def _factorize(self, **kwargs):             # <<<<<<<<<<<<<<
+ *         print "Called real factorize"
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t.UmfpackCysparseSolver_INT64_t_FLOAT64_t._factorize", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":15
+ *         print "Called real factorize"
+ * 
+ *     def _analyze(self, **kwargs):             # <<<<<<<<<<<<<<
+ *         print "Called real analyze"
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_7_analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_7_analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("_analyze (wrapper)", 0);
+  if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
+    __Pyx_RaiseArgtupleInvalid("_analyze", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return NULL;}
+  if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "_analyze", 1))) return NULL;
+  __pyx_r = __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_6_analyze(((struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *)__pyx_v_self), __pyx_v_kwargs);
+
+  /* function exit code */
+  __Pyx_XDECREF(__pyx_v_kwargs);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_6_analyze(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("_analyze", 0);
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":16
+ * 
+ *     def _analyze(self, **kwargs):
+ *         print "Called real analyze"             # <<<<<<<<<<<<<<
+ */
+  if (__Pyx_PrintOne(0, __pyx_kp_s_Called_real_analyze) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 16; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":15
+ *         print "Called real factorize"
+ * 
+ *     def _analyze(self, **kwargs):             # <<<<<<<<<<<<<<
+ *         print "Called real analyze"
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t.UmfpackCysparseSolver_INT64_t_FLOAT64_t._analyze", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
@@ -736,6 +1001,9 @@ static int __pyx_tp_clear_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cys
 }
 
 static PyMethodDef __pyx_methods_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t[] = {
+  {"_solve", (PyCFunction)__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_3_solve, METH_O, 0},
+  {"_factorize", (PyCFunction)__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_5_factorize, METH_VARARGS|METH_KEYWORDS, 0},
+  {"_analyze", (PyCFunction)__pyx_pw_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_39UmfpackCysparseSolver_INT64_t_FLOAT64_t_7_analyze, METH_VARARGS|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -821,7 +1089,14 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_A, __pyx_k_A, sizeof(__pyx_k_A), 0, 0, 1, 1},
+  {&__pyx_kp_s_Called_real_analyze, __pyx_k_Called_real_analyze, sizeof(__pyx_k_Called_real_analyze), 0, 0, 1, 0},
+  {&__pyx_kp_s_Called_real_factorize, __pyx_k_Called_real_factorize, sizeof(__pyx_k_Called_real_factorize), 0, 0, 1, 0},
+  {&__pyx_kp_s_Calling_real_solve_with, __pyx_k_Calling_real_solve_with, sizeof(__pyx_k_Calling_real_solve_with), 0, 0, 1, 0},
+  {&__pyx_kp_s_I_m_talking_a_lot, __pyx_k_I_m_talking_a_lot, sizeof(__pyx_k_I_m_talking_a_lot), 0, 0, 1, 0},
+  {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
+  {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
@@ -832,8 +1107,22 @@ static int __Pyx_InitCachedBuiltins(void) {
 static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
+
+  /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":9
+ * 
+ *     def _solve(self, b):
+ *         print "Calling real solve with ",             # <<<<<<<<<<<<<<
+ *         print b
+ * 
+ */
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_Calling_real_solve_with); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
   __Pyx_RefNannyFinishContext();
   return 0;
+  __pyx_L1_error:;
+  __Pyx_RefNannyFinishContext();
+  return -1;
 }
 
 static int __Pyx_InitGlobals(void) {
@@ -1132,6 +1421,45 @@ static void __Pyx_RaiseArgtupleInvalid(
                  (num_expected == 1) ? "" : "s", num_found);
 }
 
+static CYTHON_INLINE int __Pyx_CheckKeywordStrings(
+    PyObject *kwdict,
+    const char* function_name,
+    int kw_allowed)
+{
+    PyObject* key = 0;
+    Py_ssize_t pos = 0;
+#if CYTHON_COMPILING_IN_PYPY
+    if (!kw_allowed && PyDict_Next(kwdict, &pos, &key, 0))
+        goto invalid_keyword;
+    return 1;
+#else
+    while (PyDict_Next(kwdict, &pos, &key, 0)) {
+        #if PY_MAJOR_VERSION < 3
+        if (unlikely(!PyString_CheckExact(key)) && unlikely(!PyString_Check(key)))
+        #endif
+            if (unlikely(!PyUnicode_Check(key)))
+                goto invalid_keyword_type;
+    }
+    if ((!kw_allowed) && unlikely(key))
+        goto invalid_keyword;
+    return 1;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    return 0;
+#endif
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+    return 0;
+}
+
 static void __Pyx_call_next_tp_dealloc(PyObject* obj, destructor current_tp_dealloc) {
     PyTypeObject* type = Py_TYPE(obj);
     while (type && type->tp_dealloc != current_tp_dealloc)
@@ -1321,6 +1649,147 @@ bad:
     Py_XDECREF(py_code);
     Py_XDECREF(py_frame);
 }
+
+#if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
+static PyObject *__Pyx_GetStdout(void) {
+    PyObject *f = PySys_GetObject((char *)"stdout");
+    if (!f) {
+        PyErr_SetString(PyExc_RuntimeError, "lost sys.stdout");
+    }
+    return f;
+}
+static int __Pyx_Print(PyObject* f, PyObject *arg_tuple, int newline) {
+    int i;
+    if (!f) {
+        if (!(f = __Pyx_GetStdout()))
+            return -1;
+    }
+    Py_INCREF(f);
+    for (i=0; i < PyTuple_GET_SIZE(arg_tuple); i++) {
+        PyObject* v;
+        if (PyFile_SoftSpace(f, 1)) {
+            if (PyFile_WriteString(" ", f) < 0)
+                goto error;
+        }
+        v = PyTuple_GET_ITEM(arg_tuple, i);
+        if (PyFile_WriteObject(v, f, Py_PRINT_RAW) < 0)
+            goto error;
+        if (PyString_Check(v)) {
+            char *s = PyString_AsString(v);
+            Py_ssize_t len = PyString_Size(v);
+            if (len > 0) {
+                switch (s[len-1]) {
+                    case ' ': break;
+                    case '\f': case '\r': case '\n': case '\t': case '\v':
+                        PyFile_SoftSpace(f, 0);
+                        break;
+                    default:  break;
+                }
+            }
+        }
+    }
+    if (newline) {
+        if (PyFile_WriteString("\n", f) < 0)
+            goto error;
+        PyFile_SoftSpace(f, 0);
+    }
+    Py_DECREF(f);
+    return 0;
+error:
+    Py_DECREF(f);
+    return -1;
+}
+#else
+static int __Pyx_Print(PyObject* stream, PyObject *arg_tuple, int newline) {
+    PyObject* kwargs = 0;
+    PyObject* result = 0;
+    PyObject* end_string;
+    if (unlikely(!__pyx_print)) {
+        __pyx_print = PyObject_GetAttr(__pyx_b, __pyx_n_s_print);
+        if (!__pyx_print)
+            return -1;
+    }
+    if (stream) {
+        kwargs = PyDict_New();
+        if (unlikely(!kwargs))
+            return -1;
+        if (unlikely(PyDict_SetItem(kwargs, __pyx_n_s_file, stream) < 0))
+            goto bad;
+        if (!newline) {
+            end_string = PyUnicode_FromStringAndSize(" ", 1);
+            if (unlikely(!end_string))
+                goto bad;
+            if (PyDict_SetItem(kwargs, __pyx_n_s_end, end_string) < 0) {
+                Py_DECREF(end_string);
+                goto bad;
+            }
+            Py_DECREF(end_string);
+        }
+    } else if (!newline) {
+        if (unlikely(!__pyx_print_kwargs)) {
+            __pyx_print_kwargs = PyDict_New();
+            if (unlikely(!__pyx_print_kwargs))
+                return -1;
+            end_string = PyUnicode_FromStringAndSize(" ", 1);
+            if (unlikely(!end_string))
+                return -1;
+            if (PyDict_SetItem(__pyx_print_kwargs, __pyx_n_s_end, end_string) < 0) {
+                Py_DECREF(end_string);
+                return -1;
+            }
+            Py_DECREF(end_string);
+        }
+        kwargs = __pyx_print_kwargs;
+    }
+    result = PyObject_Call(__pyx_print, arg_tuple, kwargs);
+    if (unlikely(kwargs) && (kwargs != __pyx_print_kwargs))
+        Py_DECREF(kwargs);
+    if (!result)
+        return -1;
+    Py_DECREF(result);
+    return 0;
+bad:
+    if (kwargs != __pyx_print_kwargs)
+        Py_XDECREF(kwargs);
+    return -1;
+}
+#endif
+
+#if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
+static int __Pyx_PrintOne(PyObject* f, PyObject *o) {
+    if (!f) {
+        if (!(f = __Pyx_GetStdout()))
+            return -1;
+    }
+    Py_INCREF(f);
+    if (PyFile_SoftSpace(f, 0)) {
+        if (PyFile_WriteString(" ", f) < 0)
+            goto error;
+    }
+    if (PyFile_WriteObject(o, f, Py_PRINT_RAW) < 0)
+        goto error;
+    if (PyFile_WriteString("\n", f) < 0)
+        goto error;
+    Py_DECREF(f);
+    return 0;
+error:
+    Py_DECREF(f);
+    return -1;
+    /* the line below is just to avoid C compiler
+     * warnings about unused functions */
+    return __Pyx_Print(f, NULL, 0);
+}
+#else
+static int __Pyx_PrintOne(PyObject* stream, PyObject *o) {
+    int res;
+    PyObject* arg_tuple = PyTuple_Pack(1, o);
+    if (unlikely(!arg_tuple))
+        return -1;
+    res = __Pyx_Print(stream, arg_tuple, 1);
+    Py_DECREF(arg_tuple);
+    return res;
+}
+#endif
 
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
     const long neg_one = (long) -1, const_zero = (long) 0;

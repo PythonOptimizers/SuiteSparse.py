@@ -463,6 +463,8 @@ struct __pyx_obj_11suitesparse_27solver_INT64_t_COMPLEX128_t_Solver_INT64_t_COMP
   PyObject *__pyx___solver_name;
   PyObject *__pyx___A;
   int __pyx___verbose;
+  int __pyx___analyzed;
+  int __pyx___factorized;
 };
 
 

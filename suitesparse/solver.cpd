@@ -7,3 +7,6 @@ cdef class Solver_@index@_@type@:
         str __solver_name
         object __A
         bint __verbose
+
+        bint __analyzed
+        bint __factorized
