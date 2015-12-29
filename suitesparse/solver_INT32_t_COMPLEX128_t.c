@@ -454,10 +454,13 @@ struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMP
  * """
  * 
  * cdef class Solver_INT32_t_COMPLEX128_t:             # <<<<<<<<<<<<<<
- *     pass
+ *     cdef:
+ *         str __solver_name
  */
 struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t {
   PyObject_HEAD
+  PyObject *__pyx___solver_name;
+  PyObject *__pyx___A;
 };
 
 
@@ -541,6 +544,15 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
+static void __Pyx_RaiseDoubleKeywordsError(const char* func_name, PyObject* kw_name);
+
+static int __Pyx_ParseOptionalKeywords(PyObject *kwds, PyObject **argnames[],\
+    PyObject *kwds2, PyObject *values[], Py_ssize_t num_pos_args,\
+    const char* function_name);
+
+static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
+    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
+
 static CYTHON_INLINE int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
 
 #if CYTHON_COMPILING_IN_CPYTHON
@@ -563,6 +575,10 @@ static CYTHON_INLINE void __Pyx_ErrRestore(PyObject *type, PyObject *value, PyOb
 static CYTHON_INLINE void __Pyx_ErrFetch(PyObject **type, PyObject **value, PyObject **tb);
 
 static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
+
+static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name);
+
+static PyObject *__Pyx_GetNameInClass(PyObject *nmspace, PyObject *name);
 
 typedef struct {
     int code_line;
@@ -598,29 +614,237 @@ static PyTypeObject *__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Sol
 int __pyx_module_is_main_suitesparse__solver_INT32_t_COMPLEX128_t = 0;
 
 /* Implementation of 'suitesparse.solver_INT32_t_COMPLEX128_t' */
+static PyObject *__pyx_builtin_property;
 static PyObject *__pyx_builtin_NotImplementedError;
+static char __pyx_k_A[] = "A";
 static char __pyx_k_main[] = "__main__";
 static char __pyx_k_test[] = "__test__";
+static char __pyx_k_property[] = "property";
+static char __pyx_k_solver_name[] = "solver_name";
 static char __pyx_k_NotImplementedError[] = "NotImplementedError";
+static PyObject *__pyx_n_s_A;
 static PyObject *__pyx_n_s_NotImplementedError;
 static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_property;
+static PyObject *__pyx_n_s_solver_name;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_solve(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_2analyze(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_4factorize(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static int __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t___cinit__(struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_A); /* proto */
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_2solver_name(struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_4A(struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_6solve(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_8analyze(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_10factorize(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
 static PyObject *__pyx_tp_new_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 
 /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":4
  * 
  * cdef class Solver_INT32_t_COMPLEX128_t:
+ *     def __cinit__(self, A):             # <<<<<<<<<<<<<<
+ *         self.__A = A
+ * 
+ */
+
+/* Python wrapper */
+static int __pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_A = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_A,0};
+    PyObject* values[1] = {0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+    }
+    __pyx_v_A = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 4; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("suitesparse.solver_INT32_t_COMPLEX128_t.Solver_INT32_t_COMPLEX128_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return -1;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t___cinit__(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_A);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t___cinit__(struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_A) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":5
+ * cdef class Solver_INT32_t_COMPLEX128_t:
+ *     def __cinit__(self, A):
+ *         self.__A = A             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_INCREF(__pyx_v_A);
+  __Pyx_GIVEREF(__pyx_v_A);
+  __Pyx_GOTREF(__pyx_v_self->__pyx___A);
+  __Pyx_DECREF(__pyx_v_self->__pyx___A);
+  __pyx_v_self->__pyx___A = __pyx_v_A;
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":4
+ * 
+ * cdef class Solver_INT32_t_COMPLEX128_t:
+ *     def __cinit__(self, A):             # <<<<<<<<<<<<<<
+ *         self.__A = A
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":9
+ * 
+ *     @property
+ *     def solver_name(self):             # <<<<<<<<<<<<<<
+ *         return self.__solver_name
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_3solver_name(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_3solver_name(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("solver_name (wrapper)", 0);
+  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_2solver_name(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_2solver_name(struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("solver_name", 0);
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":10
+ *     @property
+ *     def solver_name(self):
+ *         return self.__solver_name             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_self->__pyx___solver_name);
+  __pyx_r = __pyx_v_self->__pyx___solver_name;
+  goto __pyx_L0;
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":9
+ * 
+ *     @property
+ *     def solver_name(self):             # <<<<<<<<<<<<<<
+ *         return self.__solver_name
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":14
+ * 
+ *     @property
+ *     def A(self):             # <<<<<<<<<<<<<<
+ *         return self.__A
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_5A(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_5A(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("A (wrapper)", 0);
+  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_4A(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_4A(struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("A", 0);
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":15
+ *     @property
+ *     def A(self):
+ *         return self.__A             # <<<<<<<<<<<<<<
+ * 
+ *     def solve(self, *args, **kwargs):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(__pyx_v_self->__pyx___A);
+  __pyx_r = __pyx_v_self->__pyx___A;
+  goto __pyx_L0;
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":14
+ * 
+ *     @property
+ *     def A(self):             # <<<<<<<<<<<<<<
+ *         return self.__A
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":17
+ *         return self.__A
+ * 
  *     def solve(self, *args, **kwargs):             # <<<<<<<<<<<<<<
  *         raise NotImplementedError()
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_1solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_1solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_7solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_7solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -629,7 +853,7 @@ static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "solve", 1))) return NULL;
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_solve(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_6solve(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -638,7 +862,7 @@ static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_solve(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_6solve(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -647,22 +871,22 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("solve", 0);
 
-  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":5
- * cdef class Solver_INT32_t_COMPLEX128_t:
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":18
+ * 
  *     def solve(self, *args, **kwargs):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
  * 
  *     def analyze(self, *args, **kwargs):
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 5; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 5; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":4
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":17
+ *         return self.__A
  * 
- * cdef class Solver_INT32_t_COMPLEX128_t:
  *     def solve(self, *args, **kwargs):             # <<<<<<<<<<<<<<
  *         raise NotImplementedError()
  * 
@@ -678,7 +902,7 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   return __pyx_r;
 }
 
-/* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":7
+/* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":20
  *         raise NotImplementedError()
  * 
  *     def analyze(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -687,8 +911,8 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_3analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_3analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_9analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_9analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -697,7 +921,7 @@ static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "analyze", 1))) return NULL;
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_2analyze(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_8analyze(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -706,7 +930,7 @@ static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_2analyze(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_8analyze(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -715,20 +939,20 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("analyze", 0);
 
-  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":8
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":21
  * 
  *     def analyze(self, *args, **kwargs):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
  * 
  *     def factorize(self, *args, **kwargs):
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 21; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 21; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":7
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":20
  *         raise NotImplementedError()
  * 
  *     def analyze(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -746,7 +970,7 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   return __pyx_r;
 }
 
-/* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":10
+/* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":23
  *         raise NotImplementedError()
  * 
  *     def factorize(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -754,8 +978,8 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_5factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_5factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_11factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_11factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -764,7 +988,7 @@ static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "factorize", 1))) return NULL;
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_4factorize(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_10factorize(((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -773,7 +997,7 @@ static PyObject *__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_4factorize(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_10factorize(CYTHON_UNUSED struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -782,18 +1006,18 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("factorize", 0);
 
-  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":11
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":24
  * 
  *     def factorize(self, *args, **kwargs):
  *         raise NotImplementedError()             # <<<<<<<<<<<<<<
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 11; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_builtin_NotImplementedError); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 11; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  {__pyx_filename = __pyx_f[0]; __pyx_lineno = 24; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
-  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":10
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":23
  *         raise NotImplementedError()
  * 
  *     def factorize(self, *args, **kwargs):             # <<<<<<<<<<<<<<
@@ -810,7 +1034,8 @@ static PyObject *__pyx_pf_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_I
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
+static PyObject *__pyx_tp_new_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *p;
   PyObject *o;
   if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
     o = (*t->tp_alloc)(t, 0);
@@ -818,22 +1043,52 @@ static PyObject *__pyx_tp_new_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver
     o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
   }
   if (unlikely(!o)) return 0;
+  p = ((struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)o);
+  p->__pyx___solver_name = ((PyObject*)Py_None); Py_INCREF(Py_None);
+  p->__pyx___A = Py_None; Py_INCREF(Py_None);
+  if (unlikely(__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_1__cinit__(o, a, k) < 0)) {
+    Py_DECREF(o); o = 0;
+  }
   return o;
 }
 
 static void __pyx_tp_dealloc_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t(PyObject *o) {
+  struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *p = (struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)o;
   #if PY_VERSION_HEX >= 0x030400a1
-  if (unlikely(Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
+  if (unlikely(Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
   }
   #endif
+  PyObject_GC_UnTrack(o);
+  Py_CLEAR(p->__pyx___solver_name);
+  Py_CLEAR(p->__pyx___A);
   (*Py_TYPE(o)->tp_free)(o);
 }
 
+static int __pyx_tp_traverse_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t(PyObject *o, visitproc v, void *a) {
+  int e;
+  struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *p = (struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)o;
+  if (p->__pyx___A) {
+    e = (*v)(p->__pyx___A, a); if (e) return e;
+  }
+  return 0;
+}
+
+static int __pyx_tp_clear_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t(PyObject *o) {
+  PyObject* tmp;
+  struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *p = (struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t *)o;
+  tmp = ((PyObject*)p->__pyx___A);
+  p->__pyx___A = Py_None; Py_INCREF(Py_None);
+  Py_XDECREF(tmp);
+  return 0;
+}
+
 static PyMethodDef __pyx_methods_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t[] = {
-  {"solve", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_1solve, METH_VARARGS|METH_KEYWORDS, 0},
-  {"analyze", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_3analyze, METH_VARARGS|METH_KEYWORDS, 0},
-  {"factorize", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_5factorize, METH_VARARGS|METH_KEYWORDS, 0},
+  {"solver_name", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_3solver_name, METH_NOARGS, 0},
+  {"A", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_5A, METH_NOARGS, 0},
+  {"solve", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_7solve, METH_VARARGS|METH_KEYWORDS, 0},
+  {"analyze", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_9analyze, METH_VARARGS|METH_KEYWORDS, 0},
+  {"factorize", (PyCFunction)__pyx_pw_11suitesparse_27solver_INT32_t_COMPLEX128_t_27Solver_INT32_t_COMPLEX128_t_11factorize, METH_VARARGS|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -862,10 +1117,10 @@ static PyTypeObject __pyx_type_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solve
   0, /*tp_getattro*/
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
-  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
+  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   0, /*tp_doc*/
-  0, /*tp_traverse*/
-  0, /*tp_clear*/
+  __pyx_tp_traverse_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t, /*tp_traverse*/
+  __pyx_tp_clear_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
@@ -918,13 +1173,17 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_n_s_A, __pyx_k_A, sizeof(__pyx_k_A), 0, 0, 1, 1},
   {&__pyx_n_s_NotImplementedError, __pyx_k_NotImplementedError, sizeof(__pyx_k_NotImplementedError), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
+  {&__pyx_n_s_property, __pyx_k_property, sizeof(__pyx_k_property), 0, 0, 1, 1},
+  {&__pyx_n_s_solver_name, __pyx_k_solver_name, sizeof(__pyx_k_solver_name), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 5; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_property = __Pyx_GetBuiltinName(__pyx_n_s_property); if (!__pyx_builtin_property) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_builtin_NotImplementedError = __Pyx_GetBuiltinName(__pyx_n_s_NotImplementedError); if (!__pyx_builtin_NotImplementedError) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 18; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -953,6 +1212,7 @@ PyMODINIT_FUNC PyInit_solver_INT32_t_COMPLEX128_t(void)
 #endif
 {
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -1042,12 +1302,70 @@ PyMODINIT_FUNC PyInit_solver_INT32_t_COMPLEX128_t(void)
   if (__Pyx_patch_abc() < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   #endif
 
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":9
+ * 
+ *     @property
+ *     def solver_name(self):             # <<<<<<<<<<<<<<
+ *         return self.__solver_name
+ * 
+ */
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t, __pyx_n_s_solver_name); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":8
+ * 
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def solver_name(self):
+ *         return self.__solver_name
+ */
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
+  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 8; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_dict, __pyx_n_s_solver_name, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 9; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t);
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":14
+ * 
+ *     @property
+ *     def A(self):             # <<<<<<<<<<<<<<
+ *         return self.__A
+ * 
+ */
+  __pyx_t_1 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t, __pyx_n_s_A); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+
+  /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":13
+ * 
+ * 
+ *     @property             # <<<<<<<<<<<<<<
+ *     def A(self):
+ *         return self.__A
+ */
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
+  __pyx_t_1 = 0;
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_property, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 13; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_dict, __pyx_n_s_A, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 14; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  PyType_Modified(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t);
+
   /* "suitesparse/solver_INT32_t_COMPLEX128_t.pyx":3
  * 
  * 
  * cdef class Solver_INT32_t_COMPLEX128_t:             # <<<<<<<<<<<<<<
- *     def solve(self, *args, **kwargs):
- *         raise NotImplementedError()
+ *     def __cinit__(self, A):
+ *         self.__A = A
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 3; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
@@ -1059,6 +1377,7 @@ PyMODINIT_FUNC PyInit_solver_INT32_t_COMPLEX128_t(void)
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
   if (__pyx_m) {
     if (__pyx_d) {
       __Pyx_AddTraceback("init suitesparse.solver_INT32_t_COMPLEX128_t", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -1104,6 +1423,145 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
 #endif
     }
     return result;
+}
+
+static void __Pyx_RaiseDoubleKeywordsError(
+    const char* func_name,
+    PyObject* kw_name)
+{
+    PyErr_Format(PyExc_TypeError,
+        #if PY_MAJOR_VERSION >= 3
+        "%s() got multiple values for keyword argument '%U'", func_name, kw_name);
+        #else
+        "%s() got multiple values for keyword argument '%s'", func_name,
+        PyString_AsString(kw_name));
+        #endif
+}
+
+static int __Pyx_ParseOptionalKeywords(
+    PyObject *kwds,
+    PyObject **argnames[],
+    PyObject *kwds2,
+    PyObject *values[],
+    Py_ssize_t num_pos_args,
+    const char* function_name)
+{
+    PyObject *key = 0, *value = 0;
+    Py_ssize_t pos = 0;
+    PyObject*** name;
+    PyObject*** first_kw_arg = argnames + num_pos_args;
+    while (PyDict_Next(kwds, &pos, &key, &value)) {
+        name = first_kw_arg;
+        while (*name && (**name != key)) name++;
+        if (*name) {
+            values[name-argnames] = value;
+            continue;
+        }
+        name = first_kw_arg;
+        #if PY_MAJOR_VERSION < 3
+        if (likely(PyString_CheckExact(key)) || likely(PyString_Check(key))) {
+            while (*name) {
+                if ((CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**name) == PyString_GET_SIZE(key))
+                        && _PyString_Eq(**name, key)) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    if ((**argname == key) || (
+                            (CYTHON_COMPILING_IN_PYPY || PyString_GET_SIZE(**argname) == PyString_GET_SIZE(key))
+                             && _PyString_Eq(**argname, key))) {
+                        goto arg_passed_twice;
+                    }
+                    argname++;
+                }
+            }
+        } else
+        #endif
+        if (likely(PyUnicode_Check(key))) {
+            while (*name) {
+                int cmp = (**name == key) ? 0 :
+                #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                    (PyUnicode_GET_SIZE(**name) != PyUnicode_GET_SIZE(key)) ? 1 :
+                #endif
+                    PyUnicode_Compare(**name, key);
+                if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                if (cmp == 0) {
+                    values[name-argnames] = value;
+                    break;
+                }
+                name++;
+            }
+            if (*name) continue;
+            else {
+                PyObject*** argname = argnames;
+                while (argname != first_kw_arg) {
+                    int cmp = (**argname == key) ? 0 :
+                    #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION >= 3
+                        (PyUnicode_GET_SIZE(**argname) != PyUnicode_GET_SIZE(key)) ? 1 :
+                    #endif
+                        PyUnicode_Compare(**argname, key);
+                    if (cmp < 0 && unlikely(PyErr_Occurred())) goto bad;
+                    if (cmp == 0) goto arg_passed_twice;
+                    argname++;
+                }
+            }
+        } else
+            goto invalid_keyword_type;
+        if (kwds2) {
+            if (unlikely(PyDict_SetItem(kwds2, key, value))) goto bad;
+        } else {
+            goto invalid_keyword;
+        }
+    }
+    return 0;
+arg_passed_twice:
+    __Pyx_RaiseDoubleKeywordsError(function_name, key);
+    goto bad;
+invalid_keyword_type:
+    PyErr_Format(PyExc_TypeError,
+        "%.200s() keywords must be strings", function_name);
+    goto bad;
+invalid_keyword:
+    PyErr_Format(PyExc_TypeError,
+    #if PY_MAJOR_VERSION < 3
+        "%.200s() got an unexpected keyword argument '%.200s'",
+        function_name, PyString_AsString(key));
+    #else
+        "%s() got an unexpected keyword argument '%U'",
+        function_name, key);
+    #endif
+bad:
+    return -1;
+}
+
+static void __Pyx_RaiseArgtupleInvalid(
+    const char* func_name,
+    int exact,
+    Py_ssize_t num_min,
+    Py_ssize_t num_max,
+    Py_ssize_t num_found)
+{
+    Py_ssize_t num_expected;
+    const char *more_or_less;
+    if (num_found < num_min) {
+        num_expected = num_min;
+        more_or_less = "at least";
+    } else {
+        num_expected = num_max;
+        more_or_less = "at most";
+    }
+    if (exact) {
+        more_or_less = "exactly";
+    }
+    PyErr_Format(PyExc_TypeError,
+                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
+                 func_name, more_or_less, num_expected,
+                 (num_expected == 1) ? "" : "s", num_found);
 }
 
 static CYTHON_INLINE int __Pyx_CheckKeywordStrings(
@@ -1388,6 +1846,31 @@ bad:
     return;
 }
 #endif
+
+static CYTHON_INLINE PyObject *__Pyx_GetModuleGlobalName(PyObject *name) {
+    PyObject *result;
+#if CYTHON_COMPILING_IN_CPYTHON
+    result = PyDict_GetItem(__pyx_d, name);
+    if (likely(result)) {
+        Py_INCREF(result);
+    } else {
+#else
+    result = PyObject_GetItem(__pyx_d, name);
+    if (!result) {
+        PyErr_Clear();
+#endif
+        result = __Pyx_GetBuiltinName(name);
+    }
+    return result;
+}
+
+static PyObject *__Pyx_GetNameInClass(PyObject *nmspace, PyObject *name) {
+    PyObject *result;
+    result = __Pyx_PyObject_GetAttrStr(nmspace, name);
+    if (!result)
+        result = __Pyx_GetModuleGlobalName(name);
+    return result;
+}
 
 static int __pyx_bisect_code_objects(__Pyx_CodeObjectCacheEntry* entries, int count, int code_line) {
     int start = 0, mid = 0, end = count - 1;

@@ -1,6 +1,21 @@
 
 
 cdef class Solver_@index@_@type@:
+    def __cinit__(self, A):
+        self.__A = A
+
+    {% raw %}
+    @property
+    {%- endraw %}
+    def solver_name(self):
+        return self.__solver_name
+
+    {% raw %}
+    @property
+    {%- endraw %}
+    def A(self):
+        return self.__A
+
     def solve(self, *args, **kwargs):
         raise NotImplementedError()
 
