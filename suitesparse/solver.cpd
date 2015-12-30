@@ -10,3 +10,7 @@ cdef class Solver_@index@_@type@:
 
         bint __analyzed
         bint __factorized
+
+        float __solve_time
+        float __analyze_time
+        float __factorize_time

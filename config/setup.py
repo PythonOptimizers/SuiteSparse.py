@@ -74,6 +74,14 @@ if use_cython:
     except ImportError:
         raise ImportError("Check '%s': Cython is not properly installed." % suitesparse_config_file)
 
+# Use CySparse?
+use_cysparse = suitesparse_config.getboolean('CODE_GENERATION', 'use_cysparse')
+cysparse_rootdir = None
+if use_cysparse:
+    cysparse_rootdir = get_path_option(suitesparse_config, 'CYSPARSE', 'cysparse_rootdir')
+    if cysparse_rootdir == '':
+        raise ValueError("You must specify the location of the CySparse source code in %s." % suitesparse_config_file)
+
 # Debug mode?
 use_debug_symbols = suitesparse_config.getboolean('CODE_GENERATION', 'use_debug_symbols')
 
@@ -152,9 +160,7 @@ umfpack_ext = [
         Extension(name="suitesparse.umfpack.umfpack_solver_base_INT32_t_FLOAT64_t",
                   sources=['suitesparse/umfpack/umfpack_solver_base_INT32_t_FLOAT64_t.pxd',
                            'suitesparse/umfpack/umfpack_solver_base_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
-        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT32_t_FLOAT64_t",
-                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pxd',
-                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        # GENERIC VERSION
         Extension(name="suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT32_t_FLOAT64_t",
                   sources=['suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT32_t_FLOAT64_t.pxd',
                            'suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params),
@@ -162,9 +168,7 @@ umfpack_ext = [
         Extension(name="suitesparse.umfpack.umfpack_solver_base_INT32_t_COMPLEX128_t",
                   sources=['suitesparse/umfpack/umfpack_solver_base_INT32_t_COMPLEX128_t.pxd',
                            'suitesparse/umfpack/umfpack_solver_base_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
-        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT32_t_COMPLEX128_t",
-                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_COMPLEX128_t.pxd',
-                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        # GENERIC VERSION
         Extension(name="suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT32_t_COMPLEX128_t",
                   sources=['suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT32_t_COMPLEX128_t.pxd',
                            'suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
@@ -174,9 +178,7 @@ umfpack_ext = [
         Extension(name="suitesparse.umfpack.umfpack_solver_base_INT64_t_FLOAT64_t",
                   sources=['suitesparse/umfpack/umfpack_solver_base_INT64_t_FLOAT64_t.pxd',
                            'suitesparse/umfpack/umfpack_solver_base_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
-        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t",
-                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pxd',
-                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
+        # GENERIC VERSION
         Extension(name="suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_FLOAT64_t",
                   sources=['suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT64_t_FLOAT64_t.pxd',
                            'suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params),
@@ -184,15 +186,51 @@ umfpack_ext = [
         Extension(name="suitesparse.umfpack.umfpack_solver_base_INT64_t_COMPLEX128_t",
                   sources=['suitesparse/umfpack/umfpack_solver_base_INT64_t_COMPLEX128_t.pxd',
                            'suitesparse/umfpack/umfpack_solver_base_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
-        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_COMPLEX128_t",
-                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_COMPLEX128_t.pxd',
-                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
+        # GENERIC VERSION
         Extension(name="suitesparse.umfpack.generic_solver.umfpack_generic_solver_INT64_t_COMPLEX128_t",
                   sources=['suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT64_t_COMPLEX128_t.pxd',
                            'suitesparse/umfpack/generic_solver/umfpack_generic_solver_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params),
     
 
     ]
+
+if use_cysparse:
+    umfpack_ext_params['include_dirs'].extend(cysparse_rootdir)
+
+
+  
+
+    umfpack_ext.append(
+        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT32_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_FLOAT64_t.pyx'], **umfpack_ext_params)
+        )
+    
+
+    umfpack_ext.append(
+        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT32_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT32_t_COMPLEX128_t.pyx'], **umfpack_ext_params)
+        )
+    
+
+  
+
+    umfpack_ext.append(
+        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_FLOAT64_t",
+                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pxd',
+                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx'], **umfpack_ext_params)
+        )
+    
+
+    umfpack_ext.append(
+        Extension(name="suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_INT64_t_COMPLEX128_t",
+                  sources=['suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_COMPLEX128_t.pxd',
+                           'suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_COMPLEX128_t.pyx'], **umfpack_ext_params)
+        )
+    
+
+
 
 
 
@@ -201,10 +239,12 @@ umfpack_ext = [
 ########################################################################################################################
 packages_list = ['suitesparse',
             'suitesparse.umfpack',
-            'suitesparse.umfpack.cysparse_solver',
             'suitesparse.umfpack.generic_solver',
             'tests'
             ]
+
+if use_cysparse:
+    packages_list.append('suitesparse.umfpack.cysparse_solver')
 
 ext_modules = base_ext + umfpack_ext
 

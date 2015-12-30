@@ -10,3 +10,7 @@ cdef class Solver_INT32_t_FLOAT64_t:
 
         bint __analyzed
         bint __factorized
+
+        float __solve_time
+        float __analyze_time
+        float __factorize_time

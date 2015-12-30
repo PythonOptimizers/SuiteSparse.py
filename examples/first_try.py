@@ -1,4 +1,4 @@
-from suitesparse.umfpack.umfpack_solver import UmfpackSolver
+from suitesparse.umfpack.umfpack_solver import UmfpackSolver, umfpack_version
 from cysparse.sparse.ll_mat import *
 
 A = LLSparseMatrix(ncol=3, nrow=4)
@@ -30,3 +30,12 @@ s.factorize(force_analyze=True)
 print "=" * 80
 print "recall factorize with force_analyze and force_factorize..."
 s.factorize(force_analyze=True, force_factorize=True)
+
+print "@" * 80
+print s.stats()
+
+print "/" * 80
+
+print umfpack_version()
+print umfpack_detailed_version()
+

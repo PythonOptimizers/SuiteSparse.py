@@ -1,4 +1,7 @@
+from __future__ import print_function
+
 import sys
+import time
 
 # TODO: add stats
 # TODO: add timing
@@ -10,6 +13,13 @@ cdef class Solver_INT32_t_COMPLEX128_t:
 
         self.__analyzed = False
         self.__factorized = False
+
+        ###  Stats  ###
+        # performance
+        # time.clock() -> in seconds
+        self.__solve_time = 0.0
+        self.__analyze_time = 0.0
+        self.__factorize_time = 0.0
 
     
     @property
@@ -25,23 +35,37 @@ cdef class Solver_INT32_t_COMPLEX128_t:
     # Common functions
     ####################################################################################################################
     def solve(self, *args, **kwargs):
-        # TODO: modify this
-        return self._solve(*args, **kwargs)
+
+        start_time = time.clock()
+        # b could be a sparse/denses matrix/vector
+        b = self._solve(*args, **kwargs)
+        self.__solve_time = time.clock() - start_time
+
+        return b
 
     def analyze(self, *args, **kwargs):
         force_analyze = kwargs.get('force_analyze', False)
+        if self.__verbose and force_analyze:
+            print("Force analyze.")
 
         if force_analyze or not self.__analyzed:
+            start_time = time.clock()
             self._analyze(*args, **kwargs)
+            self.__analyze_time = time.clock() - start_time
             self.__analyzed = True
 
     def factorize(self, *args, **kwargs):
         force_factorize = kwargs.get('force_factorize', False)
 
+        if self.__verbose and force_factorize:
+            print("Force factorize.")
+
         self.analyze(*args, **kwargs)
 
         if force_factorize or not self.__factorized:
+            start_time = time.clock()
             self._factorize(*args, **kwargs)
+            self.__factorize_time = time.clock() - start_time
             self.__factorized = True
 
     ####################################################################################################################
@@ -65,8 +89,20 @@ cdef class Solver_INT32_t_COMPLEX128_t:
         """
         lines = []
         lines.append("General statistics")
-
+        lines.append("==================")
+        lines.append("")
+        lines.append("Solver: %s" % self.__solver_name)
+        lines.append("")
+        lines.append("Performance:")
+        lines.append("------------")
+        lines.append("")
+        lines.append("Analyze: %f" % self.__analyze_time)
+        lines.append("Factorize: %f" % self.__factorize_time)
+        lines.append("Solve: %f" % self.__solve_time)
+        lines.append("")
         lines.append("Specialized statistics")
+        lines.append("======================")
+        lines.append("")
         lines.append(self._stats(*args, **kwargs))
 
         return '\n'.join(lines)

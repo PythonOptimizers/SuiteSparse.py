@@ -1,17 +1,10 @@
 """
 This module generates a factory method to construct UMFPACK solvers.
 
+It is also the main and only entry for UMFPACK import by a Python user.
 
 """
-{% if use_cysparse %}
-from cysparse.sparse.ll_mat import *
 
-{% for index_type in umfpack_index_list %}
-    {% for element_type in umfpack_type_list %}
-from suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_@index_type@_@element_type@ import UmfpackCysparseSolver_@index_type@_@element_type@
-    {% endfor %}
-{% endfor %}
-{% endif %}
 
 def UmfpackSolver(A, verbose=False):
     """
@@ -23,7 +16,7 @@ def UmfpackSolver(A, verbose=False):
 
 {% if use_cysparse %}
     # Use optimized code for CySparse sparse matrices
-    if PyLLSparseMatrix_Check(A):
+    if PySparseMatrix_Check(A):
         itype = A.itype
         dtype = A.dtype
 
@@ -36,6 +29,8 @@ def UmfpackSolver(A, verbose=False):
         {% else %}
             elif dtype == @element_type|type2enum@:
         {% endif %}
+                from suitesparse.umfpack.umfpack_solver_base_@index_type@_@element_type@ import *
+                from suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_@index_type@_@element_type@ import UmfpackCysparseSolver_@index_type@_@element_type@
                 return UmfpackCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
     {% endfor %}
     {% else %}
@@ -46,11 +41,14 @@ def UmfpackSolver(A, verbose=False):
         {% else %}
             elif dtype == @element_type|type2enum@:
         {% endif %}
+                from suitesparse.umfpack.umfpack_solver_base_@index_type@_@element_type@ import *
+                from suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_@index_type@_@element_type@ import UmfpackCysparseSolver_@index_type@_@element_type@
                 return UmfpackCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
     {% endfor %}
     {% endif %}
-{% endfor %}
 
+{% endfor %}
+        raise TypeError('CySparse matrix has an element type that is incompatible with UMFPACK')
 {% endif %}
 
     raise NotImplementedError('This matrix type is not recognized/implemented...')
