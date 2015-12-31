@@ -191,6 +191,7 @@ if use_cysparse:
 # config
 ########################################################################################################################
 packages_list = ['suitesparse',
+            'suitesparse.utils',
             'suitesparse.common_types',
             'suitesparse.umfpack',
             'suitesparse.umfpack.generic_solver',

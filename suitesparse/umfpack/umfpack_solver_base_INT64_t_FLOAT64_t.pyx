@@ -5,6 +5,7 @@ from suitesparse.solver_INT64_t_FLOAT64_t cimport Solver_INT64_t_FLOAT64_t
 from suitesparse.common_types.suitesparse_types cimport *
 from suitesparse.umfpack.umfpack_common import test_umfpack_result, UMFPACK_SYS_DICT
 
+from suitesparse.utils.stdout_redirect import stdout_redirected
 
 from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
 
@@ -12,6 +13,9 @@ import numpy as np
 cimport numpy as cnp
 
 cnp.import_array()
+
+from cStringIO import StringIO
+import sys
 
 
 cdef extern from "umfpack.h":
@@ -159,6 +163,11 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         self.__solver_name = 'UMFPACK'
         self.__solver_version = UmfpackSolverBase_INT64_t_FLOAT64_t.UMFPACK_VERSION
 
+        if self.__verbose:
+            self.set_verbosity(3)
+        else:
+            self.set_verbosity(0)
+
 
     ####################################################################################################################
     # FREE MEMORY
@@ -291,7 +300,7 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
             ``sol``: The solution of ``A*x=b`` if everything went well.
 
         Raises:
-            AssertionError: When vector ``b`` is not a :program:`NumPy` vector.
+            TypeError: When vector ``b`` is not a :program:`NumPy` vector.
             AttributeError: When vector ``b`` doesn't have a ``shape`` attribute.
             AssertionError: When vector ``b`` doesn't have the right first dimension.
             MemoryError: When there is not enought memory to create solution.
@@ -342,13 +351,145 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         return sol
 
     ####################################################################################################################
+    # LU ROUTINES
+    ####################################################################################################################
+    def get_lunz(self):
+        """
+        Determine the size and number of non zeros in the LU factors held by the opaque ``Numeric`` object.
+
+        Returns:
+            (lnz, unz, n_row, n_col, nz_udiag):
+
+            lnz: The number of nonzeros in ``L``, including the diagonal (which is all one's)
+            unz: The number of nonzeros in ``U``, including the diagonal.
+            n_row, n_col: The order of the ``L`` and ``U`` matrices. ``L`` is ``n_row`` -by- ``min(n_row,n_col)``
+                and ``U`` is ``min(n_row,n_col)`` -by- ``n_col``.
+            nz_udiag: The number of numerically nonzero values on the diagonal of ``U``. The
+                matrix is singular if ``nz_diag < min(n_row,n_col)``. A ``divide-by-zero``
+                will occur if ``nz_diag < n_row == n_col`` when solving a sparse system
+                involving the matrix ``U`` in ``solve()``.
+
+        Raises:
+            RuntimeError: When ``UMFPACK`` return status is not ``UMFPACK_OK`` and is an error.
+
+
+
+        """
+        self.factorize()
+
+        cdef:
+            INT64_t lnz
+            INT64_t unz
+            INT64_t n_row
+            INT64_t n_col
+            INT64_t nz_udiag
+
+        cdef status = umfpack_dl_get_lunz(&lnz, &unz, &n_row, &n_col, &nz_udiag, self.numeric)
+
+        if status != UMFPACK_OK:
+            test_umfpack_result(status, "get_lunz()")
+
+        return (lnz, unz, n_row, n_col, nz_udiag)
+
+    def get_LU(self, get_L=True, get_U=True, get_P=True, get_Q=True, get_D=True, get_R=True):
+        # This is really dependent on the matrices library we use
+        raise NotImplementedError()
+
+    ####################################################################################################################
+    # REPORTING ROUTINES
+    ####################################################################################################################
+    def set_verbosity(self, level):
+        """
+        Set UMFPACK verbosity level.
+
+        Args:
+            level (int): Verbosity level (default: 1).
+
+        """
+        self.control[UMFPACK_PRL] = level
+
+    def get_verbosity(self):
+        """
+        Return UMFPACK verbosity level.
+
+        Returns:
+            verbosity_level (int): The verbosity level set.
+
+        """
+        return self.control[UMFPACK_PRL]
+
+    def get_report_control(self):
+        """
+        Return control values into string.
+
+        """
+
+        umfpack_dl_report_control(self.control)
+
+
+    def report_info(self):
+        """
+        Print all status information.
+
+        Use **after** calling :meth:`create_symbolic()`, :meth:`create_numeric()`, :meth:`factorize()` or :meth:`solve()`.
+
+        """
+        umfpack_dl_report_info(self.control, self.info)
+
+
+    def report_symbolic(self):
+        """
+        Print information about the opaque ``symbolic`` object.
+
+        """
+        if not self.symbolic_computed:
+            print("No opaque symbolic object has been computed")
+            return
+
+        umfpack_dl_report_symbolic(self.symbolic, self.control)
+
+
+    def report_numeric(self):
+        """
+        Print information about the opaque ``numeric`` object.
+
+        """
+        umfpack_dl_report_numeric(self.numeric, self.control)
+
+
+    ####################################################################################################################
     # Statistics Callbacks
     ####################################################################################################################
     def _stats(self, *args, **kwargs):
         """
         Returns a string with specialized statistics about the factorization.
         """
-        return self._specialized_stats(*args, **kwargs)
+        lines = []
+        lines.append("Matrix library:")
+        lines.append("===============")
+        lines.append(self._specialized_stats(*args, **kwargs))
+
+        lines.append("Report control:")
+        lines.append("---------------")
+        #lines.append(self.get_report_control())
+        lines.append("")
+
+        lines.append("Report info:")
+        lines.append("---------------")
+        #lines.append(self.report_info())
+        lines.append("")
+
+        lines.append("Report symbolic object:")
+        lines.append("-----------------------")
+        #lines.append(self.report_symbolic())
+        lines.append("")
+
+        lines.append("Report numeric object:")
+        lines.append("-----------------------")
+        #lines.append(self.report_numeric())
+        lines.append("")
+
+        return '\n'.join(lines)
 
     def _specialized_stats(self, *args, **kwargs):
         """
