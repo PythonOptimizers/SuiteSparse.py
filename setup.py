@@ -122,33 +122,19 @@ suitesparse_types_ext_params = copy.deepcopy(ext_params)
 
 suitesparse_types_ext = [
 
-  
         Extension(name="suitesparse.common_types.suitesparse_types",
                   sources=['suitesparse/common_types/suitesparse_types.pxd',
                            'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
-    
-        Extension(name="suitesparse.common_types.suitesparse_types",
-                  sources=['suitesparse/common_types/suitesparse_types.pxd',
-                           'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
-    
-
-  
-        Extension(name="suitesparse.common_types.suitesparse_types",
-                  sources=['suitesparse/common_types/suitesparse_types.pxd',
-                           'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
-    
-        Extension(name="suitesparse.common_types.suitesparse_types",
-                  sources=['suitesparse/common_types/suitesparse_types.pxd',
-                           'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
-    
-
+        Extension(name="suitesparse.common_types.suitesparse_generic_types",
+                  sources=['suitesparse/common_types/suitesparse_generic_types.pxd',
+                           'suitesparse/common_types/suitesparse_generic_types.pyx'], **suitesparse_types_ext_params),
 ]
 
 
 # Base solver
 base_solver_ext_params = copy.deepcopy(ext_params)
 
-base_ext = [
+base_solver_ext = [
 
   
         Extension(name="suitesparse.solver_INT32_t_FLOAT64_t",
@@ -277,7 +263,7 @@ packages_list = ['suitesparse',
 if use_cysparse:
     packages_list.append('suitesparse.umfpack.cysparse_solver')
 
-ext_modules = base_ext + suitesparse_types_ext + umfpack_ext
+ext_modules = suitesparse_types_ext + base_solver_ext + umfpack_ext
 
 ########################################################################################################################
 # PACKAGE PREPARATION FOR EXCLUSIVE C EXTENSIONS

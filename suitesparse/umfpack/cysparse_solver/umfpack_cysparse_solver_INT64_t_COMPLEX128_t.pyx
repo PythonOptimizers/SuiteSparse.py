@@ -1,22 +1,38 @@
 from __future__ import print_function
 
 from suitesparse.umfpack.umfpack_solver_base_INT64_t_COMPLEX128_t cimport UmfpackSolverBase_INT64_t_COMPLEX128_t
+from suitesparse.common_types.suitesparse_types cimport *
 
-from cysparse.sparse.s_mat cimport PyLLSparseMatrix_Check, PyCSCSparseMatrix_Check, PyCSRSparseMatrix_Check
+from suitesparse.common_types.suitesparse_generic_types cimport split_array_complex_values_kernel_INT64_t_COMPLEX128_t, join_array_complex_values_kernel_INT64_t_COMPLEX128_t
 
-#from cysparse.sparse.csc_mat_matrices.csc_mat_INT64_t_COMPLEX128_t cimport PyCSCSparseMatrix_Check
-#from cysparse.sparse.csr_mat_matrices.csr_mat_INT64_t_COMPLEX128_t cimport PyCSRSparseMatrix_Check
 
+from cysparse.sparse.s_mat cimport PySparseMatrix_Check, PyLLSparseMatrix_Check, PyCSCSparseMatrix_Check, PyCSRSparseMatrix_Check
+
+from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
 
 cdef class UmfpackCysparseSolver_INT64_t_COMPLEX128_t(UmfpackSolverBase_INT64_t_COMPLEX128_t):
+    ####################################################################################################################
+    # INIT
+    ####################################################################################################################
     def __cinit__(self, A, **kwargs):
 
+        assert PySparseMatrix_Check(A), "Matrix A is not recognized as a CySparse sparse matrix"
+
+        self.nrow = A.nrow
+        self.ncol = A.ncol
+
+        self.nnz = self.A.nnz
+
+
         if PyLLSparseMatrix_Check(self.__A):
-            pass
+            # transfrom matrix into CSC
+            self.csc_mat = self.__A.to_csc()
+
         elif PyCSCSparseMatrix_Check(self.__A):
-            pass
+            self.csc_mat = self.__A
         elif PyCSRSparseMatrix_Check(self.__A):
-            pass
+            # transfrom matrix into CSC
+            self.csc_mat = self.__A.to_csc()
         else:
             matrix_type = "unknown"
             try:
@@ -26,34 +42,61 @@ cdef class UmfpackCysparseSolver_INT64_t_COMPLEX128_t(UmfpackSolverBase_INT64_t_
 
             raise NotImplementedError("CySparse matrix type '%s' not recognized" % matrix_type)
 
+        # take internal arrays
+        self.ind = <INT64_t *> self.csc_mat.ind
 
-        self.nrow = A.nrow
-        self.ncol = A.ncol
+        self.row = <INT64_t *> self.csc_mat.row
 
-        self.nnz = self.A.nnz
 
-        if self.__verbose:
-            print("I'm talking a lot!")
+        # OPTIMIZATION: we could delay the creation of both arrays until
+        # analyze, factorize or solve
+        cdef:
+            FLOAT64_t * rval
+            FLOAT64_t * ival
+
+        rval = <FLOAT64_t *> PyMem_Malloc(self.nnz * sizeof(FLOAT64_t))
+        if not rval:
+            raise MemoryError()
+        self.rval = rval
+
+        ival = <FLOAT64_t *> PyMem_Malloc(self.nnz * sizeof(FLOAT64_t))
+        if not ival:
+            PyMem_Free(rval)
+            raise MemoryError()
+        self.ival = ival
+
+        split_array_complex_values_kernel_INT64_t_COMPLEX128_t(self.csc_mat.val, self.nnz,
+                                                                       self.rval, self.nnz,
+                                                                       self.ival, self.nnz)
+
 
         # Control the matrix is fine
         self.check_matrix()
 
-    def _solve(self, b):
-        print("Calling real solve with ",)
-        print(b)
+    ####################################################################################################################
+    # FREE MEMORY
+    ####################################################################################################################
+    def __dealloc__(self):
 
-    def _factorize(self, **kwargs):
-        print("Called real factorize")
+        # numeric and symbolic UMFPACK objects are being taken care by parent class
+        # self.csc_mat will be deleted with this object if it was created internally
 
-    def _analyze(self, **kwargs):
-        print("Called real analyze")
 
+        PyMem_Free(self.rval)
+        PyMem_Free(self.ival)
+
+
+    ####################################################################################################################
+    # CALLBACKS
+    ####################################################################################################################
     def _specialized_stats(self, *args, **kwargs):
         """
-        Returns a string with specialized statistics about the factorization.
+        Returns a string with specialized statistics about the factorization with a :program:`CySparse` sparse matrix.
         """
         lines = []
 
         lines.append("CySparse matrix type: %s" % self.__A.base_type_str)
+        lines.append("(nrow, ncol) = (%d, %d)" % (self.nrow, self.ncol) )
+        lines.append("nnz = %s" % self.nnz)
 
         return '\n'.join(lines)

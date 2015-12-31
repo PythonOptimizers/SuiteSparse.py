@@ -3,6 +3,10 @@ from __future__ import print_function
 from suitesparse.solver_INT64_t_COMPLEX128_t cimport Solver_INT64_t_COMPLEX128_t
 
 from suitesparse.common_types.suitesparse_types cimport *
+from suitesparse.umfpack.umfpack_common import test_umfpack_result, UMFPACK_SYS_DICT
+
+from suitesparse.common_types.suitesparse_generic_types cimport split_array_complex_values_kernel_INT64_t_COMPLEX128_t, join_array_complex_values_kernel_INT64_t_COMPLEX128_t
+
 
 from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
 
@@ -161,16 +165,6 @@ cdef class UmfpackSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
         self.__solver_name = 'UMFPACK'
         self.__solver_version = UmfpackSolverBase_INT64_t_COMPLEX128_t.UMFPACK_VERSION
 
-        # this should be adpated in the child classes
-        # by default, this solver owns all memory
-        self.own_ind_memory = True
-        self.own_row_memory = True
-
-        self.own_rval_memory = True
-        self.own_ival_memory = True
-
-
-
 
     ####################################################################################################################
     # FREE MEMORY
@@ -180,27 +174,6 @@ cdef class UmfpackSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
 
         """
         self.free()
-
-        if self.own_ind_memory:
-            PyMem_Free(self.ind)
-            if self.__verbose:
-                print("Internal ind array cleaned")
-        if self.own_row_memory:
-            PyMem_Free(self.row)
-            if self.__verbose:
-                print("Internal row array cleaned")
-
-
-        if self.own_rval_memory:
-            PyMem_Free(self.rval)
-            if self.__verbose:
-                print("Internal rval array cleaned")
-        if self.own_ival_memory:
-            PyMem_Free(self.ival)
-            if self.__verbose:
-                print("Internal ival array cleaned")
-
-
 
     def free_symbolic(self):
         """
@@ -240,6 +213,14 @@ cdef class UmfpackSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
         # test if we can use UMFPACK
         assert self.nrow == self.ncol, "Only square matrices are handled in UMFPACK"
 
+        # check if internal arrays are empty or not
+        assert self.ind != NULL, "Internal ind array is not defined"
+        assert self.row != NULL, "Internal row array is not defined"
+
+        assert self.rval != NULL, "Internal rval array is not defined"
+        assert self.ival != NULL, "Internal ival array is not defined"
+
+
     ####################################################################################################################
     # Callbacks
     ####################################################################################################################
@@ -252,23 +233,176 @@ cdef class UmfpackSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
         if self.__analyzed:
             self.free_symbolic()
 
-        #cdef INT64_t * ind = <INT64_t *> self.ind
-        #cdef INT64_t * row = <INT64_t *> self.row
-
-
-        #cdef FLOAT64_t * rval = <FLOAT64_t *> self.rval
-        #cdef FLOAT64_t * ival = <FLOAT64_t *> self.ival
-
         cdef int status
 
 
         status= umfpack_zl_symbolic(self.nrow, self.ncol, self.ind, self.row, self.rval, self.ival, &self.symbolic, self.control, self.info)
 
 
-        return status
+        if status != UMFPACK_OK:
+            self.free_symbolic()
+            test_umfpack_result(status, "analyze()", print_on_screen=self.__verbose)
+
 
     def _factorize(self, *args, **kwargs):
-        raise NotImplementedError()
+
+        if self.__factorized:
+            self.free_numeric()
+
+        cdef int status
+
+
+        status = umfpack_zl_numeric(self.ind, self.row,
+                   self.rval, self.ival,
+                   self.symbolic,
+                   &self.numeric,
+                   self.control, self.info)
+
+
+
+        if status != UMFPACK_OK:
+            self.free_numeric()
+            test_umfpack_result(status, "factorize()", print_on_screen=self.__verbose)
+
+    def _solve(self, cnp.ndarray[cnp.npy_complex128, ndim=1, mode="c"] b, umfpack_sys='UMFPACK_A', irsteps=2):
+        """
+        Solve the linear system  ``A * x = b``.
+
+        Args:
+           b: a Numpy vector of appropriate dimension.
+           umfpack_sys: specifies the type of system being solved:
+
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_A"``    | :math:`\mathbf{A} x = b` (default)   |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_At"``   | :math:`\mathbf{A}^T x = b`           |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Pt_L"`` | :math:`\mathbf{P}^T \mathbf{L} x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_L"``    | :math:`\mathbf{L} x = b`             |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Lt_P"`` | :math:`\mathbf{L}^T \mathbf{P} x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Lt"``   | :math:`\mathbf{L}^T x = b`           |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_U_Qt"`` | :math:`\mathbf{U} \mathbf{Q}^T x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_U"``    | :math:`\mathbf{U} x = b`             |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Q_Ut"`` | :math:`\mathbf{Q} \mathbf{U}^T x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Ut"``   | :math:`\mathbf{U}^T x = b`           |
+                    +-------------------+--------------------------------------+
+
+           irsteps: number of iterative refinement steps to attempt. Default: 2
+
+        Returns:
+            ``sol``: The solution of ``A*x=b`` if everything went well.
+
+        Raises:
+            AssertionError: When vector ``b`` is not a :program:`NumPy` vector.
+            AttributeError: When vector ``b`` doesn't have a ``shape`` attribute.
+            AssertionError: When vector ``b`` doesn't have the right first dimension.
+            MemoryError: When there is not enought memory to create solution.
+            RuntimeError: Whenever ``UMFPACK`` returned status is not ``UMFPACK_OK`` and is an error.
+
+        Notes:
+            The opaque objects ``symbolic`` and ``numeric`` are automatically created if necessary.
+
+            You can ask for a report of what happened by calling :meth:`report_info()`.
+
+
+
+        """
+        # TODO: add other umfpack_sys arguments to the docstring.
+        # TODO: allow other types of b and test better argument b
+        cdef cnp.npy_intp * shape_b
+        try:
+            shape_b = b.shape
+        except:
+            raise AttributeError("argument b must implement attribute 'shape'")
+        dim_b = shape_b[0]
+        assert dim_b == self.nrow, "array dimensions must agree"
+
+        if umfpack_sys not in UMFPACK_SYS_DICT.keys():
+            raise ValueError('umfpack_sys must be in' % UMFPACK_SYS_DICT.keys())
+
+        self.control[UMFPACK_IRSTEP] = irsteps
+
+        self.factorize()
+
+        cdef cnp.ndarray[cnp.npy_complex128, ndim=1, mode='c'] sol = np.empty(self.ncol, dtype=np.complex128)
+
+        #cdef INT64_t * ind = <INT64_t *> self.ind
+        #cdef INT64_t * row = <INT64_t *> self.row
+
+
+        # access b
+        cdef COMPLEX128_t * b_data = <COMPLEX128_t *> cnp.PyArray_DATA(b)
+
+        # create bx and bz
+        cdef:
+            FLOAT64_t * bx
+            FLOAT64_t * bz
+
+        bx = <FLOAT64_t *> PyMem_Malloc(dim_b * sizeof(FLOAT64_t))
+        if not bx:
+            raise MemoryError()
+
+        bz = <FLOAT64_t *> PyMem_Malloc(dim_b * sizeof(FLOAT64_t))
+
+        if not bz:
+            PyMem_Free(bx)
+            raise MemoryError()
+
+        split_array_complex_values_kernel_INT64_t_COMPLEX128_t(b_data, dim_b,
+                                                         bx, dim_b,
+                                                         bz, dim_b)
+
+        # create solx and solz
+        cdef:
+            FLOAT64_t * solx
+            FLOAT64_t * solz
+
+        solx = <FLOAT64_t *> PyMem_Malloc(self.ncol * sizeof(FLOAT64_t))
+        if not solx:
+            PyMem_Free(bx)
+            PyMem_Free(bz)
+
+            raise MemoryError()
+
+        solz = <FLOAT64_t *> PyMem_Malloc(self.ncol * sizeof(FLOAT64_t))
+
+        if not solz:
+            PyMem_Free(bx)
+            PyMem_Free(bz)
+
+            PyMem_Free(solx)
+            raise MemoryError()
+
+
+
+        cdef int status =  umfpack_zl_solve(UMFPACK_SYS_DICT[umfpack_sys], self.ind, self.row, self.rval, self.ival, solx, solz, bx, bz, self.numeric, self.control, self.info)
+
+        if status != UMFPACK_OK:
+            test_umfpack_result(status, "solve()")
+
+
+        # join solx and solz
+        cdef COMPLEX128_t * sol_data = <COMPLEX128_t *> cnp.PyArray_DATA(sol)
+
+        join_array_complex_values_kernel_INT64_t_COMPLEX128_t(solx, self.ncol,
+                                                        solz, self.ncol,
+                                                        sol_data, self.ncol)
+
+        # Free temp arrays
+        PyMem_Free(bx)
+        PyMem_Free(bz)
+        PyMem_Free(solx)
+        PyMem_Free(solz)
+
+
+        return sol
 
     ####################################################################################################################
     # Statistics Callbacks

@@ -1,4 +1,9 @@
 from suitesparse.umfpack.umfpack_solver_base_@index@_@type@ cimport UmfpackSolverBase_@index@_@type@
 
+from cysparse.sparse.csc_mat_matrices.csc_mat_@index@_@type@ cimport CSCSparseMatrix_@index@_@type@
+
 cdef class UmfpackCysparseSolver_@index@_@type@(UmfpackSolverBase_@index@_@type@):
-    pass
+    cdef:
+        # Matrix A in CSC format
+        CSCSparseMatrix_@index@_@type@ csc_mat
+

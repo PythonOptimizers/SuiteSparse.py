@@ -50,3 +50,5 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 - [ ] CCOLAMD
 
 ## Release history
+
+- Version 0.0.1 released on Dec 31, 2015

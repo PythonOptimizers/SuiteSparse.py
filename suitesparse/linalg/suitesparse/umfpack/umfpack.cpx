@@ -425,7 +425,10 @@ cdef class UmfpackContext_@index@_@type@:
         Py_DECREF(self.A) # release ref
 
 {% if type in complex_list %}
+        {% if type in complex_list %}
         PyMem_Free(self.csc_rval)
+        PyMem_Free(self.csc_ival)
+{% endif %}(self.csc_rval)
         PyMem_Free(self.csc_ival)
 {% endif %}
 

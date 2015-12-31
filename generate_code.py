@@ -259,6 +259,8 @@ if __name__ == "__main__":
     ####################################################################################################################
     ########## Setup ############
     cygenja_engine.register_action('config', '*.*', single_generation)
+    ########## Types ############
+    cygenja_engine.register_action('suitesparse/common_types', 'suitesparse_generic_types.*', single_generation)
     ########## Solvers ############
     cygenja_engine.register_action('suitesparse', 'solver.*', generate_umfpack_following_index_and_element)
     ########## UMFPACK ############

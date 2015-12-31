@@ -3,6 +3,8 @@ from __future__ import print_function
 from suitesparse.solver_INT64_t_FLOAT64_t cimport Solver_INT64_t_FLOAT64_t
 
 from suitesparse.common_types.suitesparse_types cimport *
+from suitesparse.umfpack.umfpack_common import test_umfpack_result, UMFPACK_SYS_DICT
+
 
 from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
 
@@ -157,15 +159,6 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         self.__solver_name = 'UMFPACK'
         self.__solver_version = UmfpackSolverBase_INT64_t_FLOAT64_t.UMFPACK_VERSION
 
-        # this should be adpated in the child classes
-        # by default, this solver owns all memory
-        self.own_ind_memory = True
-        self.own_row_memory = True
-
-        self.own_val_memory = True
-
-
-
 
     ####################################################################################################################
     # FREE MEMORY
@@ -175,23 +168,6 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
 
         """
         self.free()
-
-        if self.own_ind_memory:
-            PyMem_Free(self.ind)
-            if self.__verbose:
-                print("Internal ind array cleaned")
-        if self.own_row_memory:
-            PyMem_Free(self.row)
-            if self.__verbose:
-                print("Internal row array cleaned")
-
-
-        if self.own_val_memory:
-            PyMem_Free(self.val)
-            if self.__verbose:
-                print("Internal val array cleaned")
-
-
 
     def free_symbolic(self):
         """
@@ -231,6 +207,13 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         # test if we can use UMFPACK
         assert self.nrow == self.ncol, "Only square matrices are handled in UMFPACK"
 
+        # check if internal arrays are empty or not
+        assert self.ind != NULL, "Internal ind array is not defined"
+        assert self.row != NULL, "Internal row array is not defined"
+
+        assert self.val != NULL, "Internal val array is not defined"
+
+
     ####################################################################################################################
     # Callbacks
     ####################################################################################################################
@@ -243,22 +226,120 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         if self.__analyzed:
             self.free_symbolic()
 
-        #cdef INT64_t * ind = <INT64_t *> self.ind
-        #cdef INT64_t * row = <INT64_t *> self.row
-
-
-        #cdef FLOAT64_t * val = <FLOAT64_t *> self.val
-
         cdef int status
 
 
         status= umfpack_dl_symbolic(self.nrow, self.ncol, self.ind, self.row, self.val, &self.symbolic, self.control, self.info)
 
 
-        return status
+        if status != UMFPACK_OK:
+            self.free_symbolic()
+            test_umfpack_result(status, "analyze()", print_on_screen=self.__verbose)
+
 
     def _factorize(self, *args, **kwargs):
-        raise NotImplementedError()
+
+        if self.__factorized:
+            self.free_numeric()
+
+        cdef int status
+
+
+        status = umfpack_dl_numeric(self.ind, self.row, self.val,
+                   self.symbolic,
+                   &self.numeric,
+                   self.control, self.info)
+
+
+        if status != UMFPACK_OK:
+            self.free_numeric()
+            test_umfpack_result(status, "factorize()", print_on_screen=self.__verbose)
+
+    def _solve(self, cnp.ndarray[cnp.npy_float64, ndim=1, mode="c"] b, umfpack_sys='UMFPACK_A', irsteps=2):
+        """
+        Solve the linear system  ``A * x = b``.
+
+        Args:
+           b: a Numpy vector of appropriate dimension.
+           umfpack_sys: specifies the type of system being solved:
+
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_A"``    | :math:`\mathbf{A} x = b` (default)   |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_At"``   | :math:`\mathbf{A}^T x = b`           |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Pt_L"`` | :math:`\mathbf{P}^T \mathbf{L} x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_L"``    | :math:`\mathbf{L} x = b`             |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Lt_P"`` | :math:`\mathbf{L}^T \mathbf{P} x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Lt"``   | :math:`\mathbf{L}^T x = b`           |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_U_Qt"`` | :math:`\mathbf{U} \mathbf{Q}^T x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_U"``    | :math:`\mathbf{U} x = b`             |
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Q_Ut"`` | :math:`\mathbf{Q} \mathbf{U}^T x = b`|
+                    +-------------------+--------------------------------------+
+                    |``"UMFPACK_Ut"``   | :math:`\mathbf{U}^T x = b`           |
+                    +-------------------+--------------------------------------+
+
+           irsteps: number of iterative refinement steps to attempt. Default: 2
+
+        Returns:
+            ``sol``: The solution of ``A*x=b`` if everything went well.
+
+        Raises:
+            AssertionError: When vector ``b`` is not a :program:`NumPy` vector.
+            AttributeError: When vector ``b`` doesn't have a ``shape`` attribute.
+            AssertionError: When vector ``b`` doesn't have the right first dimension.
+            MemoryError: When there is not enought memory to create solution.
+            RuntimeError: Whenever ``UMFPACK`` returned status is not ``UMFPACK_OK`` and is an error.
+
+        Notes:
+            The opaque objects ``symbolic`` and ``numeric`` are automatically created if necessary.
+
+            You can ask for a report of what happened by calling :meth:`report_info()`.
+
+
+
+        """
+        # TODO: add other umfpack_sys arguments to the docstring.
+        # TODO: allow other types of b and test better argument b
+        cdef cnp.npy_intp * shape_b
+        try:
+            shape_b = b.shape
+        except:
+            raise AttributeError("argument b must implement attribute 'shape'")
+        dim_b = shape_b[0]
+        assert dim_b == self.nrow, "array dimensions must agree"
+
+        if umfpack_sys not in UMFPACK_SYS_DICT.keys():
+            raise ValueError('umfpack_sys must be in' % UMFPACK_SYS_DICT.keys())
+
+        self.control[UMFPACK_IRSTEP] = irsteps
+
+        self.factorize()
+
+        cdef cnp.ndarray[cnp.npy_float64, ndim=1, mode='c'] sol = np.empty(self.ncol, dtype=np.float64)
+
+        #cdef INT64_t * ind = <INT64_t *> self.ind
+        #cdef INT64_t * row = <INT64_t *> self.row
+
+
+        cdef FLOAT64_t * val = <FLOAT64_t *> self.val
+
+
+
+        cdef int status =  umfpack_dl_solve(UMFPACK_SYS_DICT[umfpack_sys], self.ind, self.row, self.val, <FLOAT64_t *> cnp.PyArray_DATA(sol), <FLOAT64_t *> cnp.PyArray_DATA(b), self.numeric, self.control, self.info)
+
+        if status != UMFPACK_OK:
+            test_umfpack_result(status, "solve()")
+
+
+
+        return sol
 
     ####################################################################################################################
     # Statistics Callbacks

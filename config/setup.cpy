@@ -121,20 +121,20 @@ else:
 suitesparse_types_ext_params = copy.deepcopy(ext_params)
 
 suitesparse_types_ext = [
-{% for index_type in umfpack_index_list %}
-  {% for element_type in umfpack_type_list %}
+
         Extension(name="suitesparse.common_types.suitesparse_types",
                   sources=['suitesparse/common_types/suitesparse_types.pxd',
                            'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
-    {% endfor %}
-{% endfor %}
+        Extension(name="suitesparse.common_types.suitesparse_generic_types",
+                  sources=['suitesparse/common_types/suitesparse_generic_types.pxd',
+                           'suitesparse/common_types/suitesparse_generic_types.pyx'], **suitesparse_types_ext_params),
 ]
 
 
 # Base solver
 base_solver_ext_params = copy.deepcopy(ext_params)
 
-base_ext = [
+base_solver_ext = [
 {% for index_type in umfpack_index_list %}
   {% for element_type in umfpack_type_list %}
         Extension(name="suitesparse.solver_@index_type@_@element_type@",
@@ -200,7 +200,7 @@ packages_list = ['suitesparse',
 if use_cysparse:
     packages_list.append('suitesparse.umfpack.cysparse_solver')
 
-ext_modules = base_ext + suitesparse_types_ext + umfpack_ext
+ext_modules = suitesparse_types_ext + base_solver_ext + umfpack_ext
 
 ########################################################################################################################
 # PACKAGE PREPARATION FOR EXCLUSIVE C EXTENSIONS

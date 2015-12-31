@@ -16,16 +16,12 @@ cdef class UmfpackSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
 
         # UMFPACK takes a C CSC matrix object
         INT64_t * ind
-        bint own_ind_memory  # does ind belong to the class or it is external memory?
         INT64_t * row
-        bint own_row_memory  # does row belong to the class or it is external memory?
+
 
         FLOAT64_t * rval
-        bint own_rval_memory  # does rval belong to the class or it is external memory?
         FLOAT64_t * ival
-        bint own_ival_memory  # does ival belong to the class or it is external memory?
 
-        bint internal_real_arrays_computed
 
 
         # UMFPACK opaque objects
