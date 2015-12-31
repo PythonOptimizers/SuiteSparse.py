@@ -4,7 +4,9 @@ This module generates a factory method to construct UMFPACK solvers.
 It is also the main and only entry for UMFPACK import by a Python user.
 
 """
+from cysparse.sparse.ll_mat import *
 
+from suitesparse.umfpack.umfpack_common import *
 
 def UmfpackSolver(A, verbose=False):
     """
@@ -29,7 +31,6 @@ def UmfpackSolver(A, verbose=False):
         {% else %}
             elif dtype == @element_type|type2enum@:
         {% endif %}
-                from suitesparse.umfpack.umfpack_solver_base_@index_type@_@element_type@ import *
                 from suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_@index_type@_@element_type@ import UmfpackCysparseSolver_@index_type@_@element_type@
                 return UmfpackCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
     {% endfor %}
@@ -41,7 +42,6 @@ def UmfpackSolver(A, verbose=False):
         {% else %}
             elif dtype == @element_type|type2enum@:
         {% endif %}
-                from suitesparse.umfpack.umfpack_solver_base_@index_type@_@element_type@ import *
                 from suitesparse.umfpack.cysparse_solver.umfpack_cysparse_solver_@index_type@_@element_type@ import UmfpackCysparseSolver_@index_type@_@element_type@
                 return UmfpackCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
     {% endfor %}

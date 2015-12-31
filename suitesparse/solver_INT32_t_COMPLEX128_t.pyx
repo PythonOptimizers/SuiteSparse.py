@@ -1,6 +1,7 @@
 from __future__ import print_function
 
-import sys
+from cpython cimport Py_INCREF, Py_DECREF
+
 import time
 
 # TODO: add stats
@@ -9,6 +10,8 @@ import time
 cdef class Solver_INT32_t_COMPLEX128_t:
     def __cinit__(self, A, **kwargs):
         self.__A = A
+        Py_INCREF(self.__A)  # increase ref to object to avoid the user deleting it explicitly or implicitly
+
         self.__verbose = kwargs.get('verbose', False)
 
         self.__analyzed = False
@@ -28,8 +31,19 @@ cdef class Solver_INT32_t_COMPLEX128_t:
 
     
     @property
+    def solver_version(self):
+        return self.__solver_version
+
+    
+    @property
     def A(self):
         return self.__A
+
+    def __dealloc__(self):
+        """
+
+        """
+        Py_DECREF(self.__A) # release ref
 
     ####################################################################################################################
     # Common functions

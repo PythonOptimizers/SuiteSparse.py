@@ -1,11 +1,12 @@
-from suitesparse.umfpack.umfpack_solver import UmfpackSolver, umfpack_version
+from suitesparse.umfpack.umfpack_solver import *
 from cysparse.sparse.ll_mat import *
 
-A = LLSparseMatrix(ncol=3, nrow=4)
+A = LLSparseMatrix(ncol=4, nrow=4)
 
 s = UmfpackSolver(A)
 
 print s.solver_name
+print s.solver_version
 
 b = 3
 
@@ -38,4 +39,6 @@ print "/" * 80
 
 print umfpack_version()
 print umfpack_detailed_version()
+
+
 

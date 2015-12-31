@@ -26,8 +26,17 @@ cdef class UmfpackCysparseSolver_INT64_t_COMPLEX128_t(UmfpackSolverBase_INT64_t_
 
             raise NotImplementedError("CySparse matrix type '%s' not recognized" % matrix_type)
 
+
+        self.nrow = A.nrow
+        self.ncol = A.ncol
+
+        self.nnz = self.A.nnz
+
         if self.__verbose:
             print("I'm talking a lot!")
+
+        # Control the matrix is fine
+        self.check_matrix()
 
     def _solve(self, b):
         print("Calling real solve with ",)

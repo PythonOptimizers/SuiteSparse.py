@@ -39,7 +39,7 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 
 ## What is implemented?
 
-- [ ] UMFPACK Versions 
+- [ ] UMFPACK Versions 5.7.1 (Oct 10, 2014)
 - [ ] CHOLMOD
 - [ ] SPQR
 - [ ] KLU

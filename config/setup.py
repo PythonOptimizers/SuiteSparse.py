@@ -117,30 +117,54 @@ else:
 ##########################
 # SuiteSparse
 ##########################
+# SuiteSparse Types
+suitesparse_types_ext_params = copy.deepcopy(ext_params)
+
+suitesparse_types_ext = [
+
+  
+        Extension(name="suitesparse.common_types.suitesparse_types",
+                  sources=['suitesparse/common_types/suitesparse_types.pxd',
+                           'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
+    
+        Extension(name="suitesparse.common_types.suitesparse_types",
+                  sources=['suitesparse/common_types/suitesparse_types.pxd',
+                           'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
+    
+
+  
+        Extension(name="suitesparse.common_types.suitesparse_types",
+                  sources=['suitesparse/common_types/suitesparse_types.pxd',
+                           'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
+    
+        Extension(name="suitesparse.common_types.suitesparse_types",
+                  sources=['suitesparse/common_types/suitesparse_types.pxd',
+                           'suitesparse/common_types/suitesparse_types.pyx'], **suitesparse_types_ext_params),
+    
+
+]
+
+
 # Base solver
 base_solver_ext_params = copy.deepcopy(ext_params)
 
 base_ext = [
 
   
-        #TODO: remove linalg
         Extension(name="suitesparse.solver_INT32_t_FLOAT64_t",
                   sources=['suitesparse/solver_INT32_t_FLOAT64_t.pxd',
                            'suitesparse/solver_INT32_t_FLOAT64_t.pyx'], **base_solver_ext_params),
     
-        #TODO: remove linalg
         Extension(name="suitesparse.solver_INT32_t_COMPLEX128_t",
                   sources=['suitesparse/solver_INT32_t_COMPLEX128_t.pxd',
                            'suitesparse/solver_INT32_t_COMPLEX128_t.pyx'], **base_solver_ext_params),
     
 
   
-        #TODO: remove linalg
         Extension(name="suitesparse.solver_INT64_t_FLOAT64_t",
                   sources=['suitesparse/solver_INT64_t_FLOAT64_t.pxd',
                            'suitesparse/solver_INT64_t_FLOAT64_t.pyx'], **base_solver_ext_params),
     
-        #TODO: remove linalg
         Extension(name="suitesparse.solver_INT64_t_COMPLEX128_t",
                   sources=['suitesparse/solver_INT64_t_COMPLEX128_t.pxd',
                            'suitesparse/solver_INT64_t_COMPLEX128_t.pyx'], **base_solver_ext_params),
@@ -197,6 +221,12 @@ umfpack_ext = [
 if use_cysparse:
     umfpack_ext_params['include_dirs'].extend(cysparse_rootdir)
 
+    umfpack_ext.append(
+        Extension(name="suitesparse.umfpack.umfpack_common",
+                  sources=['suitesparse/umfpack/umfpack_common.pxd',
+                           'suitesparse/umfpack/umfpack_common.pyx'], **umfpack_ext_params)
+        )
+
 
   
 
@@ -238,6 +268,7 @@ if use_cysparse:
 # config
 ########################################################################################################################
 packages_list = ['suitesparse',
+            'suitesparse.common_types',
             'suitesparse.umfpack',
             'suitesparse.umfpack.generic_solver',
             'tests'
@@ -246,7 +277,7 @@ packages_list = ['suitesparse',
 if use_cysparse:
     packages_list.append('suitesparse.umfpack.cysparse_solver')
 
-ext_modules = base_ext + umfpack_ext
+ext_modules = base_ext + suitesparse_types_ext + umfpack_ext
 
 ########################################################################################################################
 # PACKAGE PREPARATION FOR EXCLUSIVE C EXTENSIONS
