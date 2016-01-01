@@ -176,6 +176,8 @@ def generate_umfpack_following_index_and_element():
             GENERAL_CONTEXT['type'] = type
             yield '_%s_%s' % (index, type), GENERAL_CONTEXT
 
+generate_cholmod_following_index_and_element = generate_umfpack_following_index_and_element
+generate_spqr_following_index_and_element = generate_umfpack_following_index_and_element
 
 ## TESTS
 def generate_umfpack_following_index_and_element_and_cysparse_matrix_classes():
@@ -283,6 +285,16 @@ if __name__ == "__main__":
     cygenja_engine.register_action('suitesparse/umfpack', 'umfpack_solver_base.*', generate_umfpack_following_index_and_element)
     cygenja_engine.register_action('suitesparse/umfpack/cysparse_solver', '*solver.*', generate_umfpack_following_index_and_element)
     cygenja_engine.register_action('suitesparse/umfpack/generic_solver', '*solver.*', generate_umfpack_following_index_and_element)
+    ########## CHOLMOD ############
+    cygenja_engine.register_action('suitesparse/cholmod', 'cholmod_solver.cpy', single_generation)
+    cygenja_engine.register_action('suitesparse/cholmod', 'cholmod_solver_base.*', generate_cholmod_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/cholmod/cysparse_solver', '*solver.*', generate_cholmod_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/cholmod/generic_solver', '*solver.*', generate_cholmod_following_index_and_element)
+    ########## SPQR ############
+    cygenja_engine.register_action('suitesparse/spqr', 'spqr_solver.cpy', single_generation)
+    cygenja_engine.register_action('suitesparse/spqr', 'spqr_solver_base.*', generate_spqr_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/spqr/cysparse_solver', '*solver.*', generate_spqr_following_index_and_element)
+    cygenja_engine.register_action('suitesparse/spqr/generic_solver', '*solver.*', generate_spqr_following_index_and_element)
 
 
     ########################################
