@@ -6,3 +6,5 @@ cdef class UmfpackCysparseSolver_INT64_t_COMPLEX128_t(UmfpackSolverBase_INT64_t_
     cdef:
         # Matrix A in CSC format
         CSCSparseMatrix_INT64_t_COMPLEX128_t csc_mat
+
+        float __matrix_transform_time

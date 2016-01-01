@@ -15,3 +15,4 @@ cdef class Solver_INT32_t_FLOAT64_t:
         float __solve_time
         float __analyze_time
         float __factorize_time
+        float __specialized_solver_time

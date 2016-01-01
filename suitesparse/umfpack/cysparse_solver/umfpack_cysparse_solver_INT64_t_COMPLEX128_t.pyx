@@ -18,6 +18,8 @@ cimport numpy as cnp
 
 cnp.import_array()
 
+import time
+
 
 cdef extern from "umfpack.h":
 
@@ -162,6 +164,9 @@ cdef class UmfpackCysparseSolver_INT64_t_COMPLEX128_t(UmfpackSolverBase_INT64_t_
 
         self.nnz = self.A.nnz
 
+        self.__matrix_transform_time = 0.0
+
+        start_time = time.clock()
 
         if PyLLSparseMatrix_Check(self.__A):
             # transfrom matrix into CSC
@@ -208,6 +213,11 @@ cdef class UmfpackCysparseSolver_INT64_t_COMPLEX128_t(UmfpackSolverBase_INT64_t_
                                                                        self.rval, self.nnz,
                                                                        self.ival, self.nnz)
 
+
+        self.__matrix_transform_time += (time.clock() - start_time)
+
+        # this is for the main stats from the Solver class
+        self.__specialized_solver_time += self.__matrix_transform_time
 
         # Control the matrix is fine
         self.check_matrix()
@@ -491,7 +501,8 @@ cdef class UmfpackCysparseSolver_INT64_t_COMPLEX128_t(UmfpackSolverBase_INT64_t_
         lines = []
 
         lines.append("CySparse matrix type: %s" % self.__A.base_type_str)
-        lines.append("(nrow, ncol) = (%d, %d)" % (self.nrow, self.ncol) )
+        lines.append("nrow, ncol = (%d, %d)" % (self.nrow, self.ncol) )
         lines.append("nnz = %s" % self.nnz)
+        lines.append("Matrix transformation: %f secs" % self.__matrix_transform_time)
 
         return '\n'.join(lines)

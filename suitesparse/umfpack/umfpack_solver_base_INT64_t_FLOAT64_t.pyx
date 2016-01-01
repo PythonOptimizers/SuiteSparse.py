@@ -168,6 +168,9 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         else:
             self.set_verbosity(0)
 
+        # set default parameters for control
+        umfpack_dl_defaults(<double *>&self.control)
+
 
     ####################################################################################################################
     # FREE MEMORY
@@ -328,8 +331,6 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
             raise ValueError('umfpack_sys must be in' % UMFPACK_SYS_DICT.keys())
 
         self.control[UMFPACK_IRSTEP] = irsteps
-
-        self.factorize()
 
         cdef cnp.ndarray[cnp.npy_float64, ndim=1, mode='c'] sol = np.empty(self.ncol, dtype=np.float64)
 
