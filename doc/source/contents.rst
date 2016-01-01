@@ -11,6 +11,7 @@
 
    introduction
    installation
+   base_solver
    umfpack
    cholmod
    spqr
