@@ -1,0 +1,39 @@
+from suitesparse.solver_@index@_@type@ cimport Solver_@index@_@type@
+
+from suitesparse.common_types.suitesparse_types cimport *
+
+cdef extern from "umfpack.h":
+
+    cdef enum:
+        UMFPACK_CONTROL, UMFPACK_INFO
+
+
+cdef class UmfpackSolverBase_@index@_@type@(Solver_@index@_@type@):
+    cdef:
+        @index@ nrow
+        @index@ ncol
+        @index@ nnz
+
+        # UMFPACK takes a C CSC matrix object
+        @index@ * ind
+        @index@ * row
+
+{% if type in complex_list %}
+        @type|cysparse_real_type_from_real_cysparse_complex_type@ * rval
+        @type|cysparse_real_type_from_real_cysparse_complex_type@ * ival
+
+{% else %}
+        @type@ * val
+{% endif %}
+
+        # UMFPACK opaque objects
+        void * symbolic
+
+        void * numeric
+
+        # Control and Info arrays
+        public double info[UMFPACK_INFO]
+        public double control[UMFPACK_CONTROL]
+
+
+    cdef check_matrix(self)
