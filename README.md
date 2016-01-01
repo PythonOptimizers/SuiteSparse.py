@@ -39,7 +39,7 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 
 ## What is implemented?
 
-- [ ] UMFPACK Versions 5.7.1 (Oct 10, 2014)
+- [x] UMFPACK Versions 5.7.1 (Oct 10, 2014)
 - [ ] CHOLMOD
 - [ ] SPQR
 - [ ] KLU
@@ -52,3 +52,5 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 ## Release history
 
 - Version 0.0.1 released on Dec 31, 2015
+
+  Added basic UMFPACK for CySparse LLSparseMatrix matrices.
