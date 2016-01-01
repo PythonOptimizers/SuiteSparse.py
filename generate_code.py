@@ -136,6 +136,7 @@ CHOLMOD_ELEMENT_TYPES = ['FLOAT64_t', 'COMPLEX128_t']
 SPQR_INDEX_TYPES = ['INT32_t', 'INT64_t']
 SPQR_ELEMENT_TYPES = ['FLOAT64_t', 'COMPLEX128_t']
 
+CYSPARSE_MATRIX_CLASSES = ['LLSparseMatrix', 'CSCSparseMatrix', 'CSRSparseMatrix']
 
 GENERAL_CONTEXT = {
     'basic_type_list' : BASIC_TYPES,
@@ -174,6 +175,20 @@ def generate_umfpack_following_index_and_element():
         for type in UMFPACK_ELEMENT_TYPES:
             GENERAL_CONTEXT['type'] = type
             yield '_%s_%s' % (index, type), GENERAL_CONTEXT
+
+
+## TESTS
+def generate_umfpack_following_index_and_element_and_cysparse_matrix_classes():
+    """
+    Generate files following the index and element types.
+    """
+    for klass in CYSPARSE_MATRIX_CLASSES:
+        GENERAL_CONTEXT['class'] = klass
+        for index in UMFPACK_INDEX_TYPES:
+            GENERAL_CONTEXT['index'] = index
+            for type in UMFPACK_ELEMENT_TYPES:
+                GENERAL_CONTEXT['type'] = type
+                yield '_%s_%s_%s' % (index, type, klass), GENERAL_CONTEXT
 
 ########################################################################################################################
 # JINJA2 FILTERS
@@ -270,6 +285,12 @@ if __name__ == "__main__":
     cygenja_engine.register_action('suitesparse/umfpack/generic_solver', '*solver.*', generate_umfpack_following_index_and_element)
 
 
+    ########################################
+    # TESTS
+    ########################################
+    ########## UMFPACK ############
+    ### CySparse ###
+    cygenja_engine.register_action('tests/umfpack/cysparse', '*umfpack_get_LU*', generate_umfpack_following_index_and_element_and_cysparse_matrix_classes)
 
     ####################################################################################################################
     # Generation

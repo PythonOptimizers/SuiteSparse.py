@@ -5,7 +5,7 @@ import numpy as np
 
 import time
 
-size = 60
+size = 5
 itype = INT64_T
 dtype = COMPLEX128_T
 
