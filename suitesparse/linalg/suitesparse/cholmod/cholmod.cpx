@@ -45,6 +45,7 @@ cdef extern from "cholmod.h":
         CHOLMOD_LONG        # all integer arrays are SuiteSparse_long
 
     # dtype: float or double
+    # dtype: float or double
     cdef enum:
         CHOLMOD_DOUBLE      # all numerical values are double
         CHOLMOD_SINGLE

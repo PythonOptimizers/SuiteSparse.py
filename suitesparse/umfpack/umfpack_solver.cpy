@@ -4,7 +4,10 @@ This module generates a factory method to construct UMFPACK solvers.
 It is also the main and only entry for UMFPACK import by a Python user.
 
 """
+{% if use_cysparse %}
 from cysparse.sparse.ll_mat import *
+{% endif %}
+
 
 from suitesparse.umfpack.umfpack_common import *
 

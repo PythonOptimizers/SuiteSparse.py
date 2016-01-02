@@ -185,7 +185,45 @@ if use_cysparse:
 {% endfor %}
 
 
+# CHOLMOD
+cholmod_ext_params = copy.deepcopy(ext_params)
+cholmod_ext_params['include_dirs'].extend(suitesparse_include_dirs)
+cholmod_ext_params['library_dirs'] = suitesparse_library_dirs
+cholmod_ext_params['libraries'] = ['cholmod', 'amd']
 
+cholmod_ext = [
+{% for index_type in cholmod_index_list %}
+  {% for element_type in cholmod_type_list %}
+        Extension(name="suitesparse.cholmod.cholmod_solver_base_@index_type@_@element_type@",
+                  sources=['suitesparse/cholmod/cholmod_solver_base_@index_type@_@element_type@.pxd',
+                           'suitesparse/cholmod/cholmod_solver_base_@index_type@_@element_type@.pyx'], **cholmod_ext_params),
+        # GENERIC VERSION
+        Extension(name="suitesparse.cholmod.generic_solver.cholmod_generic_solver_@index_type@_@element_type@",
+                  sources=['suitesparse/cholmod/generic_solver/cholmod_generic_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/cholmod/generic_solver/cholmod_generic_solver_@index_type@_@element_type@.pyx'], **cholmod_ext_params),
+    {% endfor %}
+{% endfor %}
+    ]
+
+if use_cysparse:
+    cholmod_ext_params['include_dirs'].extend(cysparse_rootdir)
+
+    cholmod_ext.append(
+        Extension(name="suitesparse.cholmod.cholmod_common",
+                  sources=['suitesparse/cholmod/cholmod_common.pxd',
+                           'suitesparse/cholmod/cholmod_common.pyx'], **cholmod_ext_params)
+        )
+
+{% for index_type in cholmod_index_list %}
+  {% for element_type in cholmod_type_list %}
+
+    cholmod_ext.append(
+        Extension(name="suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_@index_type@_@element_type@",
+                  sources=['suitesparse/cholmod/cysparse_solver/cholmod_cysparse_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/cholmod/cysparse_solver/cholmod_cysparse_solver_@index_type@_@element_type@.pyx'], **cholmod_ext_params)
+        )
+    {% endfor %}
+{% endfor %}
 
 ########################################################################################################################
 # config
@@ -193,15 +231,16 @@ if use_cysparse:
 packages_list = ['suitesparse',
             'suitesparse.utils',
             'suitesparse.common_types',
-            'suitesparse.umfpack',
-            'suitesparse.umfpack.generic_solver',
+            'suitesparse.cholmod',
+            'suitesparse.cholmod.generic_solver',
             'tests'
             ]
 
 if use_cysparse:
     packages_list.append('suitesparse.umfpack.cysparse_solver')
+    packages_list.append('suitesparse.cholmod.cysparse_solver')
 
-ext_modules = suitesparse_types_ext + base_solver_ext + umfpack_ext
+ext_modules = suitesparse_types_ext + base_solver_ext + umfpack_ext + cholmod_ext
 
 ########################################################################################################################
 # PACKAGE PREPARATION FOR EXCLUSIVE C EXTENSIONS
