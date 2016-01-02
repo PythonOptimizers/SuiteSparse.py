@@ -22,3 +22,5 @@ s = CholmodSolver(A, verbose=True)
 
 print "construction time for solver A : %f" % (time.clock() - start_time)
 
+print s.CHOLMOD_VERSION
+
