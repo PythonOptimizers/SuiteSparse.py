@@ -551,8 +551,24 @@ int __pyx_module_is_main_suitesparse__cholmod__cholmod_common = 0;
 static char __pyx_k_main[] = "__main__";
 static char __pyx_k_test[] = "__test__";
 static char __pyx_k_CHOLMOD_A[] = "CHOLMOD_A";
+static char __pyx_k_CHOLMOD_D[] = "CHOLMOD_D";
+static char __pyx_k_CHOLMOD_L[] = "CHOLMOD_L";
+static char __pyx_k_CHOLMOD_P[] = "CHOLMOD_P";
+static char __pyx_k_CHOLMOD_LD[] = "CHOLMOD_LD";
+static char __pyx_k_CHOLMOD_Lt[] = "CHOLMOD_Lt";
+static char __pyx_k_CHOLMOD_Pt[] = "CHOLMOD_Pt";
+static char __pyx_k_CHOLMOD_DLt[] = "CHOLMOD_DLt";
+static char __pyx_k_CHOLMOD_LDLt[] = "CHOLMOD_LDLt";
 static char __pyx_k_CHOLMOD_SYS_DICT[] = "CHOLMOD_SYS_DICT";
 static PyObject *__pyx_n_s_CHOLMOD_A;
+static PyObject *__pyx_n_s_CHOLMOD_D;
+static PyObject *__pyx_n_s_CHOLMOD_DLt;
+static PyObject *__pyx_n_s_CHOLMOD_L;
+static PyObject *__pyx_n_s_CHOLMOD_LD;
+static PyObject *__pyx_n_s_CHOLMOD_LDLt;
+static PyObject *__pyx_n_s_CHOLMOD_Lt;
+static PyObject *__pyx_n_s_CHOLMOD_P;
+static PyObject *__pyx_n_s_CHOLMOD_Pt;
 static PyObject *__pyx_n_s_CHOLMOD_SYS_DICT;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_test;
@@ -581,6 +597,14 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_CHOLMOD_A, __pyx_k_CHOLMOD_A, sizeof(__pyx_k_CHOLMOD_A), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_D, __pyx_k_CHOLMOD_D, sizeof(__pyx_k_CHOLMOD_D), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_DLt, __pyx_k_CHOLMOD_DLt, sizeof(__pyx_k_CHOLMOD_DLt), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_L, __pyx_k_CHOLMOD_L, sizeof(__pyx_k_CHOLMOD_L), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_LD, __pyx_k_CHOLMOD_LD, sizeof(__pyx_k_CHOLMOD_LD), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_LDLt, __pyx_k_CHOLMOD_LDLt, sizeof(__pyx_k_CHOLMOD_LDLt), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_Lt, __pyx_k_CHOLMOD_Lt, sizeof(__pyx_k_CHOLMOD_Lt), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_P, __pyx_k_CHOLMOD_P, sizeof(__pyx_k_CHOLMOD_P), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_Pt, __pyx_k_CHOLMOD_Pt, sizeof(__pyx_k_CHOLMOD_Pt), 0, 0, 1, 1},
   {&__pyx_n_s_CHOLMOD_SYS_DICT, __pyx_k_CHOLMOD_SYS_DICT, sizeof(__pyx_k_CHOLMOD_SYS_DICT), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
@@ -702,20 +726,109 @@ PyMODINIT_FUNC PyInit_cholmod_common(void)
   /* "suitesparse/cholmod/cholmod_common.pyx":53
  * 
  * CHOLMOD_SYS_DICT = {
- *         'CHOLMOD_A'     : CHOLMOD_A             # <<<<<<<<<<<<<<
- *     }
+ *         'CHOLMOD_A'     : CHOLMOD_A,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_LDLt'  : CHOLMOD_LDLt,
+ *         'CHOLMOD_LD'    : CHOLMOD_LD,
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_A); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_A, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "suitesparse/cholmod/cholmod_common.pyx":54
  * CHOLMOD_SYS_DICT = {
- *         'CHOLMOD_A'     : CHOLMOD_A
+ *         'CHOLMOD_A'     : CHOLMOD_A,
+ *         'CHOLMOD_LDLt'  : CHOLMOD_LDLt,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_LD'    : CHOLMOD_LD,
+ *         'CHOLMOD_DLt'  	: CHOLMOD_DLt,
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_LDLt); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_LDLt, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "suitesparse/cholmod/cholmod_common.pyx":55
+ *         'CHOLMOD_A'     : CHOLMOD_A,
+ *         'CHOLMOD_LDLt'  : CHOLMOD_LDLt,
+ *         'CHOLMOD_LD'    : CHOLMOD_LD,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_DLt'  	: CHOLMOD_DLt,
+ *         'CHOLMOD_L'    	: CHOLMOD_L,
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_LD); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_LD, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "suitesparse/cholmod/cholmod_common.pyx":56
+ *         'CHOLMOD_LDLt'  : CHOLMOD_LDLt,
+ *         'CHOLMOD_LD'    : CHOLMOD_LD,
+ *         'CHOLMOD_DLt'  	: CHOLMOD_DLt,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_L'    	: CHOLMOD_L,
+ *         'CHOLMOD_Lt'   	: CHOLMOD_Lt,
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_DLt); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 56; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_DLt, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "suitesparse/cholmod/cholmod_common.pyx":57
+ *         'CHOLMOD_LD'    : CHOLMOD_LD,
+ *         'CHOLMOD_DLt'  	: CHOLMOD_DLt,
+ *         'CHOLMOD_L'    	: CHOLMOD_L,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_Lt'   	: CHOLMOD_Lt,
+ *         'CHOLMOD_D'    	: CHOLMOD_D,
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_L); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 57; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_L, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "suitesparse/cholmod/cholmod_common.pyx":58
+ *         'CHOLMOD_DLt'  	: CHOLMOD_DLt,
+ *         'CHOLMOD_L'    	: CHOLMOD_L,
+ *         'CHOLMOD_Lt'   	: CHOLMOD_Lt,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_D'    	: CHOLMOD_D,
+ *         'CHOLMOD_P'    	: CHOLMOD_P,
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_Lt); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 58; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_Lt, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "suitesparse/cholmod/cholmod_common.pyx":59
+ *         'CHOLMOD_L'    	: CHOLMOD_L,
+ *         'CHOLMOD_Lt'   	: CHOLMOD_Lt,
+ *         'CHOLMOD_D'    	: CHOLMOD_D,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_P'    	: CHOLMOD_P,
+ *         'CHOLMOD_Pt'   	: CHOLMOD_Pt
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_D); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 59; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_D, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "suitesparse/cholmod/cholmod_common.pyx":60
+ *         'CHOLMOD_Lt'   	: CHOLMOD_Lt,
+ *         'CHOLMOD_D'    	: CHOLMOD_D,
+ *         'CHOLMOD_P'    	: CHOLMOD_P,             # <<<<<<<<<<<<<<
+ *         'CHOLMOD_Pt'   	: CHOLMOD_Pt
+ *     }
+ */
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_P); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 60; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_P, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "suitesparse/cholmod/cholmod_common.pyx":62
+ *         'CHOLMOD_P'    	: CHOLMOD_P,
+ *         'CHOLMOD_Pt'   	: CHOLMOD_Pt
  *     }             # <<<<<<<<<<<<<<
  */
-  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_A); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 54; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_2 = __Pyx_PyInt_From_int(CHOLMOD_Pt); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 62; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_A, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_CHOLMOD_Pt, __pyx_t_2) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 53; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_CHOLMOD_SYS_DICT, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 52; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;

@@ -50,5 +50,13 @@ cdef extern from "cholmod.h":
 
 
 CHOLMOD_SYS_DICT = {
-        'CHOLMOD_A'     : CHOLMOD_A
+        'CHOLMOD_A'     : CHOLMOD_A,
+        'CHOLMOD_LDLt'  : CHOLMOD_LDLt,
+        'CHOLMOD_LD'    : CHOLMOD_LD,
+        'CHOLMOD_DLt'  	: CHOLMOD_DLt,
+        'CHOLMOD_L'    	: CHOLMOD_L,
+        'CHOLMOD_Lt'   	: CHOLMOD_Lt,
+        'CHOLMOD_D'    	: CHOLMOD_D,
+        'CHOLMOD_P'    	: CHOLMOD_P,
+        'CHOLMOD_Pt'   	: CHOLMOD_Pt
     }
