@@ -195,6 +195,7 @@ cdef class UmfpackCysparseSolver_INT64_t_FLOAT64_t(UmfpackSolverBase_INT64_t_FLO
         self.__specialized_solver_time += self.__matrix_transform_time
 
         # Control the matrix is fine
+        self.check_common_attributes()
         self.check_matrix()
 
     ####################################################################################################################

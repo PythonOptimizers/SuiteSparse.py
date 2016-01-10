@@ -1,5 +1,10 @@
 
-from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT
+from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, cholmod_version, cholmod_detailed_version
+
+import numpy as np
+cimport numpy as cnp
+
+cnp.import_array()
 
 cdef extern from "cholmod.h":
     cdef:
@@ -235,6 +240,48 @@ cdef extern from "cholmod.h":
     # Memory management
     void * cholmod_l_free(size_t n, size_t size,	void *p,  cholmod_common *Common)
 
+########################################################################################################################
+# CHOLMOD HELPERS
+########################################################################################################################
+##################################################################
+# FROM NumPy ndarray -> cholmod_dense
+##################################################################
+cdef cholmod_dense numpy_ndarray_to_cholmod_dense(cnp.ndarray[cnp.npy_float64, ndim=1, mode="c"] b):
+    """
+    Convert a :program:`NumPy` one dimensionnal array to the corresponding ``cholmod_dense`` matrix.
+    """
+    # access b
+    cdef FLOAT64_t * b_data = <FLOAT64_t *> cnp.PyArray_DATA(b)
+
+    # Creation of CHOLMOD DENSE MATRIX
+    cdef cholmod_dense B
+    B = cholmod_dense()
+
+    B.nrow = b.shape[0]
+    B.ncol = 1
+
+    B.nzmax = b.shape[0]
+
+    B.d = b.shape[0]
+
+
+    B.x = b_data
+
+    B.xtype = CHOLMOD_REAL                       # CHOLMOD_PATTERN, _REAL, _COMPLEX, or _ZOMPLEX
+    B.dtype = CHOLMOD_DOUBLE
+
+
+    return B
+
+##################################################################
+# FROM cholmod_dense -> NumPy ndarray
+##################################################################
+cdef cnp.ndarray[cnp.npy_float64, ndim=1, mode="c"] cholmod_dense_to_numpy_ndarray(cholmod_dense * b):
+    raise NotImplementedError()
+
+########################################################################################################################
+# Base functionnalities
+########################################################################################################################
 
 
 cdef class CholmodSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):

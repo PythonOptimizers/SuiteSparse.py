@@ -21,6 +21,26 @@ cnp.import_array()
 import time
 
 cdef extern from "cholmod.h":
+    # we only use REAL and ZOMPLEX
+    cdef enum:
+        CHOLMOD_PATTERN  	# pattern only, no numerical values
+        CHOLMOD_REAL		# a real matrix
+        CHOLMOD_COMPLEX     # a complex matrix (ANSI C99 compatible)
+        CHOLMOD_ZOMPLEX     # a complex matrix (MATLAB compatible)
+
+    # itype: we only use INT and LONG
+    cdef enum:
+        CHOLMOD_INT         # all integer arrays are int
+        CHOLMOD_INTLONG     # most are int, some are SuiteSparse_long
+        CHOLMOD_LONG        # all integer arrays are SuiteSparse_long
+
+    # dtype: float or double
+    # dtype: float or double
+    cdef enum:
+        CHOLMOD_DOUBLE      # all numerical values are double
+        CHOLMOD_SINGLE
+
+
     # COMMON STRUCT
     ctypedef struct cholmod_common:
         #######################################################
@@ -209,12 +229,211 @@ cdef extern from "cholmod.h":
     void * cholmod_free(size_t n, size_t size,	void *p,  cholmod_common *Common)
 
 
+
+########################################################################################################################
+# CHOLMOD HELPERS
+########################################################################################################################
+##################################################################
+# FROM CSCSparseMatrix -> cholmod_sparse
+##################################################################
+# Populating a sparse matrix in CHOLMOD is done in two steps:
+# - first (populate1), we give the common attributes and
+# - second (populate2), we split the values array in two if needed (complex case) and give the values (real or complex).
+
+cdef populate1_cholmod_sparse_struct_with_CSCSparseMatrix(cholmod_sparse * sparse_struct, CSCSparseMatrix_INT32_t_COMPLEX128_t csc_mat, bint no_copy=True):
+    """
+    Populate a CHOLMO C struct ``cholmod_sparse`` with the content of a :class:`CSCSparseMatrix_INT32_t_COMPLEX128_t` matrix.
+
+    First part: common attributes for both real and complex matrices.
+
+    Note:
+        We only use the ``cholmod_sparse`` **packed** and **sorted** version.
+    """
+    assert no_copy, "The version with copy is not implemented yet..."
+
+    assert(csc_mat.are_row_indices_sorted()), "We only use CSC matrices with internal row indices sorted. The non sorted version is not implemented yet."
+
+    sparse_struct.nrow = csc_mat.nrow
+    sparse_struct.ncol = csc_mat.ncol
+    sparse_struct.nzmax = csc_mat.nnz
+
+    sparse_struct.p = csc_mat.ind
+    sparse_struct.i = csc_mat.row
+
+    # TODO: change this when we'll accept symmetric matrices **without** symmetric storage scheme
+    if csc_mat.is_symmetric:
+        sparse_struct.stype = -1
+    else:
+        sparse_struct.stype = 0
+
+    # itype: can be CHOLMOD_INT or CHOLMOD_LONG: we don't use the mixed version CHOLMOD_INTLONG
+
+    sparse_struct.itype = CHOLMOD_INT
+
+
+    sparse_struct.sorted = 1                                 # TRUE if columns are sorted, FALSE otherwise
+    sparse_struct.packed = 1                                 # We use the packed CSC version: **no** need to construct
+                                                             # the nz (array with number of non zeros by column)
+
+
+
+cdef populate2_cholmod_sparse_struct_with_CSCSparseMatrix(cholmod_sparse * sparse_struct,
+                                                              CSCSparseMatrix_INT32_t_COMPLEX128_t csc_mat,
+                                                              FLOAT64_t * csc_mat_rval,
+                                                              FLOAT64_t * csc_mat_ival,
+                                                              bint no_copy=True):
+    """
+    Populate a CHOLMO C struct ``cholmod_sparse`` with the content of a :class:`CSCSparseMatrix_INT32_t_COMPLEX128_t` matrix.
+
+    Second part: Non common attributes for complex matrices.
+
+    Note:
+        We only use the ``cholmod_sparse`` **packed** version.
+    """
+    assert no_copy, "The version with copy is not implemented yet..."
+
+
+    sparse_struct.x = csc_mat_rval
+    sparse_struct.z = csc_mat_ival
+
+    sparse_struct.xtype = CHOLMOD_ZOMPLEX                    # CHOLMOD_PATTERN, _REAL, _COMPLEX, or _ZOMPLEX
+    sparse_struct.dtype = CHOLMOD_DOUBLE
+
+
+
+
+##################################################################
+# FROM cholmod_sparse -> CSCSparseMatrix
+##################################################################
+cdef CSCSparseMatrix_INT32_t_COMPLEX128_t cholmod_sparse_to_CSCSparseMatrix_INT32_t_COMPLEX128_t(cholmod_sparse * sparse_struct, bint no_copy=False):
+    """
+    Convert a ``cholmod`` sparse struct to a :class:`CSCSparseMatrix_INT32_t_COMPLEX128_t`.
+
+    """
+    # TODO: generalize to any cholmod sparse structure, with or without copy
+    # TODO: generalize to complex case
+    # TODO: remove asserts
+    assert sparse_struct.sorted == 1, "We only accept cholmod_sparse matrices with sorted indices"
+    assert sparse_struct.packed == 1, "We only accept cholmod_sparse matrices with packed indices"
+
+    assert sparse_struct.xtype == CHOLMOD_ZOMPLEX, "We only accept cholmod_sparse matrices with zomplex"
+
+
+    cdef:
+        CSCSparseMatrix_INT32_t_COMPLEX128_t csc_mat
+        INT32_t nrow
+        INT32_t ncol
+        INT32_t nnz
+        bint store_symmetric = False
+
+        # internal arrays of the CSC matrix
+        INT32_t * ind
+        INT32_t * row
+
+        # internal arrays of the cholmod sparse matrix
+        INT32_t * ind_cholmod
+        INT32_t * row_cholmod
+
+        # internal arrays for the CSC matrix
+        FLOAT64_t * valx
+        FLOAT64_t * valz
+
+        COMPLEX128_t * val_complex
+
+        # internal arrays for the cholmod sparse matrix
+        FLOAT64_t * valx_cholmod
+        FLOAT64_t * valz_cholmod
+
+
+
+        INT32_t j, k
+
+    nrow = sparse_struct.nrow
+    ncol = sparse_struct.ncol
+    nnz = sparse_struct.nzmax
+
+    if sparse_struct.stype == 0:
+        store_symmetric = False
+    elif sparse_struct.stype < 0:
+        store_symmetric == True
+    else:
+        raise NotImplementedError('We do not accept cholmod square symmetric sparse matrix with upper triangular part filled in.')
+
+    ##################################### NO COPY ######################################################################
+    if no_copy:
+        ind = <INT32_t *> sparse_struct.p
+        row = <INT32_t *> sparse_struct.i
+
+        valx = <FLOAT64_t *> sparse_struct.x
+        valz = <FLOAT64_t *> sparse_struct.z
+
+    ##################################### WITH COPY ####################################################################
+    else:   # we do a copy
+
+        ind_cholmod = <INT32_t * > sparse_struct.p
+        row_cholmod = <INT32_t * > sparse_struct.i
+
+        ind = <INT32_t *> PyMem_Malloc((ncol + 1) * sizeof(INT32_t))
+
+        if not ind:
+            raise MemoryError()
+
+        row = <INT32_t *> PyMem_Malloc(nnz * sizeof(INT32_t))
+
+        if not row:
+            PyMem_Free(ind)
+            PyMem_Free(row)
+
+            raise MemoryError()
+
+
+        for j from 0 <= j <= ncol:
+            ind[j] = ind_cholmod[j]
+
+        for k from 0 <= k < nnz:
+            row[k] = row_cholmod[k]
+
+
+
+        valx_cholmod = <FLOAT64_t *> sparse_struct.x
+        valz_cholmod = <FLOAT64_t *> sparse_struct.z
+
+        valx = <FLOAT64_t *> PyMem_Malloc(nnz * sizeof(FLOAT64_t))
+
+        if not valx:
+            PyMem_Free(ind)
+            PyMem_Free(row)
+            PyMem_Free(valx)
+
+            raise MemoryError()
+
+        valz = <FLOAT64_t *> PyMem_Malloc(nnz * sizeof(FLOAT64_t))
+
+        if not valz:
+            PyMem_Free(ind)
+            PyMem_Free(row)
+            PyMem_Free(valx)
+            PyMem_Free(valz)
+
+            raise MemoryError()
+
+        for k from 0 <= k < nnz:
+            valx[k] = valx_cholmod[k]
+            valz[k] = valz_cholmod[k]
+
+
+
+    raise NotImplementedError('Complex case not implemented yet...')
+
+
+    return csc_mat
+
+
 cdef class CholmodCysparseSolver_INT32_t_COMPLEX128_t(CholmodSolverBase_INT32_t_COMPLEX128_t):
     ####################################################################################################################
     # INIT
     ####################################################################################################################
     def __cinit__(self, A, **kwargs):
-
         assert PySparseMatrix_Check(A), "Matrix A is not recognized as a CySparse sparse matrix"
 
         self.nrow = A.nrow
@@ -278,6 +497,7 @@ cdef class CholmodCysparseSolver_INT32_t_COMPLEX128_t(CholmodSolverBase_INT32_t_
         self.__specialized_solver_time += self.__matrix_transform_time
 
         # Control the matrix is fine
+        self.check_common_attributes()
         self.check_matrix()
 
     ####################################################################################################################

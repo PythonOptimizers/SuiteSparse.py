@@ -90,6 +90,12 @@ cdef class Solver_INT64_t_COMPLEX128_t:
     def set_verbosity(self, verbosity_level):
         raise NotImplementedError()
 
+    cdef check_common_attributes(self):
+
+        assert self.nrow != -1, "You need to give explicitely the number of rows"
+        assert self.ncol != -1, "You need to give explicitely the number of cols"
+        assert self.nnz != -1, "You need to give explicitely the number of nnz"
+
     ####################################################################################################################
     # Special functions
     ####################################################################################################################

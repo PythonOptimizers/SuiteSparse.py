@@ -216,6 +216,8 @@ cdef class UmfpackSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         """
         Call this method in the child class to assert all is well with the matrix.
         """
+        # TODO: this is only valid for CySparse, PySparse... maybe use .shape? or migrate this test to specialized
+        # solvers?
         # test if we can use UMFPACK
         assert self.nrow == self.ncol, "Only square matrices are handled in UMFPACK"
 

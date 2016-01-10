@@ -197,9 +197,6 @@ cdef extern from "cholmod.h":
 
 cdef class CholmodSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
     cdef:
-        INT64_t nrow
-        INT64_t ncol
-        INT64_t nnz
 
         # CHOLMOD takes a C CSC matrix object
         INT64_t * ind

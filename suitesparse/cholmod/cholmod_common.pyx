@@ -60,3 +60,16 @@ CHOLMOD_SYS_DICT = {
         'CHOLMOD_P'    	: CHOLMOD_P,
         'CHOLMOD_Pt'   	: CHOLMOD_Pt
     }
+
+
+def cholmod_version():
+    version_string = "CHOLMOD version %s" % CHOLMOD_VERSION
+
+    return version_string
+
+def cholmod_detailed_version():
+    version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,
+                                         CHOLMOD_SUB_VERSION,
+                                         CHOLMOD_SUBSUB_VERSION,
+                                         CHOLMOD_DATE)
+    return version_string

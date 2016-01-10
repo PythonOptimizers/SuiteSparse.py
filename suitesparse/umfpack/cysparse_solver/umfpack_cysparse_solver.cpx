@@ -329,6 +329,7 @@ cdef class UmfpackCysparseSolver_@index@_@type@(UmfpackSolverBase_@index@_@type@
         self.__specialized_solver_time += self.__matrix_transform_time
 
         # Control the matrix is fine
+        self.check_common_attributes()
         self.check_matrix()
 
     ####################################################################################################################

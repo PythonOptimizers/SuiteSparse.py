@@ -345,6 +345,8 @@ packages_list = ['suitesparse',
             'suitesparse.common_types',
             'suitesparse.cholmod',
             'suitesparse.cholmod.generic_solver',
+            'suitesparse.umfpack',
+            'suitesparse.umfpack.generic_solver',
             'tests'
             ]
 

@@ -197,9 +197,6 @@ cdef extern from "cholmod.h":
 
 cdef class CholmodSolverBase_@index@_@type@(Solver_@index@_@type@):
     cdef:
-        @index@ nrow
-        @index@ ncol
-        @index@ nnz
 
         # CHOLMOD takes a C CSC matrix object
         @index@ * ind

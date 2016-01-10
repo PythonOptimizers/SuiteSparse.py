@@ -197,9 +197,6 @@ cdef extern from "cholmod.h":
 
 cdef class CholmodSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
     cdef:
-        INT32_t nrow
-        INT32_t ncol
-        INT32_t nnz
 
         # CHOLMOD takes a C CSC matrix object
         INT32_t * ind
