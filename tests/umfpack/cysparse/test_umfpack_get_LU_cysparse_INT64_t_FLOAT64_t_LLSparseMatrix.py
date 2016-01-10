@@ -62,7 +62,9 @@ class CySparseUmfpackget_LUNoSymmetryNoZero_LLSparseMatrix_INT64_t_FLOAT64_t_Tes
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+
+                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f , rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+
 
 #######################################################################
 # Case: store_symmetry == True, Store_zero==False
@@ -106,7 +108,8 @@ class CySparseUmfpackget_LUWithSymmetryNoZero_LLSparseMatrix_INT64_t_FLOAT64_t_T
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
 
 
 #######################################################################
@@ -149,7 +152,9 @@ class CySparseUmfpackget_LUNoSymmetrySWithZero_LLSparseMatrix_INT64_t_FLOAT64_t_
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+
+
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
 
 
 #######################################################################
@@ -194,7 +199,9 @@ class CySparseUmfpackget_LUWithSymmetrySWithZero_LLSparseMatrix_INT64_t_FLOAT64_
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+
+
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
 
 
 if __name__ == '__main__':

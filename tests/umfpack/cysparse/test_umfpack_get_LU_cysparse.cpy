@@ -70,7 +70,11 @@ YOU SHOULD ADD YOUR NEW MATRIX CLASS HERE
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+{% if type in complex_list %}
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f + %f j , rhs[%d, %d] = %f + %f j" % (i,j, lhs[i, j].real, lhs[i, j].imag, i, j, rhs[i, j].real, rhs[i, j].imag))
+{% else %}
+                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f , rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+{% endif %}
 
 #######################################################################
 # Case: store_symmetry == True, Store_zero==False
@@ -122,8 +126,11 @@ YOU SHOULD ADD YOUR NEW MATRIX CLASS HERE
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
-
+{% if type in complex_list %}
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f + %f j , rhs[%d, %d] = %f + %f j" % (i,j, lhs[i, j].real, lhs[i, j].imag, i, j, rhs[i, j].real, rhs[i, j].imag))
+{% else %}
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+{% endif %}
 
 #######################################################################
 # Case: store_symmetry == False, Store_zero==True
@@ -173,8 +180,12 @@ YOU SHOULD ADD YOUR NEW MATRIX CLASS HERE
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+{% if type in complex_list %}
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f + %f j , rhs[%d, %d] = %f + %f j" % (i,j, lhs[i, j].real, lhs[i, j].imag, i, j, rhs[i, j].real, rhs[i, j].imag))
+{% else %}
 
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+{% endif %}
 
 #######################################################################
 # Case: store_symmetry == True, Store_zero==True
@@ -226,8 +237,12 @@ YOU SHOULD ADD YOUR NEW MATRIX CLASS HERE
 
         for i in xrange(SIZE):
             for j in xrange(SIZE):
-                self.assertTrue(lhs[i, j] - rhs[i, j] < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+{% if type in complex_list %}
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f + %f j , rhs[%d, %d] = %f + %f j" % (i,j, lhs[i, j].real, lhs[i, j].imag, i, j, rhs[i, j].real, rhs[i, j].imag))
+{% else %}
 
+                self.assertTrue(abs(lhs[i, j] - rhs[i, j]) < EPS, "lhs[%d, %d] =? %f, rhs[%d, %d] = %f" % (i,j, lhs[i, j], i, j, rhs[i, j]))
+{% endif %}
 
 if __name__ == '__main__':
     unittest.main()
