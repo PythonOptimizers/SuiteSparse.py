@@ -14,7 +14,7 @@ the `SuiteSparse` library, you'll very quickly be able to use `SuiteSparse.py` t
 
 ## Announcements
 
-Working on `UMFPACK`, 'CHOLMOD' and 'SPQR'. This **only** works for `CySparse` sparse matrices for the moment.
+Working on `UMFPACK`, `CHOLMOD` and `SPQR`. This **only** works for `CySparse` sparse matrices for the moment.
 
 Nikolaj
 
