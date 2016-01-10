@@ -1,0 +1,14 @@
+from suitesparse.cholmod.cholmod_solver_base_@index@_@type@ cimport CholmodSolverBase_@index@_@type@
+
+from cysparse.sparse.csc_mat_matrices.csc_mat_@index@_@type@ cimport CSCSparseMatrix_@index@_@type@
+
+# external definition of this type
+ctypedef long SuiteSparse_long # This is exactly CySparse's INT64_t
+
+
+cdef class CholmodCysparseSolver_@index@_@type@(CholmodSolverBase_@index@_@type@):
+    cdef:
+        # Matrix A in CSC format
+        CSCSparseMatrix_@index@_@type@ csc_mat
+
+        float __matrix_transform_time

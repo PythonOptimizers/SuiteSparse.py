@@ -7,3 +7,4 @@ cdef class UmfpackCysparseSolver_@index@_@type@(UmfpackSolverBase_@index@_@type@
         # Matrix A in CSC format
         CSCSparseMatrix_@index@_@type@ csc_mat
 
+        float __matrix_transform_time

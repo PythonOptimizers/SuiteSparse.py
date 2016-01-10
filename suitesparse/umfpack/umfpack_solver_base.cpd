@@ -10,9 +10,6 @@ cdef extern from "umfpack.h":
 
 cdef class UmfpackSolverBase_@index@_@type@(Solver_@index@_@type@):
     cdef:
-        @index@ nrow
-        @index@ ncol
-        @index@ nnz
 
         # UMFPACK takes a C CSC matrix object
         @index@ * ind

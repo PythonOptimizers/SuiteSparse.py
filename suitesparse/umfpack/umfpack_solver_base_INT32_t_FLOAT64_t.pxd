@@ -10,9 +10,6 @@ cdef extern from "umfpack.h":
 
 cdef class UmfpackSolverBase_INT32_t_FLOAT64_t(Solver_INT32_t_FLOAT64_t):
     cdef:
-        INT32_t nrow
-        INT32_t ncol
-        INT32_t nnz
 
         # UMFPACK takes a C CSC matrix object
         INT32_t * ind

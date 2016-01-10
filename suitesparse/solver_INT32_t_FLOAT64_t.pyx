@@ -5,7 +5,6 @@ from cpython cimport Py_INCREF, Py_DECREF
 import time
 
 # TODO: add stats
-# TODO: add timing
 
 cdef class Solver_INT32_t_FLOAT64_t:
     def __cinit__(self, A, **kwargs):
@@ -23,6 +22,7 @@ cdef class Solver_INT32_t_FLOAT64_t:
         self.__solve_time = 0.0
         self.__analyze_time = 0.0
         self.__factorize_time = 0.0
+        self.__specialized_solver_time = 0.0
 
     
     @property
@@ -49,6 +49,8 @@ cdef class Solver_INT32_t_FLOAT64_t:
     # Common functions
     ####################################################################################################################
     def solve(self, *args, **kwargs):
+
+        self.factorize()
 
         start_time = time.clock()
         # b could be a sparse/denses matrix/vector
@@ -83,6 +85,18 @@ cdef class Solver_INT32_t_FLOAT64_t:
             self.__factorized = True
 
     ####################################################################################################################
+    # Helpers
+    ####################################################################################################################
+    def set_verbosity(self, verbosity_level):
+        raise NotImplementedError()
+
+    cdef check_common_attributes(self):
+
+        assert self.nrow != -1, "You need to give explicitely the number of rows"
+        assert self.ncol != -1, "You need to give explicitely the number of cols"
+        assert self.nnz != -1, "You need to give explicitely the number of nnz"
+
+    ####################################################################################################################
     # Special functions
     ####################################################################################################################
     def __call__(self, B):
@@ -110,9 +124,12 @@ cdef class Solver_INT32_t_FLOAT64_t:
         lines.append("Performance:")
         lines.append("------------")
         lines.append("")
-        lines.append("Analyze: %f" % self.__analyze_time)
-        lines.append("Factorize: %f" % self.__factorize_time)
-        lines.append("Solve: %f" % self.__solve_time)
+        lines.append("Analyze: %f secs" % self.__analyze_time)
+        lines.append("Factorize: %f secs" % self.__factorize_time)
+        lines.append("Solve: %f secs" % self.__solve_time)
+        lines.append("Specialized solver: %f secs" % self.__specialized_solver_time)
+        lines.append("______________________")
+        lines.append("Total: %f" % (self.__analyze_time + self.__factorize_time + self.__solve_time + self.__specialized_solver_time))
         lines.append("")
         lines.append("Specialized statistics")
         lines.append("======================")

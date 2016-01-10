@@ -3,13 +3,34 @@ from cysparse.sparse.ll_mat import *
 
 import numpy as np
 
-A = ArrowheadLLSparseMatrix(ncol=4, nrow=4, dtype=COMPLEX128_T)
+import time
+
+size = 5
+itype = INT64_T
+dtype = COMPLEX128_T
+
+np_dtype = np.complex128
+
+start_time = time.clock()
+A = ArrowheadLLSparseMatrix(ncol=size, nrow=size, dtype=dtype, itype=itype)
+
+print "construction time for matrix A : %f" % (time.clock() - start_time)
+
+start_time = time.clock()
 
 s = UmfpackSolver(A, verbose=True)
 
-b = np.ones(4, dtype=np.complex128)
+print "construction time for solver A : %f" % (time.clock() - start_time)
 
+
+start_time = time.clock()
+b = np.ones(size, dtype=np_dtype)
+print "construction time for np vector : %f" % (time.clock() - start_time)
+
+
+start_time = time.clock()
 sol = s.solve(b)
+print "solve time  : %f" % (time.clock() - start_time)
 
 print sol
 
@@ -33,8 +54,8 @@ print s.stats()
 
 print s.report_info()
 
-import sys
-sys.exit(0)
+#import sys
+#sys.exit(0)
 
 print L
 print U
@@ -60,12 +81,12 @@ print np.dot(L.to_ndarray(), U.to_ndarray())
 
 #sys.exit(-1)
 
-P_mat = NewPermutationLLSparseMatrix(P=P, size=3, dtype=dtype, itype=itype)
+P_mat = PermutationLLSparseMatrix(P=P, size=size, dtype=dtype, itype=itype)
 
 
 print P_mat
 
-Q_mat = NewPermutationLLSparseMatrix(P=Q, size=3, dtype=dtype, itype=itype)
+Q_mat = PermutationLLSparseMatrix(P=Q, size=size, dtype=dtype, itype=itype)
 
 print Q_mat
 
@@ -75,12 +96,12 @@ print R.dtype
 
 if do_recip:
     #R_mat = NewBandLLSparseMatrix(diag_coeff=[0], numpy_arrays=[R], size=3, dtype=dtype, itype=itype)
-    R_mat = NewLLSparseMatrix(size=3, dtype=dtype, itype=itype)
-    for i in xrange(3):
+    R_mat = LLSparseMatrix(size=size, dtype=dtype, itype=itype)
+    for i in xrange(size):
         R_mat[i, i] = R[i]
 else:
-    R_mat = NewLLSparseMatrix(size=3, dtype=dtype, itype=itype)
-    for i in xrange(3):
+    R_mat = LLSparseMatrix(size=size, dtype=dtype, itype=itype)
+    for i in xrange(size):
         R_mat[i, i] = 1/R[i]
 
 print R_mat

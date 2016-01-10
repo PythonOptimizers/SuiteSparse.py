@@ -10,9 +10,6 @@ cdef extern from "umfpack.h":
 
 cdef class UmfpackSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
     cdef:
-        INT64_t nrow
-        INT64_t ncol
-        INT64_t nnz
 
         # UMFPACK takes a C CSC matrix object
         INT64_t * ind

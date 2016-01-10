@@ -40,7 +40,7 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 ## What is implemented?
 
 - [x] UMFPACK Versions 5.7.1 (Oct 10, 2014)
-- [ ] CHOLMOD
+- [x] CHOLMOD Versions 3.0.3 (Oct 23, 2014)
 - [ ] SPQR
 - [ ] KLU
 - [ ] BTF
@@ -51,6 +51,11 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 
 ## Release history
 
+- Version 0.1.0 released on Jan 10, 2016
+  
+  Added tests (48) for basic UMFPACK get_LU().
+  Introduced CHOLMOD.
+  
 - Version 0.0.1 released on Dec 31, 2015
 
   Added basic UMFPACK for CySparse LLSparseMatrix matrices.

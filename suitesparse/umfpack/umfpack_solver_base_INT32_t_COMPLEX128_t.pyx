@@ -174,6 +174,9 @@ cdef class UmfpackSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
         else:
             self.set_verbosity(0)
 
+        # set default parameters for control
+        umfpack_zi_defaults(<double *>&self.control)
+
 
     ####################################################################################################################
     # FREE MEMORY
@@ -219,6 +222,8 @@ cdef class UmfpackSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
         """
         Call this method in the child class to assert all is well with the matrix.
         """
+        # TODO: this is only valid for CySparse, PySparse... maybe use .shape? or migrate this test to specialized
+        # solvers?
         # test if we can use UMFPACK
         assert self.nrow == self.ncol, "Only square matrices are handled in UMFPACK"
 
@@ -337,8 +342,6 @@ cdef class UmfpackSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
             raise ValueError('umfpack_sys must be in' % UMFPACK_SYS_DICT.keys())
 
         self.control[UMFPACK_IRSTEP] = irsteps
-
-        self.factorize()
 
         cdef cnp.ndarray[cnp.npy_complex128, ndim=1, mode='c'] sol = np.empty(self.ncol, dtype=np.complex128)
 
