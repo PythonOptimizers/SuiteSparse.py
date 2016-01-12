@@ -804,7 +804,7 @@ typedef long __pyx_t_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLE
 
 /*--- Type declarations ---*/
 struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t;
-struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t;
+struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t;
 
 /* "suitesparse/common_types/suitesparse_types.pxd":3
  * 
@@ -891,11 +891,11 @@ struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMP
 /* "suitesparse/cholmod/cholmod_solver_base_INT32_t_COMPLEX128_t.pxd":198
  * 
  * 
- * cdef class CholmodSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):             # <<<<<<<<<<<<<<
+ * cdef class CHOLMODSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):             # <<<<<<<<<<<<<<
  *     cdef:
  * 
  */
-struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t {
+struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t {
   struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t __pyx_base;
   cholmod_common *common_struct;
   cholmod_sparse *sparse_struct;
@@ -921,18 +921,18 @@ static struct __pyx_vtabstruct_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solve
 /* "suitesparse/cholmod/cholmod_solver_base_INT32_t_COMPLEX128_t.pyx":301
  * 
  * 
- * cdef class CholmodSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):             # <<<<<<<<<<<<<<
+ * cdef class CHOLMODSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):             # <<<<<<<<<<<<<<
  *     """
  * 
  */
 
-struct __pyx_vtabstruct_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t {
+struct __pyx_vtabstruct_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t {
   struct __pyx_vtabstruct_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t __pyx_base;
-  int (*check_common)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch);
-  int (*check_matrix)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch);
-  int (*check_factor)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch);
+  int (*check_common)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch);
+  int (*check_matrix)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch);
+  int (*check_factor)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch);
 };
-static struct __pyx_vtabstruct_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t;
+static struct __pyx_vtabstruct_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t;
 
 /* --- Runtime support code (head) --- */
 #ifndef CYTHON_REFNANNY
@@ -1346,9 +1346,9 @@ static PyTypeObject *__Pyx_ImportType(const char *module_name, const char *class
 
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
-static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
+static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch); /* proto*/
 
 /* Module declarations from 'suitesparse.common_types.suitesparse_types' */
 
@@ -1385,7 +1385,7 @@ static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
 static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *, char *, char *, int *); /*proto*/
 
 /* Module declarations from 'suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t' */
-static PyTypeObject *__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t = 0;
+static PyTypeObject *__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t = 0;
 static cholmod_dense __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_numpy_ndarray_to_cholmod_dense(PyArrayObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_double = { "double", NULL, sizeof(double), { 0 }, 0, 'R', 0, 0 };
 static __Pyx_StructField __Pyx_StructFields_nn_npy_complex128[] = {
@@ -1451,12 +1451,12 @@ static char __pyx_k_set_verbosity[] = "set_verbosity";
 static char __pyx_k_AttributeError[] = "AttributeError";
 static char __pyx_k_Matrix_library[] = "Matrix library:";
 static char __pyx_k_CHOLMOD_VERSION[] = "CHOLMOD_VERSION";
-static char __pyx_k_cholmod_version[] = "cholmod_version";
+static char __pyx_k_CHOLMOD_version[] = "CHOLMOD_version";
 static char __pyx_k_CHOLMOD_SYS_DICT[] = "CHOLMOD_SYS_DICT";
 static char __pyx_k_specialized_stats[] = "_specialized_stats";
 static char __pyx_k_NotImplementedError[] = "NotImplementedError";
 static char __pyx_k_cholmod_common_struct[] = "cholmod_common_struct";
-static char __pyx_k_cholmod_detailed_version[] = "cholmod_detailed_version";
+static char __pyx_k_CHOLMOD_detailed_version[] = "CHOLMOD_detailed_version";
 static char __pyx_k_reset_default_parameters[] = "reset_default_parameters";
 static char __pyx_k_array_dimensions_must_agree[] = "array dimensions must agree";
 static char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
@@ -1478,6 +1478,8 @@ static PyObject *__pyx_n_s_CHOLMOD;
 static PyObject *__pyx_n_s_CHOLMOD_A;
 static PyObject *__pyx_n_s_CHOLMOD_SYS_DICT;
 static PyObject *__pyx_n_s_CHOLMOD_VERSION;
+static PyObject *__pyx_n_s_CHOLMOD_detailed_version;
+static PyObject *__pyx_n_s_CHOLMOD_version;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
 static PyObject *__pyx_kp_s_Internal_CSC_matrix_ill_formatte;
@@ -1496,9 +1498,7 @@ static PyObject *__pyx_n_s_b;
 static PyObject *__pyx_n_s_check_common;
 static PyObject *__pyx_n_s_check_factor;
 static PyObject *__pyx_n_s_check_matrix;
-static PyObject *__pyx_n_s_cholmod_detailed_version;
 static PyObject *__pyx_n_s_cholmod_sys;
-static PyObject *__pyx_n_s_cholmod_version;
 static PyObject *__pyx_n_s_complex128;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_empty;
@@ -1520,32 +1520,32 @@ static PyObject *__pyx_n_s_specialized_stats;
 static PyObject *__pyx_n_s_suitesparse_cholmod_cholmod_comm;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t___cinit__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
-static void __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_2__dealloc__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_4reset_default_parameters(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_6check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_8check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_10set_verbosity(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_verbosity_level); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_12check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_14print_sparse_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_16print_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_18print_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_20request_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_24_analyze(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_26_factorize(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_28_solve(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyArrayObject *__pyx_v_b, PyObject *__pyx_v_cholmod_sys); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_30_stats(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t___cinit__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value); /* proto */
+static void __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_2__dealloc__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_4reset_default_parameters(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_6check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_8check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_10set_verbosity(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_verbosity_level); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_12check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_14print_sparse_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_16print_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_18print_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_20request_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_24_analyze(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_26_factorize(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_28_solve(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyArrayObject *__pyx_v_b, PyObject *__pyx_v_cholmod_sys); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_30_stats(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
-static PyObject *__pyx_tp_new_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_int_0;
 static PyObject *__pyx_int_3;
 static PyObject *__pyx_tuple_;
@@ -1734,12 +1734,12 @@ static PyArrayObject *__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32
  *     ####################################################################################################################
  *     def __cinit__(self, A, **kwargs):             # <<<<<<<<<<<<<<
  *         self.__solver_name = 'CHOLMOD'
- *         self.__solver_version = CholmodSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
+ *         self.__solver_version = CHOLMODSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
  */
 
 /* Python wrapper */
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_A = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   int __pyx_lineno = 0;
@@ -1782,11 +1782,11 @@ static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 315; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t___cinit__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_A, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t___cinit__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_A, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_kwargs);
@@ -1794,7 +1794,7 @@ static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   return __pyx_r;
 }
 
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t___cinit__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t___cinit__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_A, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -1810,7 +1810,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
  *     ####################################################################################################################
  *     def __cinit__(self, A, **kwargs):
  *         self.__solver_name = 'CHOLMOD'             # <<<<<<<<<<<<<<
- *         self.__solver_version = CholmodSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
+ *         self.__solver_version = CHOLMODSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
  * 
  */
   __Pyx_INCREF(__pyx_n_s_CHOLMOD);
@@ -1822,11 +1822,11 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   /* "suitesparse/cholmod/cholmod_solver_base_INT32_t_COMPLEX128_t.pyx":317
  *     def __cinit__(self, A, **kwargs):
  *         self.__solver_name = 'CHOLMOD'
- *         self.__solver_version = CholmodSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION             # <<<<<<<<<<<<<<
+ *         self.__solver_version = CHOLMODSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION             # <<<<<<<<<<<<<<
  * 
  *         if self.__verbose:
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t), __pyx_n_s_CHOLMOD_VERSION); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t), __pyx_n_s_CHOLMOD_VERSION); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   if (!(likely(PyString_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "str", Py_TYPE(__pyx_t_1)->tp_name), 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 317; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GIVEREF(__pyx_t_1);
@@ -1836,7 +1836,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   __pyx_t_1 = 0;
 
   /* "suitesparse/cholmod/cholmod_solver_base_INT32_t_COMPLEX128_t.pyx":319
- *         self.__solver_version = CholmodSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
+ *         self.__solver_version = CHOLMODSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
  * 
  *         if self.__verbose:             # <<<<<<<<<<<<<<
  *             self.set_verbosity(3)
@@ -1860,7 +1860,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
     /* "suitesparse/cholmod/cholmod_solver_base_INT32_t_COMPLEX128_t.pyx":319
- *         self.__solver_version = CholmodSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
+ *         self.__solver_version = CHOLMODSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
  * 
  *         if self.__verbose:             # <<<<<<<<<<<<<<
  *             self.set_verbosity(3)
@@ -1947,7 +1947,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
  *     ####################################################################################################################
  *     def __cinit__(self, A, **kwargs):             # <<<<<<<<<<<<<<
  *         self.__solver_name = 'CHOLMOD'
- *         self.__solver_version = CholmodSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
+ *         self.__solver_version = CHOLMODSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
  */
 
   /* function exit code */
@@ -1957,7 +1957,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -1973,19 +1973,19 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print___get__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print___get__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2003,7 +2003,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.c_print.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.c_print.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2020,19 +2020,19 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_2__set__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_2__set__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -2047,7 +2047,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.c_print.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.c_print.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2063,19 +2063,19 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise___get__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise___get__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2093,7 +2093,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.precise.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.precise.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2110,19 +2110,19 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_2__set__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_2__set__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -2137,7 +2137,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.precise.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.precise.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2153,19 +2153,19 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_1__get__(PyObject *__pyx_v_self); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_1__get__(PyObject *__pyx_v_self) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_1__get__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch___get__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch___get__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch___get__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2183,7 +2183,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.try_catch.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.try_catch.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2200,19 +2200,19 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
-static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_3__set__(PyObject *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__set__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_2__set__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_value));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_2__set__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_value));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value) {
+static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_2__set__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -2227,7 +2227,7 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
   __pyx_r = 0;
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.try_catch.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.try_catch.__set__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = -1;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2243,17 +2243,17 @@ static int __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX
  */
 
 /* Python wrapper */
-static void __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_3__dealloc__(PyObject *__pyx_v_self) {
+static void __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_3__dealloc__(PyObject *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
-  __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_2__dealloc__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_2__dealloc__(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-static void __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_2__dealloc__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static void __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_2__dealloc__(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
@@ -2305,19 +2305,19 @@ static void __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLE
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_5reset_default_parameters(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_5reset_default_parameters(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_5reset_default_parameters(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_5reset_default_parameters(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("reset_default_parameters (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_4reset_default_parameters(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_4reset_default_parameters(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_4reset_default_parameters(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_4reset_default_parameters(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("reset_default_parameters", 0);
@@ -2354,8 +2354,8 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  * 
  */
 
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7check_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7check_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2373,7 +2373,7 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_check_common); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 387; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7check_common)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7check_common)) {
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -2426,7 +2426,7 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_WriteUnraisable("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.check_common", __pyx_clineno, __pyx_lineno, __pyx_filename, 0, 0);
+  __Pyx_WriteUnraisable("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_common", __pyx_clineno, __pyx_lineno, __pyx_filename, 0, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2434,19 +2434,19 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7check_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7check_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7check_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7check_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("check_common (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_6check_common(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_6check_common(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_6check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_6check_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2455,7 +2455,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("check_common", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_common(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 387; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_common(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 387; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2464,7 +2464,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.check_common", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_common", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2480,8 +2480,8 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  *             return cholmod_check_factor(self.factor_struct, self.common_struct)
  */
 
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9check_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9check_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2499,7 +2499,7 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_check_factor); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9check_factor)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9check_factor)) {
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -2581,7 +2581,7 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_WriteUnraisable("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.check_factor", __pyx_clineno, __pyx_lineno, __pyx_filename, 0, 0);
+  __Pyx_WriteUnraisable("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_factor", __pyx_clineno, __pyx_lineno, __pyx_filename, 0, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2589,19 +2589,19 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9check_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9check_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9check_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9check_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("check_factor (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_8check_factor(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_8check_factor(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_8check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_8check_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2610,7 +2610,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("check_factor", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_factor(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_factor(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 390; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2619,7 +2619,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.check_factor", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_factor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2636,19 +2636,19 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_11set_verbosity(PyObject *__pyx_v_self, PyObject *__pyx_v_verbosity_level); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_11set_verbosity(PyObject *__pyx_v_self, PyObject *__pyx_v_verbosity_level) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_11set_verbosity(PyObject *__pyx_v_self, PyObject *__pyx_v_verbosity_level); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_11set_verbosity(PyObject *__pyx_v_self, PyObject *__pyx_v_verbosity_level) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_verbosity (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_10set_verbosity(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_verbosity_level));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_10set_verbosity(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), ((PyObject *)__pyx_v_verbosity_level));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_10set_verbosity(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_verbosity_level) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_10set_verbosity(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_verbosity_level) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_verbosity", 0);
@@ -2668,8 +2668,8 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  *         Check if internal CSC matrix is OK.
  */
 
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_13check_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_13check_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, int __pyx_skip_dispatch) {
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2687,7 +2687,7 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
   else if (unlikely(Py_TYPE(((PyObject *)__pyx_v_self))->tp_dictoffset != 0)) {
     __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_check_matrix); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_1);
-    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_13check_matrix)) {
+    if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_13check_matrix)) {
       __Pyx_INCREF(__pyx_t_1);
       __pyx_t_3 = __pyx_t_1; __pyx_t_4 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -2752,7 +2752,7 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_WriteUnraisable("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.check_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename, 0, 0);
+  __Pyx_WriteUnraisable("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename, 0, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -2760,20 +2760,20 @@ static int __pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX1
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_13check_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_12check_matrix[] = "\n        Check if internal CSC matrix is OK.\n\n        Returns:\n            ``True`` if everything is OK, ``False`` otherwise. Depending on the verbosity, some error messages can\n            be displayed on ``sys.stdout``.\n        ";
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_13check_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_13check_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_12check_matrix[] = "\n        Check if internal CSC matrix is OK.\n\n        Returns:\n            ``True`` if everything is OK, ``False`` otherwise. Depending on the verbosity, some error messages can\n            be displayed on ``sys.stdout``.\n        ";
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_13check_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("check_matrix (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_12check_matrix(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_12check_matrix(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_12check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_12check_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2782,7 +2782,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("check_matrix", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_matrix(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_PyBool_FromLong(__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_matrix(__pyx_v_self, 1)); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2791,7 +2791,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.check_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2808,19 +2808,19 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_15print_sparse_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_15print_sparse_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_15print_sparse_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_15print_sparse_matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("print_sparse_matrix (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_14print_sparse_matrix(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_14print_sparse_matrix(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_14print_sparse_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_14print_sparse_matrix(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2854,7 +2854,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.print_sparse_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.print_sparse_matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2871,19 +2871,19 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_17print_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_17print_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_17print_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_17print_factor(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("print_factor (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_16print_factor(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_16print_factor(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_16print_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_16print_factor(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -2917,7 +2917,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t.print_factor", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t.print_factor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -2934,19 +2934,19 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_19print_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_19print_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_19print_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_19print_common(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("print_common (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_18print_common(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_18print_common(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_18print_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_18print_common(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("print_common", 0);
@@ -2984,20 +2984,20 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_21request_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_20request_GPU[] = "\n        GPU-acceleration is requested.\n\n        If GPU processing is requested but there is no GPU present, CHOLMOD will continue using the CPU only.\n        Consequently it is **always safe** to request GPU processing.\n\n        ";
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_21request_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_21request_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_20request_GPU[] = "\n        GPU-acceleration is requested.\n\n        If GPU processing is requested but there is no GPU present, CHOLMOD will continue using the CPU only.\n        Consequently it is **always safe** to request GPU processing.\n\n        ";
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_21request_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("request_GPU (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_20request_GPU(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_20request_GPU(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_20request_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_20request_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("request_GPU", 0);
@@ -3035,20 +3035,20 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_23prohibit_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU[] = "\n        GPU-acceleration is explicitely prohibited.\n\n        ";
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_23prohibit_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_23prohibit_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU[] = "\n        GPU-acceleration is explicitely prohibited.\n\n        ";
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_23prohibit_GPU(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("prohibit_GPU (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("prohibit_GPU", 0);
@@ -3086,8 +3086,8 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_25_analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_25_analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_25_analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_25_analyze(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -3096,7 +3096,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "_analyze", 1))) return NULL;
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_24_analyze(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_24_analyze(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -3105,7 +3105,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_24_analyze(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_24_analyze(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_analyze", 0);
@@ -3143,8 +3143,8 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_27_factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_27_factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_27_factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_27_factorize(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -3153,7 +3153,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "_factorize", 1))) return NULL;
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_26_factorize(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_26_factorize(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -3162,7 +3162,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_26_factorize(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_26_factorize(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("_factorize", 0);
@@ -3200,8 +3200,8 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_29_solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_29_solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_29_solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_29_solve(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_b = 0;
   PyObject *__pyx_v_cholmod_sys = 0;
   int __pyx_lineno = 0;
@@ -3252,12 +3252,12 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("_solve", 0, 1, 2, PyTuple_GET_SIZE(__pyx_args)); {__pyx_filename = __pyx_f[0]; __pyx_lineno = 451; __pyx_clineno = __LINE__; goto __pyx_L3_error;}
   __pyx_L3_error:;
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t._solve", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t._solve", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_b), __pyx_ptype_5numpy_ndarray, 1, "b", 0))) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 451; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_28_solve(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_b, __pyx_v_cholmod_sys);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_28_solve(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_b, __pyx_v_cholmod_sys);
 
   /* function exit code */
   goto __pyx_L0;
@@ -3268,7 +3268,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_28_solve(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyArrayObject *__pyx_v_b, PyObject *__pyx_v_cholmod_sys) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_28_solve(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyArrayObject *__pyx_v_b, PyObject *__pyx_v_cholmod_sys) {
   npy_intp *__pyx_v_shape_b;
   npy_intp __pyx_v_dim_b;
   cholmod_dense __pyx_v_B;
@@ -3600,7 +3600,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_b.rcbuffer->pybuffer);
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_sol.rcbuffer->pybuffer);
   __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t._solve", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t._solve", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   goto __pyx_L2;
   __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_b.rcbuffer->pybuffer);
@@ -3621,9 +3621,9 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_31_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_30_stats[] = "\n        Returns a string with specialized statistics about the factorization.\n        ";
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_31_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_31_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_30_stats[] = "\n        Returns a string with specialized statistics about the factorization.\n        ";
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_31_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_args = 0;
   PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -3638,7 +3638,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   }
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_30_stats(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_30_stats(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -3647,7 +3647,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_30_stats(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_30_stats(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, PyObject *__pyx_v_args, PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_v_lines = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -3730,7 +3730,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t._stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t._stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_lines);
@@ -3748,9 +3748,9 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_33_specialized_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats[] = "\n        Returns a string with specialized statistics about the factorization.\n        ";
-static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_33_specialized_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_33_specialized_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats[] = "\n        Returns a string with specialized statistics about the factorization.\n        ";
+static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_33_specialized_stats(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   CYTHON_UNUSED PyObject *__pyx_v_args = 0;
   CYTHON_UNUSED PyObject *__pyx_v_kwargs = 0;
   PyObject *__pyx_r = 0;
@@ -3759,7 +3759,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   if (unlikely(__pyx_kwds) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "_specialized_stats", 1))) return NULL;
   __Pyx_INCREF(__pyx_args);
   __pyx_v_args = __pyx_args;
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats(((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)__pyx_v_self), __pyx_v_args, __pyx_v_kwargs);
 
   /* function exit code */
   __Pyx_XDECREF(__pyx_v_args);
@@ -3768,7 +3768,7 @@ static PyObject *__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats(CYTHON_UNUSED struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v_args, CYTHON_UNUSED PyObject *__pyx_v_kwargs) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3799,7 +3799,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_C
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t._specialized_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t._specialized_stats", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -5948,21 +5948,21 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
-static struct __pyx_vtabstruct_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t;
+static struct __pyx_vtabstruct_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t;
 
-static PyObject *__pyx_tp_new_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t(PyTypeObject *t, PyObject *a, PyObject *k) {
-  struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *p;
+static PyObject *__pyx_tp_new_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t(PyTypeObject *t, PyObject *a, PyObject *k) {
+  struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *p;
   PyObject *o = __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_new(t, a, k);
   if (unlikely(!o)) return 0;
-  p = ((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *)o);
-  p->__pyx_base.__pyx_vtab = (struct __pyx_vtabstruct_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t*)__pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t;
-  if (unlikely(__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_1__cinit__(o, a, k) < 0)) {
+  p = ((struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *)o);
+  p->__pyx_base.__pyx_vtab = (struct __pyx_vtabstruct_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t*)__pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t;
+  if (unlikely(__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_1__cinit__(o, a, k) < 0)) {
     Py_DECREF(o); o = 0;
   }
   return o;
 }
 
-static void __pyx_tp_dealloc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t(PyObject *o) {
+static void __pyx_tp_dealloc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t(PyObject *o) {
   #if PY_VERSION_HEX >= 0x030400a1
   if (unlikely(Py_TYPE(o)->tp_finalize) && !_PyGC_FINALIZED(o)) {
     if (PyObject_CallFinalizerFromDealloc(o)) return;
@@ -5973,32 +5973,32 @@ static void __pyx_tp_dealloc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_
     PyObject *etype, *eval, *etb;
     PyErr_Fetch(&etype, &eval, &etb);
     ++Py_REFCNT(o);
-    __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_3__dealloc__(o);
+    __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_3__dealloc__(o);
     --Py_REFCNT(o);
     PyErr_Restore(etype, eval, etb);
   }
   PyObject_GC_Track(o);
-  if (likely(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_dealloc(o); else __Pyx_call_next_tp_dealloc(o, __pyx_tp_dealloc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t);
+  if (likely(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_dealloc(o); else __Pyx_call_next_tp_dealloc(o, __pyx_tp_dealloc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t);
 }
 
-static int __pyx_tp_traverse_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t(PyObject *o, visitproc v, void *a) {
+static int __pyx_tp_traverse_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t(PyObject *o, visitproc v, void *a) {
   int e;
-  e = ((likely(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) ? ((__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_traverse) ? __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_traverse(o, v, a) : 0) : __Pyx_call_next_tp_traverse(o, v, a, __pyx_tp_traverse_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t)); if (e) return e;
+  e = ((likely(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) ? ((__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_traverse) ? __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_traverse(o, v, a) : 0) : __Pyx_call_next_tp_traverse(o, v, a, __pyx_tp_traverse_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t)); if (e) return e;
   return 0;
 }
 
-static int __pyx_tp_clear_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t(PyObject *o) {
-  if (likely(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) { if (__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_clear) __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_clear(o); } else __Pyx_call_next_tp_clear(o, __pyx_tp_clear_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t);
+static int __pyx_tp_clear_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t(PyObject *o) {
+  if (likely(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) { if (__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_clear) __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_clear(o); } else __Pyx_call_next_tp_clear(o, __pyx_tp_clear_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t);
   return 0;
 }
 
-static PyObject *__pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_c_print(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_1__get__(o);
+static PyObject *__pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_c_print(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_1__get__(o);
 }
 
-static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_c_print(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_c_print(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7c_print_3__set__(o, v);
+    return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7c_print_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -6006,13 +6006,13 @@ static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_CO
   }
 }
 
-static PyObject *__pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_precise(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_1__get__(o);
+static PyObject *__pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_precise(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_1__get__(o);
 }
 
-static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_precise(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_precise(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7precise_3__set__(o, v);
+    return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7precise_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -6020,13 +6020,13 @@ static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_CO
   }
 }
 
-static PyObject *__pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_try_catch(PyObject *o, CYTHON_UNUSED void *x) {
-  return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_1__get__(o);
+static PyObject *__pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_try_catch(PyObject *o, CYTHON_UNUSED void *x) {
+  return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_1__get__(o);
 }
 
-static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_try_catch(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
+static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_try_catch(PyObject *o, PyObject *v, CYTHON_UNUSED void *x) {
   if (v) {
-    return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9try_catch_3__set__(o, v);
+    return __pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9try_catch_3__set__(o, v);
   }
   else {
     PyErr_SetString(PyExc_NotImplementedError, "__del__");
@@ -6034,38 +6034,38 @@ static int __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_CO
   }
 }
 
-static PyMethodDef __pyx_methods_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t[] = {
-  {"reset_default_parameters", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_5reset_default_parameters, METH_NOARGS, 0},
-  {"check_common", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_7check_common, METH_NOARGS, 0},
-  {"check_factor", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_9check_factor, METH_NOARGS, 0},
-  {"set_verbosity", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_11set_verbosity, METH_O, 0},
-  {"check_matrix", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_13check_matrix, METH_NOARGS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_12check_matrix},
-  {"print_sparse_matrix", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_15print_sparse_matrix, METH_NOARGS, 0},
-  {"print_factor", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_17print_factor, METH_NOARGS, 0},
-  {"print_common", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_19print_common, METH_NOARGS, 0},
-  {"request_GPU", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_21request_GPU, METH_NOARGS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_20request_GPU},
-  {"prohibit_GPU", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_23prohibit_GPU, METH_NOARGS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU},
-  {"_analyze", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_25_analyze, METH_VARARGS|METH_KEYWORDS, 0},
-  {"_factorize", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_27_factorize, METH_VARARGS|METH_KEYWORDS, 0},
-  {"_solve", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_29_solve, METH_VARARGS|METH_KEYWORDS, 0},
-  {"_stats", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_31_stats, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_30_stats},
-  {"_specialized_stats", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_33_specialized_stats, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats},
+static PyMethodDef __pyx_methods_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t[] = {
+  {"reset_default_parameters", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_5reset_default_parameters, METH_NOARGS, 0},
+  {"check_common", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_7check_common, METH_NOARGS, 0},
+  {"check_factor", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_9check_factor, METH_NOARGS, 0},
+  {"set_verbosity", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_11set_verbosity, METH_O, 0},
+  {"check_matrix", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_13check_matrix, METH_NOARGS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_12check_matrix},
+  {"print_sparse_matrix", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_15print_sparse_matrix, METH_NOARGS, 0},
+  {"print_factor", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_17print_factor, METH_NOARGS, 0},
+  {"print_common", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_19print_common, METH_NOARGS, 0},
+  {"request_GPU", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_21request_GPU, METH_NOARGS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_20request_GPU},
+  {"prohibit_GPU", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_23prohibit_GPU, METH_NOARGS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_22prohibit_GPU},
+  {"_analyze", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_25_analyze, METH_VARARGS|METH_KEYWORDS, 0},
+  {"_factorize", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_27_factorize, METH_VARARGS|METH_KEYWORDS, 0},
+  {"_solve", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_29_solve, METH_VARARGS|METH_KEYWORDS, 0},
+  {"_stats", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_31_stats, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_30_stats},
+  {"_specialized_stats", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_33_specialized_stats, METH_VARARGS|METH_KEYWORDS, __pyx_doc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_32_specialized_stats},
   {0, 0, 0, 0}
 };
 
-static struct PyGetSetDef __pyx_getsets_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t[] = {
-  {(char *)"c_print", __pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_c_print, __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_c_print, 0, 0},
-  {(char *)"precise", __pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_precise, __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_precise, 0, 0},
-  {(char *)"try_catch", __pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_try_catch, __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_try_catch, 0, 0},
+static struct PyGetSetDef __pyx_getsets_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t[] = {
+  {(char *)"c_print", __pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_c_print, __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_c_print, 0, 0},
+  {(char *)"precise", __pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_precise, __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_precise, 0, 0},
+  {(char *)"try_catch", __pyx_getprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_try_catch, __pyx_setprop_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_try_catch, 0, 0},
   {0, 0, 0, 0, 0}
 };
 
-static PyTypeObject __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t = {
+static PyTypeObject __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t = {
   PyVarObject_HEAD_INIT(0, 0)
-  "suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CholmodSolverBase_INT32_t_COMPLEX128_t", /*tp_name*/
-  sizeof(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t), /*tp_basicsize*/
+  "suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t.CHOLMODSolverBase_INT32_t_COMPLEX128_t", /*tp_name*/
+  sizeof(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t), /*tp_basicsize*/
   0, /*tp_itemsize*/
-  __pyx_tp_dealloc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t, /*tp_dealloc*/
+  __pyx_tp_dealloc_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t, /*tp_dealloc*/
   0, /*tp_print*/
   0, /*tp_getattr*/
   0, /*tp_setattr*/
@@ -6087,15 +6087,15 @@ static PyTypeObject __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT3
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE|Py_TPFLAGS_HAVE_GC, /*tp_flags*/
   "\n\n    We follow the common use of Umfpack. In particular, we use the same names for the methods of this\n    class as their corresponding counter-parts in Umfpack.\n    ", /*tp_doc*/
-  __pyx_tp_traverse_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t, /*tp_traverse*/
-  __pyx_tp_clear_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t, /*tp_clear*/
+  __pyx_tp_traverse_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t, /*tp_traverse*/
+  __pyx_tp_clear_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t, /*tp_clear*/
   0, /*tp_richcompare*/
   0, /*tp_weaklistoffset*/
   0, /*tp_iter*/
   0, /*tp_iternext*/
-  __pyx_methods_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t, /*tp_methods*/
+  __pyx_methods_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t, /*tp_methods*/
   0, /*tp_members*/
-  __pyx_getsets_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t, /*tp_getset*/
+  __pyx_getsets_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t, /*tp_getset*/
   0, /*tp_base*/
   0, /*tp_dict*/
   0, /*tp_descr_get*/
@@ -6103,7 +6103,7 @@ static PyTypeObject __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT3
   0, /*tp_dictoffset*/
   0, /*tp_init*/
   0, /*tp_alloc*/
-  __pyx_tp_new_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t, /*tp_new*/
+  __pyx_tp_new_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t, /*tp_new*/
   0, /*tp_free*/
   0, /*tp_is_gc*/
   0, /*tp_bases*/
@@ -6148,6 +6148,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_CHOLMOD_A, __pyx_k_CHOLMOD_A, sizeof(__pyx_k_CHOLMOD_A), 0, 0, 1, 1},
   {&__pyx_n_s_CHOLMOD_SYS_DICT, __pyx_k_CHOLMOD_SYS_DICT, sizeof(__pyx_k_CHOLMOD_SYS_DICT), 0, 0, 1, 1},
   {&__pyx_n_s_CHOLMOD_VERSION, __pyx_k_CHOLMOD_VERSION, sizeof(__pyx_k_CHOLMOD_VERSION), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_detailed_version, __pyx_k_CHOLMOD_detailed_version, sizeof(__pyx_k_CHOLMOD_detailed_version), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_version, __pyx_k_CHOLMOD_version, sizeof(__pyx_k_CHOLMOD_version), 0, 0, 1, 1},
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor_2, __pyx_k_Format_string_allocated_too_shor_2, sizeof(__pyx_k_Format_string_allocated_too_shor_2), 0, 1, 0, 0},
   {&__pyx_kp_s_Internal_CSC_matrix_ill_formatte, __pyx_k_Internal_CSC_matrix_ill_formatte, sizeof(__pyx_k_Internal_CSC_matrix_ill_formatte), 0, 0, 1, 0},
@@ -6166,9 +6168,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_check_common, __pyx_k_check_common, sizeof(__pyx_k_check_common), 0, 0, 1, 1},
   {&__pyx_n_s_check_factor, __pyx_k_check_factor, sizeof(__pyx_k_check_factor), 0, 0, 1, 1},
   {&__pyx_n_s_check_matrix, __pyx_k_check_matrix, sizeof(__pyx_k_check_matrix), 0, 0, 1, 1},
-  {&__pyx_n_s_cholmod_detailed_version, __pyx_k_cholmod_detailed_version, sizeof(__pyx_k_cholmod_detailed_version), 0, 0, 1, 1},
   {&__pyx_n_s_cholmod_sys, __pyx_k_cholmod_sys, sizeof(__pyx_k_cholmod_sys), 0, 0, 1, 1},
-  {&__pyx_n_s_cholmod_version, __pyx_k_cholmod_version, sizeof(__pyx_k_cholmod_version), 0, 0, 1, 1},
   {&__pyx_n_s_complex128, __pyx_k_complex128, sizeof(__pyx_k_complex128), 0, 0, 1, 1},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_empty, __pyx_k_empty, sizeof(__pyx_k_empty), 0, 0, 1, 1},
@@ -6433,17 +6433,17 @@ PyMODINIT_FUNC PyInit_cholmod_solver_base_INT32_t_COMPLEX128_t(void)
   /*--- Type init code ---*/
   __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t = __Pyx_ImportType("suitesparse.solver_INT32_t_COMPLEX128_t", "Solver_INT32_t_COMPLEX128_t", sizeof(struct __pyx_obj_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t), 1); if (unlikely(!__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_vtabptr_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t = (struct __pyx_vtabstruct_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t*)__Pyx_GetVtable(__pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t->tp_dict); if (unlikely(!__pyx_vtabptr_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t = &__pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t;
-  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t.__pyx_base = *__pyx_vtabptr_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t;
-  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t.check_common = (int (*)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch))__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_common;
-  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t.check_matrix = (int (*)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch))__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_matrix;
-  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t.check_factor = (int (*)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch))__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CholmodSolverBase_INT32_t_COMPLEX128_t_check_factor;
-  __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t.tp_base = __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t;
-  if (PyType_Ready(&__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t.tp_dict, __pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  if (PyObject_SetAttrString(__pyx_m, "CholmodSolverBase_INT32_t_COMPLEX128_t", (PyObject *)&__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t = &__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t;
+  __pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t = &__pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t;
+  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t.__pyx_base = *__pyx_vtabptr_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t;
+  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_common = (int (*)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch))__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_common;
+  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_matrix = (int (*)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch))__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_matrix;
+  __pyx_vtable_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t.check_factor = (int (*)(struct __pyx_obj_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t *, int __pyx_skip_dispatch))__pyx_f_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_38CHOLMODSolverBase_INT32_t_COMPLEX128_t_check_factor;
+  __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t.tp_base = __pyx_ptype_11suitesparse_27solver_INT32_t_COMPLEX128_t_Solver_INT32_t_COMPLEX128_t;
+  if (PyType_Ready(&__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t.tp_print = 0;
+  if (__Pyx_SetVtable(__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t.tp_dict, __pyx_vtabptr_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyObject_SetAttrString(__pyx_m, "CHOLMODSolverBase_INT32_t_COMPLEX128_t", (PyObject *)&__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 301; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t = &__pyx_type_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t;
   /*--- Type import code ---*/
   __pyx_ptype_7cpython_4type_type = __Pyx_ImportType(__Pyx_BUILTIN_MODULE_NAME, "type", 
   #if CYTHON_COMPILING_IN_PYPY
@@ -6466,7 +6466,7 @@ PyMODINIT_FUNC PyInit_cholmod_solver_base_INT32_t_COMPLEX128_t(void)
 
   /* "suitesparse/cholmod/cholmod_solver_base_INT32_t_COMPLEX128_t.pyx":2
  * 
- * from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, cholmod_version, cholmod_detailed_version             # <<<<<<<<<<<<<<
+ * from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, CHOLMOD_version, CHOLMOD_detailed_version             # <<<<<<<<<<<<<<
  * 
  * from libc.stdlib cimport malloc, free
  */
@@ -6475,12 +6475,12 @@ PyMODINIT_FUNC PyInit_cholmod_solver_base_INT32_t_COMPLEX128_t(void)
   __Pyx_INCREF(__pyx_n_s_CHOLMOD_SYS_DICT);
   __Pyx_GIVEREF(__pyx_n_s_CHOLMOD_SYS_DICT);
   PyList_SET_ITEM(__pyx_t_1, 0, __pyx_n_s_CHOLMOD_SYS_DICT);
-  __Pyx_INCREF(__pyx_n_s_cholmod_version);
-  __Pyx_GIVEREF(__pyx_n_s_cholmod_version);
-  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_cholmod_version);
-  __Pyx_INCREF(__pyx_n_s_cholmod_detailed_version);
-  __Pyx_GIVEREF(__pyx_n_s_cholmod_detailed_version);
-  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_cholmod_detailed_version);
+  __Pyx_INCREF(__pyx_n_s_CHOLMOD_version);
+  __Pyx_GIVEREF(__pyx_n_s_CHOLMOD_version);
+  PyList_SET_ITEM(__pyx_t_1, 1, __pyx_n_s_CHOLMOD_version);
+  __Pyx_INCREF(__pyx_n_s_CHOLMOD_detailed_version);
+  __Pyx_GIVEREF(__pyx_n_s_CHOLMOD_detailed_version);
+  PyList_SET_ITEM(__pyx_t_1, 2, __pyx_n_s_CHOLMOD_detailed_version);
   __pyx_t_2 = __Pyx_Import(__pyx_n_s_suitesparse_cholmod_cholmod_comm, __pyx_t_1, -1); if (unlikely(!__pyx_t_2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6488,13 +6488,13 @@ PyMODINIT_FUNC PyInit_cholmod_solver_base_INT32_t_COMPLEX128_t(void)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_CHOLMOD_SYS_DICT, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_cholmod_version); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_CHOLMOD_version); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cholmod_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CHOLMOD_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_cholmod_detailed_version); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_CHOLMOD_detailed_version); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cholmod_detailed_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CHOLMOD_detailed_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
@@ -6583,13 +6583,13 @@ PyMODINIT_FUNC PyInit_cholmod_solver_base_INT32_t_COMPLEX128_t(void)
   __pyx_t_4 = __Pyx_PyString_Format(__pyx_kp_s_s_s_s_s, __pyx_t_5); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t->tp_dict, __pyx_n_s_CHOLMOD_VERSION, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t->tp_dict, __pyx_n_s_CHOLMOD_VERSION, __pyx_t_4) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 307; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  PyType_Modified(__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CholmodSolverBase_INT32_t_COMPLEX128_t);
+  PyType_Modified(__pyx_ptype_11suitesparse_7cholmod_40cholmod_solver_base_INT32_t_COMPLEX128_t_CHOLMODSolverBase_INT32_t_COMPLEX128_t);
 
   /* "suitesparse/cholmod/cholmod_solver_base_INT32_t_COMPLEX128_t.pyx":2
  * 
- * from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, cholmod_version, cholmod_detailed_version             # <<<<<<<<<<<<<<
+ * from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, CHOLMOD_version, CHOLMOD_detailed_version             # <<<<<<<<<<<<<<
  * 
  * from libc.stdlib cimport malloc, free
  */

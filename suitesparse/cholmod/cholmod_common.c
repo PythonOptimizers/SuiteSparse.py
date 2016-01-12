@@ -561,10 +561,10 @@ static char __pyx_k_CHOLMOD_Pt[] = "CHOLMOD_Pt";
 static char __pyx_k_CHOLMOD_DLt[] = "CHOLMOD_DLt";
 static char __pyx_k_CHOLMOD_LDLt[] = "CHOLMOD_LDLt";
 static char __pyx_k_version_string[] = "version_string";
-static char __pyx_k_cholmod_version[] = "cholmod_version";
+static char __pyx_k_CHOLMOD_version[] = "CHOLMOD_version";
 static char __pyx_k_CHOLMOD_SYS_DICT[] = "CHOLMOD_SYS_DICT";
 static char __pyx_k_CHOLMOD_version_s[] = "CHOLMOD version %s";
-static char __pyx_k_cholmod_detailed_version[] = "cholmod_detailed_version";
+static char __pyx_k_CHOLMOD_detailed_version[] = "CHOLMOD_detailed_version";
 static char __pyx_k_home_nikolaj_Documents_WORK_Dom[] = "/home/nikolaj/Documents/WORK/Dominique/PROJECT/DECOUPLED_VERSION/SOLID/SuiteSparse.py/suitesparse/cholmod/cholmod_common.pyx";
 static char __pyx_k_suitesparse_cholmod_cholmod_comm[] = "suitesparse.cholmod.cholmod_common";
 static PyObject *__pyx_n_s_CHOLMOD_A;
@@ -577,17 +577,17 @@ static PyObject *__pyx_n_s_CHOLMOD_Lt;
 static PyObject *__pyx_n_s_CHOLMOD_P;
 static PyObject *__pyx_n_s_CHOLMOD_Pt;
 static PyObject *__pyx_n_s_CHOLMOD_SYS_DICT;
+static PyObject *__pyx_n_s_CHOLMOD_detailed_version;
+static PyObject *__pyx_n_s_CHOLMOD_version;
 static PyObject *__pyx_kp_s_CHOLMOD_version_s;
-static PyObject *__pyx_n_s_cholmod_detailed_version;
-static PyObject *__pyx_n_s_cholmod_version;
 static PyObject *__pyx_kp_s_home_nikolaj_Documents_WORK_Dom;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_kp_s_s_s_s_s;
 static PyObject *__pyx_n_s_suitesparse_cholmod_cholmod_comm;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_version_string;
-static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_version(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
-static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detailed_version(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_CHOLMOD_version(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
+static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2CHOLMOD_detailed_version(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_codeobj__2;
@@ -596,26 +596,26 @@ static PyObject *__pyx_codeobj__4;
 /* "suitesparse/cholmod/cholmod_common.pyx":65
  * 
  * 
- * def cholmod_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_version():             # <<<<<<<<<<<<<<
  *     version_string = "CHOLMOD version %s" % CHOLMOD_VERSION
  * 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_1cholmod_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_11suitesparse_7cholmod_14cholmod_common_1cholmod_version = {"cholmod_version", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_14cholmod_common_1cholmod_version, METH_NOARGS, 0};
-static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_1cholmod_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_1CHOLMOD_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_11suitesparse_7cholmod_14cholmod_common_1CHOLMOD_version = {"CHOLMOD_version", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_14cholmod_common_1CHOLMOD_version, METH_NOARGS, 0};
+static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_1CHOLMOD_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("cholmod_version (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_version(__pyx_self);
+  __Pyx_RefNannySetupContext("CHOLMOD_version (wrapper)", 0);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_14cholmod_common_CHOLMOD_version(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_version(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_CHOLMOD_version(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_v_version_string = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -624,11 +624,11 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_versio
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("cholmod_version", 0);
+  __Pyx_RefNannySetupContext("CHOLMOD_version", 0);
 
   /* "suitesparse/cholmod/cholmod_common.pyx":66
  * 
- * def cholmod_version():
+ * def CHOLMOD_version():
  *     version_string = "CHOLMOD version %s" % CHOLMOD_VERSION             # <<<<<<<<<<<<<<
  * 
  *     return version_string
@@ -646,7 +646,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_versio
  * 
  *     return version_string             # <<<<<<<<<<<<<<
  * 
- * def cholmod_detailed_version():
+ * def CHOLMOD_detailed_version():
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(__pyx_v_version_string);
@@ -656,7 +656,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_versio
   /* "suitesparse/cholmod/cholmod_common.pyx":65
  * 
  * 
- * def cholmod_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_version():             # <<<<<<<<<<<<<<
  *     version_string = "CHOLMOD version %s" % CHOLMOD_VERSION
  * 
  */
@@ -665,7 +665,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_versio
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_common.cholmod_version", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_common.CHOLMOD_version", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_version_string);
@@ -677,26 +677,26 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_cholmod_versio
 /* "suitesparse/cholmod/cholmod_common.pyx":70
  *     return version_string
  * 
- * def cholmod_detailed_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_detailed_version():             # <<<<<<<<<<<<<<
  *     version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,
  *                                          CHOLMOD_SUB_VERSION,
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_3cholmod_detailed_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyMethodDef __pyx_mdef_11suitesparse_7cholmod_14cholmod_common_3cholmod_detailed_version = {"cholmod_detailed_version", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_14cholmod_common_3cholmod_detailed_version, METH_NOARGS, 0};
-static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_3cholmod_detailed_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_3CHOLMOD_detailed_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_11suitesparse_7cholmod_14cholmod_common_3CHOLMOD_detailed_version = {"CHOLMOD_detailed_version", (PyCFunction)__pyx_pw_11suitesparse_7cholmod_14cholmod_common_3CHOLMOD_detailed_version, METH_NOARGS, 0};
+static PyObject *__pyx_pw_11suitesparse_7cholmod_14cholmod_common_3CHOLMOD_detailed_version(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("cholmod_detailed_version (wrapper)", 0);
-  __pyx_r = __pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detailed_version(__pyx_self);
+  __Pyx_RefNannySetupContext("CHOLMOD_detailed_version (wrapper)", 0);
+  __pyx_r = __pyx_pf_11suitesparse_7cholmod_14cholmod_common_2CHOLMOD_detailed_version(__pyx_self);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detailed_version(CYTHON_UNUSED PyObject *__pyx_self) {
+static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2CHOLMOD_detailed_version(CYTHON_UNUSED PyObject *__pyx_self) {
   PyObject *__pyx_v_version_string = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -708,11 +708,11 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detai
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("cholmod_detailed_version", 0);
+  __Pyx_RefNannySetupContext("CHOLMOD_detailed_version", 0);
 
   /* "suitesparse/cholmod/cholmod_common.pyx":71
  * 
- * def cholmod_detailed_version():
+ * def CHOLMOD_detailed_version():
  *     version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,             # <<<<<<<<<<<<<<
  *                                          CHOLMOD_SUB_VERSION,
  *                                          CHOLMOD_SUBSUB_VERSION,
@@ -721,7 +721,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detai
   __Pyx_GOTREF(__pyx_t_1);
 
   /* "suitesparse/cholmod/cholmod_common.pyx":72
- * def cholmod_detailed_version():
+ * def CHOLMOD_detailed_version():
  *     version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,
  *                                          CHOLMOD_SUB_VERSION,             # <<<<<<<<<<<<<<
  *                                          CHOLMOD_SUBSUB_VERSION,
@@ -751,7 +751,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detai
 
   /* "suitesparse/cholmod/cholmod_common.pyx":71
  * 
- * def cholmod_detailed_version():
+ * def CHOLMOD_detailed_version():
  *     version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,             # <<<<<<<<<<<<<<
  *                                          CHOLMOD_SUB_VERSION,
  *                                          CHOLMOD_SUBSUB_VERSION,
@@ -789,7 +789,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detai
   /* "suitesparse/cholmod/cholmod_common.pyx":70
  *     return version_string
  * 
- * def cholmod_detailed_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_detailed_version():             # <<<<<<<<<<<<<<
  *     version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,
  *                                          CHOLMOD_SUB_VERSION,
  */
@@ -801,7 +801,7 @@ static PyObject *__pyx_pf_11suitesparse_7cholmod_14cholmod_common_2cholmod_detai
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_common.cholmod_detailed_version", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("suitesparse.cholmod.cholmod_common.CHOLMOD_detailed_version", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_version_string);
@@ -843,9 +843,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_CHOLMOD_P, __pyx_k_CHOLMOD_P, sizeof(__pyx_k_CHOLMOD_P), 0, 0, 1, 1},
   {&__pyx_n_s_CHOLMOD_Pt, __pyx_k_CHOLMOD_Pt, sizeof(__pyx_k_CHOLMOD_Pt), 0, 0, 1, 1},
   {&__pyx_n_s_CHOLMOD_SYS_DICT, __pyx_k_CHOLMOD_SYS_DICT, sizeof(__pyx_k_CHOLMOD_SYS_DICT), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_detailed_version, __pyx_k_CHOLMOD_detailed_version, sizeof(__pyx_k_CHOLMOD_detailed_version), 0, 0, 1, 1},
+  {&__pyx_n_s_CHOLMOD_version, __pyx_k_CHOLMOD_version, sizeof(__pyx_k_CHOLMOD_version), 0, 0, 1, 1},
   {&__pyx_kp_s_CHOLMOD_version_s, __pyx_k_CHOLMOD_version_s, sizeof(__pyx_k_CHOLMOD_version_s), 0, 0, 1, 0},
-  {&__pyx_n_s_cholmod_detailed_version, __pyx_k_cholmod_detailed_version, sizeof(__pyx_k_cholmod_detailed_version), 0, 0, 1, 1},
-  {&__pyx_n_s_cholmod_version, __pyx_k_cholmod_version, sizeof(__pyx_k_cholmod_version), 0, 0, 1, 1},
   {&__pyx_kp_s_home_nikolaj_Documents_WORK_Dom, __pyx_k_home_nikolaj_Documents_WORK_Dom, sizeof(__pyx_k_home_nikolaj_Documents_WORK_Dom), 0, 0, 1, 0},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_kp_s_s_s_s_s, __pyx_k_s_s_s_s, sizeof(__pyx_k_s_s_s_s), 0, 0, 1, 0},
@@ -865,26 +865,26 @@ static int __Pyx_InitCachedConstants(void) {
   /* "suitesparse/cholmod/cholmod_common.pyx":65
  * 
  * 
- * def cholmod_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_version():             # <<<<<<<<<<<<<<
  *     version_string = "CHOLMOD version %s" % CHOLMOD_VERSION
  * 
  */
   __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_version_string); if (unlikely(!__pyx_tuple_)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
-  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_nikolaj_Documents_WORK_Dom, __pyx_n_s_cholmod_version, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_nikolaj_Documents_WORK_Dom, __pyx_n_s_CHOLMOD_version, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
 
   /* "suitesparse/cholmod/cholmod_common.pyx":70
  *     return version_string
  * 
- * def cholmod_detailed_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_detailed_version():             # <<<<<<<<<<<<<<
  *     version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,
  *                                          CHOLMOD_SUB_VERSION,
  */
   __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_version_string); if (unlikely(!__pyx_tuple__3)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_nikolaj_Documents_WORK_Dom, __pyx_n_s_cholmod_detailed_version, 70, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(0, 0, 1, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_nikolaj_Documents_WORK_Dom, __pyx_n_s_CHOLMOD_detailed_version, 70, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1109,25 +1109,25 @@ PyMODINIT_FUNC PyInit_cholmod_common(void)
   /* "suitesparse/cholmod/cholmod_common.pyx":65
  * 
  * 
- * def cholmod_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_version():             # <<<<<<<<<<<<<<
  *     version_string = "CHOLMOD version %s" % CHOLMOD_VERSION
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11suitesparse_7cholmod_14cholmod_common_1cholmod_version, NULL, __pyx_n_s_suitesparse_cholmod_cholmod_comm); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11suitesparse_7cholmod_14cholmod_common_1CHOLMOD_version, NULL, __pyx_n_s_suitesparse_cholmod_cholmod_comm); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cholmod_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CHOLMOD_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 65; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "suitesparse/cholmod/cholmod_common.pyx":70
  *     return version_string
  * 
- * def cholmod_detailed_version():             # <<<<<<<<<<<<<<
+ * def CHOLMOD_detailed_version():             # <<<<<<<<<<<<<<
  *     version_string = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,
  *                                          CHOLMOD_SUB_VERSION,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11suitesparse_7cholmod_14cholmod_common_3cholmod_detailed_version, NULL, __pyx_n_s_suitesparse_cholmod_cholmod_comm); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11suitesparse_7cholmod_14cholmod_common_3CHOLMOD_detailed_version, NULL, __pyx_n_s_suitesparse_cholmod_cholmod_comm); if (unlikely(!__pyx_t_1)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_cholmod_detailed_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_CHOLMOD_detailed_version, __pyx_t_1) < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 70; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "suitesparse/cholmod/cholmod_common.pyx":3

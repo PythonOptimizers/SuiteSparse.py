@@ -19,12 +19,12 @@ print "construction time for matrix A : %f" % (time.clock() - start_time)
 start_time = time.clock()
 print "construction time for solver A : %f" % (time.clock() - start_time)
 
-s = CholmodSolver(A, verbose=True)
+s = CHOLMODSolver(A, verbose=True)
 
 
 
-print cholmod_version()
-print cholmod_detailed_version()
+print CHOLMOD_version()
+print CHOLMOD_detailed_version()
 
 print s.check_common()
 print s.check_factor()
@@ -36,8 +36,8 @@ print A
 
 print s.CHOLMOD_VERSION
 
-print cholmod_version()
-print cholmod_detailed_version()
+print CHOLMOD_version()
+print CHOLMOD_detailed_version()
 
 print "=" * 50
 

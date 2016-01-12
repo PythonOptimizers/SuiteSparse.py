@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-from suitesparse.cholmod.cholmod_solver_base_INT64_t_FLOAT64_t cimport CholmodSolverBase_INT64_t_FLOAT64_t
+from suitesparse.cholmod.cholmod_solver_base_INT64_t_FLOAT64_t cimport CHOLMODSolverBase_INT64_t_FLOAT64_t
 from suitesparse.common_types.suitesparse_types cimport *
 
 from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT
@@ -240,7 +240,7 @@ cdef CSCSparseMatrix_INT64_t_FLOAT64_t cholmod_sparse_to_CSCSparseMatrix_INT64_t
     return csc_mat
 
 
-cdef class CholmodCysparseSolver_INT64_t_FLOAT64_t(CholmodSolverBase_INT64_t_FLOAT64_t):
+cdef class CHOLMODCysparseSolver_INT64_t_FLOAT64_t(CHOLMODSolverBase_INT64_t_FLOAT64_t):
     ####################################################################################################################
     # INIT
     ####################################################################################################################
