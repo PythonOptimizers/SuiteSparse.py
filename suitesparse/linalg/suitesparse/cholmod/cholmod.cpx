@@ -185,7 +185,7 @@ cdef populate2_cholmod_sparse_struct_with_CSCSparseMatrix(cholmod_sparse * spars
 {% else %}
 cdef populate2_cholmod_sparse_struct_with_CSCSparseMatrix(cholmod_sparse * sparse_struct, CSCSparseMatrix_@index@_@type@ csc_mat, bint no_copy=True):
     """
-    Populate a CHOLMO C struct ``cholmod_sparse`` with the content of a :class:`CSCSparseMatrix_@index@_@type@` matrix.
+    Populate a CHOLMOD C struct ``cholmod_sparse`` with the content of a :class:`CSCSparseMatrix_@index@_@type@` matrix.
 
     Second part: Non common attributes for complex matrices.
 

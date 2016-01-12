@@ -1288,7 +1288,7 @@ struct __pyx_obj_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_sol
  */
 
 struct __pyx_vtabstruct_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t {
-  PyObject *(*check_common_attributes)(struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t *);
+  int (*check_common_attributes)(struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t *);
 };
 static struct __pyx_vtabstruct_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t *__pyx_vtabptr_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t;
 
@@ -2647,9 +2647,7 @@ static int __pyx_pf_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_
  *         self.check_matrix()
  * 
  */
-  __pyx_t_4 = ((struct __pyx_vtabstruct_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.check_common_attributes(((struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t *)__pyx_v_self)); if (unlikely(!__pyx_t_4)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 198; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  ((struct __pyx_vtabstruct_11suitesparse_7umfpack_15cysparse_solver_41umfpack_cysparse_solver_INT64_t_FLOAT64_t_UmfpackCysparseSolver_INT64_t_FLOAT64_t *)__pyx_v_self->__pyx_base.__pyx_base.__pyx_vtab)->__pyx_base.__pyx_base.check_common_attributes(((struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t *)__pyx_v_self));
 
   /* "suitesparse/umfpack/cysparse_solver/umfpack_cysparse_solver_INT64_t_FLOAT64_t.pyx":199
  *         # Control the matrix is fine

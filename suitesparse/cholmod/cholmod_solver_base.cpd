@@ -198,25 +198,13 @@ cdef extern from "cholmod.h":
 cdef class CholmodSolverBase_@index@_@type@(Solver_@index@_@type@):
     cdef:
 
-        # CHOLMOD takes a C CSC matrix object
-        @index@ * ind
-        @index@ * row
+        cholmod_common * common_struct
+        cholmod_sparse * sparse_struct
 
-{% if type in complex_list %}
-        @type|cysparse_real_type_from_real_cysparse_complex_type@ * rval
-        @type|cysparse_real_type_from_real_cysparse_complex_type@ * ival
-
-{% else %}
-        @type@ * val
-{% endif %}
-
-        cholmod_common common_struct
-        cholmod_sparse sparse_struct
-        bint factor_struct_initialized
         cholmod_factor * factor_struct
 
-
-    cdef check_matrix(self)
-    cdef check_factor(self)
+    cpdef bint check_common(self)
+    cpdef bint check_matrix(self)
+    cpdef bint check_factor(self)
 
 

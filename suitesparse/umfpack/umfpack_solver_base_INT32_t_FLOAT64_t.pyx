@@ -171,7 +171,6 @@ cdef class UmfpackSolverBase_INT32_t_FLOAT64_t(Solver_INT32_t_FLOAT64_t):
         # set default parameters for control
         umfpack_di_defaults(<double *>&self.control)
 
-
     ####################################################################################################################
     # FREE MEMORY
     ####################################################################################################################

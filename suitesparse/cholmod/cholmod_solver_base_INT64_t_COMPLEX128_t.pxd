@@ -198,22 +198,12 @@ cdef extern from "cholmod.h":
 cdef class CholmodSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
     cdef:
 
-        # CHOLMOD takes a C CSC matrix object
-        INT64_t * ind
-        INT64_t * row
+        cholmod_common * common_struct
+        cholmod_sparse * sparse_struct
 
-
-        FLOAT64_t * rval
-        FLOAT64_t * ival
-
-
-
-        cholmod_common common_struct
-        cholmod_sparse sparse_struct
-        bint factor_struct_initialized
         cholmod_factor * factor_struct
 
-
-    cdef check_matrix(self)
-    cdef check_factor(self)
+    cpdef bint check_common(self)
+    cpdef bint check_matrix(self)
+    cpdef bint check_factor(self)
 

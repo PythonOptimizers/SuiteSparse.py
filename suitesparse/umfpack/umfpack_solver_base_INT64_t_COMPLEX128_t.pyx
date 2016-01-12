@@ -177,7 +177,6 @@ cdef class UmfpackSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
         # set default parameters for control
         umfpack_zl_defaults(<double *>&self.control)
 
-
     ####################################################################################################################
     # FREE MEMORY
     ####################################################################################################################

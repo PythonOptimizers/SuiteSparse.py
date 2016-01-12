@@ -25,4 +25,4 @@ cdef class Solver_INT64_t_COMPLEX128_t:
         float __factorize_time
         float __specialized_solver_time
 
-    cdef check_common_attributes(self)
+    cdef bint check_common_attributes(self)

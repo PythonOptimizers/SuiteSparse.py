@@ -3,12 +3,18 @@ from cysparse.sparse.ll_mat import *
 
 A = LLSparseMatrix(ncol=4, nrow=4)
 
+import numpy as np
+
+b = np.ones(4)
+
 s = UmfpackSolver(A)
+
+
 
 print s.solver_name
 print s.solver_version
 
-b = 3
+
 
 x = s * b
 

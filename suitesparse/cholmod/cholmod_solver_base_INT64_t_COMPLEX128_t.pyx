@@ -1,6 +1,8 @@
 
 from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, cholmod_version, cholmod_detailed_version
 
+from libc.stdlib cimport malloc, free
+
 import numpy as np
 cimport numpy as cnp
 
@@ -234,11 +236,22 @@ cdef extern from "cholmod.h":
     # Factor struct
     int cholmod_l_check_factor(cholmod_factor *L, cholmod_common *Common)
     int cholmod_l_print_factor(cholmod_factor *L, const char *name, cholmod_common *Common)
-    #int cholmod_l_free_factor()
+    int cholmod_l_free_factor(cholmod_factor *L, cholmod_common *Common)
     # factor_to_sparse
 
     # Memory management
     void * cholmod_l_free(size_t n, size_t size,	void *p,  cholmod_common *Common)
+
+    # ANALYZE
+    cholmod_factor * cholmod_l_analyze(cholmod_sparse *A,cholmod_common *Common)
+
+    # FACTORIZE
+    int cholmod_l_factorize(cholmod_sparse *, cholmod_factor *, cholmod_common *)
+
+    # SOLVE
+    cholmod_dense * cholmod_l_solve (int, cholmod_factor *, cholmod_dense *, cholmod_common *)
+    cholmod_sparse * cholmod_l_spsolve (int, cholmod_factor *, cholmod_sparse *,
+    cholmod_common *)
 
 ########################################################################################################################
 # CHOLMOD HELPERS
@@ -300,7 +313,7 @@ cdef class CholmodSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
     # INIT
     ####################################################################################################################
     def __cinit__(self, A, **kwargs):
-        self.__solver_name = 'UMFPACK'
+        self.__solver_name = 'CHOLMOD'
         self.__solver_version = CholmodSolverBase_INT64_t_COMPLEX128_t.CHOLMOD_VERSION
 
         if self.__verbose:
@@ -308,20 +321,195 @@ cdef class CholmodSolverBase_INT64_t_COMPLEX128_t(Solver_INT64_t_COMPLEX128_t):
         else:
             self.set_verbosity(0)
 
+        # CHOLMOD
+        self.common_struct = <cholmod_common *> malloc(sizeof(cholmod_common))
+
+        # TODO test if malloc succeeded
+
+        cholmod_l_start(self.common_struct)
+
+        # All internal memory allocation is done by the specialized Solvers!!!
+        # Specialized solvers are also responsible to deallocate this memory!!!
+        # This is an internal hack for efficiency when possible
+        self.sparse_struct = <cholmod_sparse *> malloc(sizeof(cholmod_sparse))
+
+        # TODO test if malloc succeeded
+
         # set default parameters for control
         self.reset_default_parameters()
+
+    ####################################################################################################################
+    # Properties
+    ####################################################################################################################
+    # Propreties that bear the same name as a reserved Python keyword, are prefixed by 'c_'.
+    ######################################### COMMON STRUCT Properties #################################################
+    # Printing
+    property c_print:
+        def __get__(self): return self.common_struct.print_
+        def __set__(self, value): self.common_struct.print_ = value
+
+    property precise:
+        def __get__(self): return self.common_struct.precise
+        def __set__(self, value): self.common_struct.precise = value
+
+    property try_catch:
+        def __get__(self): return self.common_struct.try_catch
+        def __set__(self, value): self.common_struct.try_catch = value
+
+    ####################################################################################################################
+    # FREE MEMORY
+    ####################################################################################################################
+    def __dealloc__(self):
+
+
+        # TODO: Solve this bug!!! See #16
+        #if self.__factorized:
+        #    cholmod_l_free_factor(self.factor_struct, self.common_struct)
+
+        # specialized child Solvers **must** deallocate the internal memory used!!!
+        # DO NOT CALL CHOLMOD function to free the sparse matrix
+        free(self.sparse_struct)
+
+        cholmod_l_finish(self.common_struct)
+        free(self.common_struct)
+
+
 
     ####################################################################################################################
     # COMMON OPERATIONS
     ####################################################################################################################
     def reset_default_parameters(self):
-        cholmod_l_defaults(&self.common_struct)
+        cholmod_l_defaults(self.common_struct)
 
-    cdef check_matrix(self):
-        pass
+    #############################################################
+    # CHECKING ROUTINES
+    #############################################################
+    cpdef bint check_common(self):
+        return cholmod_l_check_common(self.common_struct)
 
-    cdef check_factor(self):
-        pass
+    cpdef bint check_factor(self):
+        if self.__analyzed:
+            return cholmod_l_check_factor(self.factor_struct, self.common_struct)
+
+        return False
 
     def set_verbosity(self, verbosity_level):
         pass
+
+    cpdef bint check_matrix(self):
+        """
+        Check if internal CSC matrix is OK.
+
+        Returns:
+            ``True`` if everything is OK, ``False`` otherwise. Depending on the verbosity, some error messages can
+            be displayed on ``sys.stdout``.
+        """
+        return cholmod_l_check_sparse(self.sparse_struct, self.common_struct), "Internal CSC matrix ill formatted"
+
+    #############################################################
+    # CHOLMOD PRINTING ROUTINES
+    #############################################################
+    def print_sparse_matrix(self):
+        return cholmod_l_print_sparse(self.sparse_struct, "Internal CSC CHOLMOD respresentation of sparse matrix", self.common_struct)
+
+    def print_factor(self):
+        return cholmod_l_print_factor(self.factor_struct, "Internal CHOLMOD factor struct", self.common_struct)
+
+    def print_common(self):
+        cholmod_l_print_common("cholmod_common_struct", self.common_struct)
+
+    ####################################################################################################################
+    # GPU
+    ####################################################################################################################
+    def request_GPU(self):
+        """
+        GPU-acceleration is requested.
+
+        If GPU processing is requested but there is no GPU present, CHOLMOD will continue using the CPU only.
+        Consequently it is **always safe** to request GPU processing.
+
+        """
+        self.common_struct.useGPU = 1
+
+    def prohibit_GPU(self):
+        """
+        GPU-acceleration is explicitely prohibited.
+
+        """
+        self.common_struct.useGPU = 0
+
+    ####################################################################################################################
+    # Callbacks
+    ####################################################################################################################
+    def _analyze(self, *args, **kwargs):
+        self.factor_struct = <cholmod_factor *> cholmod_l_analyze(self.sparse_struct,self.common_struct)
+
+    def _factorize(self, *args, **kwargs):
+        cholmod_l_factorize(self.sparse_struct, self.factor_struct, self.common_struct)
+
+    def _solve(self, cnp.ndarray[cnp.npy_complex128, ndim=1, mode="c"] b, cholmod_sys='CHOLMOD_A'):
+
+        # test argument b
+        cdef cnp.npy_intp * shape_b
+        try:
+            shape_b = b.shape
+        except:
+            raise AttributeError("argument b must implement attribute 'shape'")
+
+        dim_b = shape_b[0]
+        assert dim_b == self.nrow, "array dimensions must agree"
+
+        if cholmod_sys not in CHOLMOD_SYS_DICT.keys():
+            raise ValueError("Argument 'cholmod_sys' must be in " % CHOLMOD_SYS_DICT.keys())
+
+        # if needed
+        self.factorize()
+
+        # convert NumPy array to CHOLMOD dense vector
+        cdef cholmod_dense B
+
+        B = numpy_ndarray_to_cholmod_dense(b)
+
+        cdef cholmod_dense * cholmod_sol
+        cholmod_sol = cholmod_l_solve(CHOLMOD_SYS_DICT[cholmod_sys], self.factor_struct, &B, self.common_struct)
+
+        # TODO: free B
+        # TODO: convert sol to NumPy array
+
+        cdef cnp.ndarray[cnp.npy_complex128, ndim=1, mode='c'] sol = np.empty(self.ncol, dtype=np.complex128)
+
+        # make a copy
+        cdef INT64_t j
+
+        cdef COMPLEX128_t * cholmod_sol_array_ptr = <COMPLEX128_t * > cholmod_sol.x
+
+
+        raise NotImplementedError("To be coded")
+
+
+        # Free CHOLMOD dense solution
+        cholmod_l_free_dense(&cholmod_sol, self.common_struct)
+
+        return sol
+
+    ####################################################################################################################
+    # Statistics Callbacks
+    ####################################################################################################################
+    def _stats(self, *args, **kwargs):
+        """
+        Returns a string with specialized statistics about the factorization.
+        """
+        lines = []
+        lines.append("Matrix library:")
+        lines.append("===============")
+        lines.append(self._specialized_stats(*args, **kwargs))
+
+
+
+        return '\n'.join(lines)
+
+    def _specialized_stats(self, *args, **kwargs):
+        """
+        Returns a string with specialized statistics about the factorization.
+        """
+        raise NotImplementedError("You have to add some specialized stats for every type of supported matrices")
