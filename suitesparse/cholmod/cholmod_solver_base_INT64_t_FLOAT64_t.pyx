@@ -393,6 +393,7 @@ cdef class CholmodSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
         return False
 
     def set_verbosity(self, verbosity_level):
+        # TODO: change this!
         pass
 
     cpdef bint check_matrix(self):

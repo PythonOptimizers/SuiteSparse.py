@@ -51,7 +51,7 @@ def CholmodSolver(A, verbose=False):
     {% endif %}
 
 {% endfor %}
-        raise TypeError('CySparse matrix has an element type that is incompatible with UMFPACK')
+        raise TypeError('CySparse matrix has an element type that is incompatible with CHOLMOD')
 {% endif %}
 
     raise NotImplementedError('This matrix type is not recognized/implemented...')
