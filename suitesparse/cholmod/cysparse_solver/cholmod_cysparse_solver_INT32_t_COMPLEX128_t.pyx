@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-from suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t cimport CholmodSolverBase_INT32_t_COMPLEX128_t
+from suitesparse.cholmod.cholmod_solver_base_INT32_t_COMPLEX128_t cimport CHOLMODSolverBase_INT32_t_COMPLEX128_t
 from suitesparse.common_types.suitesparse_types cimport *
 
 from suitesparse.common_types.suitesparse_generic_types cimport split_array_complex_values_kernel_INT32_t_COMPLEX128_t, join_array_complex_values_kernel_INT32_t_COMPLEX128_t
@@ -269,7 +269,7 @@ cdef CSCSparseMatrix_INT32_t_COMPLEX128_t cholmod_sparse_to_CSCSparseMatrix_INT3
     return csc_mat
 
 
-cdef class CholmodCysparseSolver_INT32_t_COMPLEX128_t(CholmodSolverBase_INT32_t_COMPLEX128_t):
+cdef class CHOLMODCysparseSolver_INT32_t_COMPLEX128_t(CHOLMODSolverBase_INT32_t_COMPLEX128_t):
     ####################################################################################################################
     # INIT
     ####################################################################################################################

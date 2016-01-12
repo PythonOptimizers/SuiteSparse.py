@@ -11,7 +11,7 @@ from cysparse.sparse.ll_mat import *
 from suitesparse.cholmod.cholmod_common import *
 
 
-def CholmodSolver(A, verbose=False):
+def CHOLMODSolver(A, verbose=False):
     """
     Factory method that dispatchs the right type of CHOLMOD solver.
 
@@ -32,14 +32,14 @@ def CholmodSolver(A, verbose=False):
         
             if dtype == FLOAT64_T:
         
-                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT32_t_FLOAT64_t import CholmodCysparseSolver_INT32_t_FLOAT64_t
-                return CholmodCysparseSolver_INT32_t_FLOAT64_t(A, verbose=verbose)
+                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT32_t_FLOAT64_t import CHOLMODCysparseSolver_INT32_t_FLOAT64_t
+                return CHOLMODCysparseSolver_INT32_t_FLOAT64_t(A, verbose=verbose)
     
         
             elif dtype == COMPLEX128_T:
         
-                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT32_t_COMPLEX128_t import CholmodCysparseSolver_INT32_t_COMPLEX128_t
-                return CholmodCysparseSolver_INT32_t_COMPLEX128_t(A, verbose=verbose)
+                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT32_t_COMPLEX128_t import CHOLMODCysparseSolver_INT32_t_COMPLEX128_t
+                return CHOLMODCysparseSolver_INT32_t_COMPLEX128_t(A, verbose=verbose)
     
     
 
@@ -50,14 +50,14 @@ def CholmodSolver(A, verbose=False):
         
             if dtype == FLOAT64_T:
         
-                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT64_t_FLOAT64_t import CholmodCysparseSolver_INT64_t_FLOAT64_t
-                return CholmodCysparseSolver_INT64_t_FLOAT64_t(A, verbose=verbose)
+                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT64_t_FLOAT64_t import CHOLMODCysparseSolver_INT64_t_FLOAT64_t
+                return CHOLMODCysparseSolver_INT64_t_FLOAT64_t(A, verbose=verbose)
     
         
             elif dtype == COMPLEX128_T:
         
-                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT64_t_COMPLEX128_t import CholmodCysparseSolver_INT64_t_COMPLEX128_t
-                return CholmodCysparseSolver_INT64_t_COMPLEX128_t(A, verbose=verbose)
+                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_INT64_t_COMPLEX128_t import CHOLMODCysparseSolver_INT64_t_COMPLEX128_t
+                return CHOLMODCysparseSolver_INT64_t_COMPLEX128_t(A, verbose=verbose)
     
     
 

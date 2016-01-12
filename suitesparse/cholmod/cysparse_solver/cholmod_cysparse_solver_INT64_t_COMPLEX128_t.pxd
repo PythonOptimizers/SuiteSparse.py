@@ -1,4 +1,4 @@
-from suitesparse.cholmod.cholmod_solver_base_INT64_t_COMPLEX128_t cimport CholmodSolverBase_INT64_t_COMPLEX128_t
+from suitesparse.cholmod.cholmod_solver_base_INT64_t_COMPLEX128_t cimport CHOLMODSolverBase_INT64_t_COMPLEX128_t
 from suitesparse.common_types.suitesparse_types cimport *
 
 from cysparse.sparse.csc_mat_matrices.csc_mat_INT64_t_COMPLEX128_t cimport CSCSparseMatrix_INT64_t_COMPLEX128_t
@@ -168,7 +168,7 @@ cdef extern from "cholmod.h":
     ctypedef struct cholmod_factor:
         pass
 
-cdef class CholmodCysparseSolver_INT64_t_COMPLEX128_t(CholmodSolverBase_INT64_t_COMPLEX128_t):
+cdef class CHOLMODCysparseSolver_INT64_t_COMPLEX128_t(CHOLMODSolverBase_INT64_t_COMPLEX128_t):
     cdef:
         # Matrix A in CSC format
         CSCSparseMatrix_INT64_t_COMPLEX128_t csc_mat
