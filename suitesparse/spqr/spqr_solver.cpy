@@ -25,11 +25,11 @@ def SPQRSolver(A, verbose=False):
         itype = A.itype
         dtype = A.dtype
 
-{% for index_type in cholmod_index_list %}
-    {% if index_type == cholmod_index_list |first %}
+{% for index_type in spqr_index_list %}
+    {% if index_type == spqr_index_list |first %}
         if itype == @index_type|type2enum@:
-    {% for element_type in cholmod_type_list %}
-        {% if element_type == cholmod_type_list |first %}
+    {% for element_type in spqr_type_list %}
+        {% if element_type == spqr_type_list |first %}
             if dtype == @element_type|type2enum@:
         {% else %}
             elif dtype == @element_type|type2enum@:
@@ -39,8 +39,8 @@ def SPQRSolver(A, verbose=False):
     {% endfor %}
     {% else %}
         elif itype == @index_type|type2enum@:
-    {% for element_type in cholmod_type_list %}
-        {% if element_type == cholmod_type_list |first %}
+    {% for element_type in spqr_type_list %}
+        {% if element_type == spqr_type_list |first %}
             if dtype == @element_type|type2enum@:
         {% else %}
             elif dtype == @element_type|type2enum@:
