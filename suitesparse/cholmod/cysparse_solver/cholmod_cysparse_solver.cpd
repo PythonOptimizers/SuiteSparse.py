@@ -1,4 +1,4 @@
-from suitesparse.cholmod.cholmod_solver_base_@index@_@type@ cimport CHOLMODSolverBase_@index@_@type@
+from suitesparse.cholmod.cholmod_solver_base_@index@_@type@ cimport CholmodSolverBase_@index@_@type@
 from suitesparse.common_types.suitesparse_types cimport *
 
 from cysparse.sparse.csc_mat_matrices.csc_mat_@index@_@type@ cimport CSCSparseMatrix_@index@_@type@
@@ -168,7 +168,7 @@ cdef extern from "cholmod.h":
     ctypedef struct cholmod_factor:
         pass
 
-cdef class CHOLMODCysparseSolver_@index@_@type@(CHOLMODSolverBase_@index@_@type@):
+cdef class CholmodCysparseSolver_@index@_@type@(CholmodSolverBase_@index@_@type@):
     cdef:
         # Matrix A in CSC format
         CSCSparseMatrix_@index@_@type@ csc_mat

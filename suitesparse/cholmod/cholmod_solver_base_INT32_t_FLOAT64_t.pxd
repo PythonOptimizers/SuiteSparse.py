@@ -195,7 +195,7 @@ cdef extern from "cholmod.h":
     void * cholmod_free(size_t n, size_t size,	void *p,  cholmod_common *Common)
 
 
-cdef class CHOLMODSolverBase_INT32_t_FLOAT64_t(Solver_INT32_t_FLOAT64_t):
+cdef class CholmodSolverBase_INT32_t_FLOAT64_t(Solver_INT32_t_FLOAT64_t):
     cdef:
 
         cholmod_common * common_struct

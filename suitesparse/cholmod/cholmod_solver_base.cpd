@@ -195,7 +195,7 @@ cdef extern from "cholmod.h":
     void * @index|cysparse_real_type_to_cholmod_prefix@_free(size_t n, size_t size,	void *p,  cholmod_common *Common)
 
 
-cdef class CHOLMODSolverBase_@index@_@type@(Solver_@index@_@type@):
+cdef class CholmodSolverBase_@index@_@type@(Solver_@index@_@type@):
     cdef:
 
         cholmod_common * common_struct

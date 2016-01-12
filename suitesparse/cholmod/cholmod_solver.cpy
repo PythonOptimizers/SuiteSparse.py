@@ -11,7 +11,7 @@ from cysparse.sparse.ll_mat import *
 from suitesparse.cholmod.cholmod_common import *
 
 
-def CHOLMODSolver(A, verbose=False):
+def CholmodSolver(A, verbose=False):
     """
     Factory method that dispatchs the right type of CHOLMOD solver.
 
@@ -34,8 +34,8 @@ def CHOLMODSolver(A, verbose=False):
         {% else %}
             elif dtype == @element_type|type2enum@:
         {% endif %}
-                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_@index_type@_@element_type@ import CHOLMODCysparseSolver_@index_type@_@element_type@
-                return CHOLMODCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
+                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_@index_type@_@element_type@ import CholmodCysparseSolver_@index_type@_@element_type@
+                return CholmodCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
     {% endfor %}
     {% else %}
         elif itype == @index_type|type2enum@:
@@ -45,8 +45,8 @@ def CHOLMODSolver(A, verbose=False):
         {% else %}
             elif dtype == @element_type|type2enum@:
         {% endif %}
-                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_@index_type@_@element_type@ import CHOLMODCysparseSolver_@index_type@_@element_type@
-                return CHOLMODCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
+                from suitesparse.cholmod.cysparse_solver.cholmod_cysparse_solver_@index_type@_@element_type@ import CholmodCysparseSolver_@index_type@_@element_type@
+                return CholmodCysparseSolver_@index_type@_@element_type@(A, verbose=verbose)
     {% endfor %}
     {% endif %}
 

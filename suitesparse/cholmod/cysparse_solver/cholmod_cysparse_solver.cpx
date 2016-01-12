@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-from suitesparse.cholmod.cholmod_solver_base_@index@_@type@ cimport CHOLMODSolverBase_@index@_@type@
+from suitesparse.cholmod.cholmod_solver_base_@index@_@type@ cimport CholmodSolverBase_@index@_@type@
 from suitesparse.common_types.suitesparse_types cimport *
 {% if type in complex_list %}
 from suitesparse.common_types.suitesparse_generic_types cimport split_array_complex_values_kernel_@index@_@type@, join_array_complex_values_kernel_@index@_@type@
@@ -315,7 +315,7 @@ cdef CSCSparseMatrix_@index@_@type@ cholmod_sparse_to_CSCSparseMatrix_@index@_@t
     return csc_mat
 
 
-cdef class CHOLMODCysparseSolver_@index@_@type@(CHOLMODSolverBase_@index@_@type@):
+cdef class CholmodCysparseSolver_@index@_@type@(CholmodSolverBase_@index@_@type@):
     ####################################################################################################################
     # INIT
     ####################################################################################################################

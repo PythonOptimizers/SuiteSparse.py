@@ -1,5 +1,5 @@
 
-from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, CHOLMOD_version, CHOLMOD_detailed_version
+from suitesparse.cholmod.cholmod_common import CHOLMOD_SYS_DICT, cholmod_version, cholmod_detailed_version
 
 from libc.stdlib cimport malloc, free
 
@@ -298,7 +298,7 @@ cdef cnp.ndarray[cnp.npy_complex128, ndim=1, mode="c"] cholmod_dense_to_numpy_nd
 ########################################################################################################################
 
 
-cdef class CHOLMODSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
+cdef class CholmodSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
     """
 
     We follow the common use of Umfpack. In particular, we use the same names for the methods of this
@@ -314,7 +314,7 @@ cdef class CHOLMODSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
     ####################################################################################################################
     def __cinit__(self, A, **kwargs):
         self.__solver_name = 'CHOLMOD'
-        self.__solver_version = CHOLMODSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
+        self.__solver_version = CholmodSolverBase_INT32_t_COMPLEX128_t.CHOLMOD_VERSION
 
         if self.__verbose:
             self.set_verbosity(3)
