@@ -168,12 +168,17 @@ cdef extern from "cholmod.h":
     ctypedef struct cholmod_factor:
         pass
 
+cdef populate1_cholmod_sparse_struct_with_CSCSparseMatrix(cholmod_sparse * sparse_struct, CSCSparseMatrix_INT64_t_FLOAT64_t csc_mat, bint no_copy=?)
+
+cdef populate2_cholmod_sparse_struct_with_CSCSparseMatrix(cholmod_sparse * sparse_struct, CSCSparseMatrix_INT64_t_FLOAT64_t csc_mat, bint no_copy=?)
+
+
 cdef class CholmodCysparseSolver_INT64_t_FLOAT64_t(CholmodSolverBase_INT64_t_FLOAT64_t):
     cdef:
         # Matrix A in CSC format
         CSCSparseMatrix_INT64_t_FLOAT64_t csc_mat
 
-        # no copy of internal CSC C arrays
+        # no copy of internal CSC C arrays?
         bint __no_copy
 
         float __matrix_transform_time

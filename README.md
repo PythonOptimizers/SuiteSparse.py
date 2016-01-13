@@ -41,7 +41,7 @@ you don't have to install `CySparse`! It's strongly recommended but not mandator
 
 - [x] UMFPACK Versions 5.7.1 (Oct 10, 2014)
 - [x] CHOLMOD Versions 3.0.3 (Oct 23, 2014)
-- [ ] SPQR
+- [x] SPQR Versions 2.0.0 (Oct 1, 2014)
 - [ ] KLU
 - [ ] BTF
 - [ ] AMD

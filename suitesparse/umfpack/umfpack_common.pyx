@@ -2,12 +2,14 @@
 cdef extern from "umfpack.h":
 
     char * UMFPACK_DATE
+    char * UMFPACK_VERSION
+
     ctypedef long SuiteSparse_long  # This is exactly CySparse's INT64_t
 
     cdef enum:
         UMFPACK_CONTROL, UMFPACK_INFO
 
-        UMFPACK_VERSION, UMFPACK_MAIN_VERSION, UMFPACK_SUB_VERSION, UMFPACK_SUBSUB_VERSION
+        UMFPACK_MAIN_VERSION, UMFPACK_SUB_VERSION, UMFPACK_SUBSUB_VERSION
 
         # Return codes:
         UMFPACK_OK

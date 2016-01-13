@@ -701,4 +701,4 @@ cdef class SPQRContext_@index@_@type@:
 
         """
         # TODO: todo
-        return self._SPQR_istat()
+        return self. _SPQR_istat()

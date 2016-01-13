@@ -3,7 +3,7 @@ from __future__ import print_function
 from suitesparse.solver_INT32_t_COMPLEX128_t cimport Solver_INT32_t_COMPLEX128_t
 
 from suitesparse.common_types.suitesparse_types cimport *
-from suitesparse.umfpack.umfpack_common import test_umfpack_result, UMFPACK_SYS_DICT
+from suitesparse.umfpack.umfpack_common import test_umfpack_result, UMFPACK_SYS_DICT, umfpack_version, umfpack_detailed_version
 
 from suitesparse.common_types.suitesparse_generic_types cimport split_array_complex_values_kernel_INT32_t_COMPLEX128_t, join_array_complex_values_kernel_INT32_t_COMPLEX128_t
 
@@ -157,17 +157,13 @@ cdef class UmfpackSolverBase_INT32_t_COMPLEX128_t(Solver_INT32_t_COMPLEX128_t):
     We follow the common use of Umfpack. In particular, we use the same names for the methods of this
     class as their corresponding counter-parts in Umfpack.
     """
-    UMFPACK_VERSION = "%s.%s.%s (%s)" % (UMFPACK_MAIN_VERSION,
-                                     UMFPACK_SUB_VERSION,
-                                     UMFPACK_SUBSUB_VERSION,
-                                     UMFPACK_DATE)
 
     ####################################################################################################################
     # INIT
     ####################################################################################################################
     def __cinit__(self, A, **kwargs):
         self.__solver_name = 'UMFPACK'
-        self.__solver_version = UmfpackSolverBase_INT32_t_COMPLEX128_t.UMFPACK_VERSION
+        self.__solver_version = umfpack_detailed_version()
 
         if self.__verbose:
             self.set_verbosity(3)

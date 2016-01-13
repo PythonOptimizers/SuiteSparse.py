@@ -3,7 +3,7 @@
 cdef extern from "cholmod.h":
 
     char * CHOLMOD_DATE
-    #ctypedef long SuiteSparse_long # doesn't work... why?
+
     cdef enum:
         CHOLMOD_MAIN_VERSION
         CHOLMOD_SUB_VERSION

@@ -11,7 +11,7 @@ cnp.import_array()
 cdef extern from "cholmod.h":
     cdef:
         char * CHOLMOD_DATE
-    #ctypedef long SuiteSparse_long # doesn't work... why?
+
     cdef enum:
         CHOLMOD_MAIN_VERSION
         CHOLMOD_SUB_VERSION
@@ -237,7 +237,6 @@ cdef extern from "cholmod.h":
     int cholmod_l_check_factor(cholmod_factor *L, cholmod_common *Common)
     int cholmod_l_print_factor(cholmod_factor *L, const char *name, cholmod_common *Common)
     int cholmod_l_free_factor(cholmod_factor *L, cholmod_common *Common)
-    # factor_to_sparse
 
     # Memory management
     void * cholmod_l_free(size_t n, size_t size,	void *p,  cholmod_common *Common)
@@ -303,17 +302,13 @@ cdef class CholmodSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
     We follow the common use of Umfpack. In particular, we use the same names for the methods of this
     class as their corresponding counter-parts in Umfpack.
     """
-    CHOLMOD_VERSION = "%s.%s.%s (%s)" % (CHOLMOD_MAIN_VERSION,
-                                     CHOLMOD_SUB_VERSION,
-                                     CHOLMOD_SUBSUB_VERSION,
-                                     CHOLMOD_DATE)
 
     ####################################################################################################################
     # INIT
     ####################################################################################################################
     def __cinit__(self, A, **kwargs):
         self.__solver_name = 'CHOLMOD'
-        self.__solver_version = CholmodSolverBase_INT64_t_FLOAT64_t.CHOLMOD_VERSION
+        self.__solver_version = cholmod_detailed_version()
 
         if self.__verbose:
             self.set_verbosity(3)
@@ -392,10 +387,6 @@ cdef class CholmodSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
 
         return False
 
-    def set_verbosity(self, verbosity_level):
-        # TODO: change this!
-        pass
-
     cpdef bint check_matrix(self):
         """
         Check if internal CSC matrix is OK.
@@ -409,6 +400,10 @@ cdef class CholmodSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):
     #############################################################
     # CHOLMOD PRINTING ROUTINES
     #############################################################
+    def set_verbosity(self, verbosity_level):
+        # TODO: change this!
+        pass
+
     def print_sparse_matrix(self):
         return cholmod_l_print_sparse(self.sparse_struct, "Internal CSC CHOLMOD respresentation of sparse matrix", self.common_struct)
 

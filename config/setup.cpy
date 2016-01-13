@@ -114,10 +114,10 @@ else:
     ext_params['extra_compile_args'] = ["-g", '-std=c99', '-Wno-unused-function']
     ext_params['extra_link_args'] = ["-g"]
 
-##########################
-# SuiteSparse
-##########################
-# SuiteSparse Types
+############################################################################
+# SuiteSparse TYPES
+############################################################################
+
 suitesparse_types_ext_params = copy.deepcopy(ext_params)
 
 suitesparse_types_ext = [
@@ -131,7 +131,10 @@ suitesparse_types_ext = [
 ]
 
 
-# Base solver
+############################################################################
+# BASE SOLVER
+############################################################################
+
 base_solver_ext_params = copy.deepcopy(ext_params)
 
 base_solver_ext = [
@@ -144,7 +147,10 @@ base_solver_ext = [
 {% endfor %}
 ]
 
+############################################################################
 # UMFPACK
+############################################################################
+
 umfpack_ext_params = copy.deepcopy(ext_params)
 umfpack_ext_params['include_dirs'].extend(suitesparse_include_dirs)
 umfpack_ext_params['library_dirs'] = suitesparse_library_dirs
@@ -164,15 +170,15 @@ umfpack_ext = [
 {% endfor %}
     ]
 
+
+umfpack_ext.append(
+    Extension(name="suitesparse.umfpack.umfpack_common",
+              sources=['suitesparse/umfpack/umfpack_common.pxd',
+                       'suitesparse/umfpack/umfpack_common.pyx'], **umfpack_ext_params)
+    )
+
 if use_cysparse:
     umfpack_ext_params['include_dirs'].extend(cysparse_rootdir)
-
-    umfpack_ext.append(
-        Extension(name="suitesparse.umfpack.umfpack_common",
-                  sources=['suitesparse/umfpack/umfpack_common.pxd',
-                           'suitesparse/umfpack/umfpack_common.pyx'], **umfpack_ext_params)
-        )
-
 {% for index_type in umfpack_index_list %}
   {% for element_type in umfpack_type_list %}
 
@@ -184,8 +190,10 @@ if use_cysparse:
     {% endfor %}
 {% endfor %}
 
-
+############################################################################
 # CHOLMOD
+############################################################################
+
 cholmod_ext_params = copy.deepcopy(ext_params)
 cholmod_ext_params['include_dirs'].extend(suitesparse_include_dirs)
 cholmod_ext_params['library_dirs'] = suitesparse_library_dirs
@@ -205,15 +213,15 @@ cholmod_ext = [
 {% endfor %}
     ]
 
+
+cholmod_ext.append(
+    Extension(name="suitesparse.cholmod.cholmod_common",
+              sources=['suitesparse/cholmod/cholmod_common.pxd',
+                       'suitesparse/cholmod/cholmod_common.pyx'], **cholmod_ext_params)
+    )
+
 if use_cysparse:
     cholmod_ext_params['include_dirs'].extend(cysparse_rootdir)
-
-    cholmod_ext.append(
-        Extension(name="suitesparse.cholmod.cholmod_common",
-                  sources=['suitesparse/cholmod/cholmod_common.pxd',
-                           'suitesparse/cholmod/cholmod_common.pyx'], **cholmod_ext_params)
-        )
-
 {% for index_type in cholmod_index_list %}
   {% for element_type in cholmod_type_list %}
 
@@ -225,6 +233,48 @@ if use_cysparse:
     {% endfor %}
 {% endfor %}
 
+############################################################################
+# SPQR
+############################################################################
+
+spqr_ext_params = copy.deepcopy(ext_params)
+spqr_ext_params['include_dirs'].extend(suitesparse_include_dirs)
+spqr_ext_params['library_dirs'] = suitesparse_library_dirs
+spqr_ext_params['libraries'] = ['spqr', 'cholmod', 'amd']
+
+spqr_ext = [
+{% for index_type in spqr_index_list %}
+  {% for element_type in spqr_type_list %}
+        Extension(name="suitesparse.spqr.spqr_solver_base_@index_type@_@element_type@",
+                  sources=['suitesparse/spqr/spqr_solver_base_@index_type@_@element_type@.pxd',
+                           'suitesparse/spqr/spqr_solver_base_@index_type@_@element_type@.pyx'], **spqr_ext_params),
+        # GENERIC VERSION
+        Extension(name="suitesparse.spqr.generic_solver.spqr_generic_solver_@index_type@_@element_type@",
+                  sources=['suitesparse/spqr/generic_solver/spqr_generic_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/spqr/generic_solver/spqr_generic_solver_@index_type@_@element_type@.pyx'], **spqr_ext_params),
+    {% endfor %}
+{% endfor %}
+    ]
+
+
+spqr_ext.append(
+    Extension(name="suitesparse.spqr.spqr_common",
+              sources=['suitesparse/spqr/spqr_common.pxd',
+                       'suitesparse/spqr/spqr_common.pyx'], **spqr_ext_params)
+    )
+
+if use_cysparse:
+    spqr_ext_params['include_dirs'].extend(cysparse_rootdir)
+{% for index_type in spqr_index_list %}
+  {% for element_type in spqr_type_list %}
+
+    spqr_ext.append(
+        Extension(name="suitesparse.spqr.cysparse_solver.spqr_cysparse_solver_@index_type@_@element_type@",
+                  sources=['suitesparse/spqr/cysparse_solver/spqr_cysparse_solver_@index_type@_@element_type@.pxd',
+                           'suitesparse/spqr/cysparse_solver/spqr_cysparse_solver_@index_type@_@element_type@.pyx'], **spqr_ext_params)
+        )
+    {% endfor %}
+{% endfor %}
 ########################################################################################################################
 # config
 ########################################################################################################################
@@ -235,14 +285,17 @@ packages_list = ['suitesparse',
             'suitesparse.cholmod.generic_solver',
             'suitesparse.umfpack',
             'suitesparse.umfpack.generic_solver',
+            'suitesparse.spqr',
+            'suitesparse.spqr.generic_solver',
             'tests'
             ]
 
 if use_cysparse:
     packages_list.append('suitesparse.umfpack.cysparse_solver')
     packages_list.append('suitesparse.cholmod.cysparse_solver')
+    packages_list.append('suitesparse.spqr.cysparse_solver')
 
-ext_modules = suitesparse_types_ext + base_solver_ext + umfpack_ext + cholmod_ext
+ext_modules = suitesparse_types_ext + base_solver_ext + umfpack_ext + cholmod_ext + spqr_ext
 
 ########################################################################################################################
 # PACKAGE PREPARATION FOR EXCLUSIVE C EXTENSIONS

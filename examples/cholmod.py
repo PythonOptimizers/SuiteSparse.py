@@ -34,7 +34,7 @@ s.print_sparse_matrix()
 print A
 
 
-print s.CHOLMOD_VERSION
+print s.solver_version
 
 print cholmod_version()
 print cholmod_detailed_version()
