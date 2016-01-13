@@ -236,12 +236,12 @@ static CYTHON_INLINE float __PYX_NAN() {
 
 #define __PYX_HAVE__suitesparse__cholmod__cholmod_solver_base_INT64_t_FLOAT64_t
 #define __PYX_HAVE_API__suitesparse__cholmod__cholmod_solver_base_INT64_t_FLOAT64_t
-#include "cholmod.h"
 #include "string.h"
-#include "stdlib.h"
 #include "stdio.h"
+#include "stdlib.h"
 #include "numpy/arrayobject.h"
 #include "numpy/ufuncobject.h"
+#include "cholmod.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -768,7 +768,7 @@ typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
  * # external definition of this type
  * ctypedef long SuiteSparse_long # This is exactly SuiteSparse INT64_t             # <<<<<<<<<<<<<<
  * 
- * 
+ * import numpy as np
  */
 typedef long __pyx_t_11suitesparse_7cholmod_37cholmod_solver_base_INT64_t_FLOAT64_t_SuiteSparse_long;
 #if CYTHON_CCOMPLEX
@@ -888,7 +888,7 @@ struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64
 };
 
 
-/* "suitesparse/cholmod/cholmod_solver_base_INT64_t_FLOAT64_t.pxd":198
+/* "suitesparse/cholmod/cholmod_solver_base_INT64_t_FLOAT64_t.pxd":203
  * 
  * 
  * cdef class CholmodSolverBase_INT64_t_FLOAT64_t(Solver_INT64_t_FLOAT64_t):             # <<<<<<<<<<<<<<
@@ -1335,6 +1335,8 @@ static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
 
 static int __Pyx_check_binary_version(void);
 
+static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig);
+
 #if !defined(__Pyx_PyIdentifier_FromString)
 #if PY_MAJOR_VERSION < 3
   #define __Pyx_PyIdentifier_FromString(s) PyString_FromString(s)
@@ -1358,11 +1360,9 @@ static int __pyx_f_11suitesparse_7cholmod_37cholmod_solver_base_INT64_t_FLOAT64_
 /* Module declarations from 'suitesparse.solver_INT64_t_FLOAT64_t' */
 static PyTypeObject *__pyx_ptype_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t = 0;
 
-/* Module declarations from 'libc.string' */
-
-/* Module declarations from 'libc.stdlib' */
-
 /* Module declarations from 'cpython.buffer' */
+
+/* Module declarations from 'libc.string' */
 
 /* Module declarations from 'libc.stdio' */
 
@@ -1376,6 +1376,8 @@ static PyTypeObject *__pyx_ptype_7cpython_4type_type = 0;
 /* Module declarations from 'cpython.object' */
 
 /* Module declarations from 'cpython.ref' */
+
+/* Module declarations from 'libc.stdlib' */
 
 /* Module declarations from 'numpy' */
 
@@ -6471,6 +6473,7 @@ PyMODINIT_FUNC PyInit_cholmod_solver_base_INT64_t_FLOAT64_t(void)
   /*--- Global init code ---*/
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
+  if (__Pyx_ExportFunction("numpy_ndarray_to_cholmod_dense", (void (*)(void))__pyx_f_11suitesparse_7cholmod_37cholmod_solver_base_INT64_t_FLOAT64_t_numpy_ndarray_to_cholmod_dense, "cholmod_dense (PyArrayObject *)") < 0) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   /*--- Type init code ---*/
   __pyx_ptype_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t = __Pyx_ImportType("suitesparse.solver_INT64_t_FLOAT64_t", "Solver_INT64_t_FLOAT64_t", sizeof(struct __pyx_obj_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t), 1); if (unlikely(!__pyx_ptype_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   __pyx_vtabptr_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t = (struct __pyx_vtabstruct_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t*)__Pyx_GetVtable(__pyx_ptype_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t->tp_dict); if (unlikely(!__pyx_vtabptr_11suitesparse_24solver_INT64_t_FLOAT64_t_Solver_INT64_t_FLOAT64_t)) {__pyx_filename = __pyx_f[0]; __pyx_lineno = 2; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
@@ -8931,6 +8934,42 @@ static int __Pyx_check_binary_version(void) {
         return PyErr_WarnEx(NULL, message, 1);
     }
     return 0;
+}
+
+static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig) {
+    PyObject *d = 0;
+    PyObject *cobj = 0;
+    union {
+        void (*fp)(void);
+        void *p;
+    } tmp;
+    d = PyObject_GetAttrString(__pyx_m, (char *)"__pyx_capi__");
+    if (!d) {
+        PyErr_Clear();
+        d = PyDict_New();
+        if (!d)
+            goto bad;
+        Py_INCREF(d);
+        if (PyModule_AddObject(__pyx_m, (char *)"__pyx_capi__", d) < 0)
+            goto bad;
+    }
+    tmp.fp = f;
+#if PY_VERSION_HEX >= 0x02070000
+    cobj = PyCapsule_New(tmp.p, sig, 0);
+#else
+    cobj = PyCObject_FromVoidPtrAndDesc(tmp.p, (void *)sig, 0);
+#endif
+    if (!cobj)
+        goto bad;
+    if (PyDict_SetItemString(d, name, cobj) < 0)
+        goto bad;
+    Py_DECREF(cobj);
+    Py_DECREF(d);
+    return 0;
+bad:
+    Py_XDECREF(cobj);
+    Py_XDECREF(d);
+    return -1;
 }
 
 #ifndef __PYX_HAVE_RT_ImportModule

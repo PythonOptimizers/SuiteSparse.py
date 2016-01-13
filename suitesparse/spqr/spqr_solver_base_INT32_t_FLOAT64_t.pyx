@@ -1,4 +1,6 @@
-from suitesparse.spqr.spqr_common import SPQR_SYS_DICT, spqr_version, spqr_detailed_version
+from suitesparse.spqr.spqr_common import SPQR_SYS_DICT, spqr_version, spqr_detailed_version, ORDERING_METHOD_LIST, ORDERING_METHOD_DICT
+
+from suitesparse.cholmod.cholmod_solver_base_INT32_t_FLOAT64_t cimport numpy_ndarray_to_cholmod_dense
 
 from libc.stdlib cimport malloc, free
 
@@ -231,10 +233,138 @@ cdef extern from "cholmod.h":
     int cholmod_print_sparse(cholmod_sparse *A, const char *name, cholmod_common *Common)
     int cholmod_free_sparse(cholmod_sparse **A, cholmod_common *Common)
 
-    # Factor struct
-    int cholmod_check_factor(cholmod_factor *L, cholmod_common *Common)
-    int cholmod_print_factor(cholmod_factor *L, const char *name, cholmod_common *Common)
-    int cholmod_free_factor(cholmod_factor *L, cholmod_common *Common)
+    # Dense struct
+    int cholmod_free_dense(cholmod_dense **X, cholmod_common *Common)
+
+
+cdef extern from  "SuiteSparseQR_C.h":
+    # returns rank(A) estimate, (-1) if failure
+    cdef SuiteSparse_long SuiteSparseQR_C(
+        # inputs:
+        int ordering,               # all, except 3:given treated as 0:fixed
+        double tol,                 # columns with 2-norm <= tol treated as 0
+        SuiteSparse_long econ,      # e = max(min(m,econ),rank(A))
+        int getCTX,                 # 0: Z=C (e-by-k), 1: Z=C', 2: Z=X (e-by-k)
+        cholmod_sparse *A,          # m-by-n sparse matrix to factorize
+        cholmod_sparse *Bsparse,    # sparse m-by-k B
+        cholmod_dense  *Bdense,     # dense  m-by-k B
+        # outputs:
+        cholmod_sparse **Zsparse,   # sparse Z
+        cholmod_dense  **Zdense,    # dense Z
+        cholmod_sparse **R,         # e-by-n sparse matrix
+        SuiteSparse_long **E,       # size n column perm, NULL if identity
+        cholmod_sparse **H,         # m-by-nh Householder vectors
+        SuiteSparse_long **HPinv,   # size m row permutation
+        cholmod_dense **HTau,       # 1-by-nh Householder coefficients
+        cholmod_common *cc          # workspace and parameters
+        )
+
+
+    # [Q,R,E] = qr(A), returning Q as a sparse matrix
+    # returns rank(A) est., (-1) if failure
+    cdef SuiteSparse_long SuiteSparseQR_C_QR (
+        # inputs:
+        int ordering,               # all, except 3:given treated as 0:fixed
+        double tol,                 # columns with 2-norm <= tol treated as 0
+        SuiteSparse_long econ,      # e = max(min(m,econ),rank(A))
+        cholmod_sparse *A,          # m-by-n sparse matrix to factorize
+        # outputs:
+        cholmod_sparse **Q,         # m-by-e sparse matrix
+        cholmod_sparse **R,         # e-by-n sparse matrix
+        SuiteSparse_long **E,       # size n column perm, NULL if identity
+        cholmod_common *cc          # workspace and parameters
+        )
+
+    # X = A\B where B is dense
+    # returns X, NULL if failure
+    cdef cholmod_dense *SuiteSparseQR_C_backslash (
+        int ordering,               # all, except 3:given treated as 0:fixed
+        double tol,                 # columns with 2-norm <= tol treated as 0
+        cholmod_sparse *A,          # m-by-n sparse matrix
+        cholmod_dense  *B,          # m-by-k
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    # X = A\B where B is dense, using default ordering and tol
+    # returns X, NULL if failure
+    cdef cholmod_dense *SuiteSparseQR_C_backslash_default (
+        cholmod_sparse *A,          # m-by-n sparse matrix
+        cholmod_dense  *B,          # m-by-k
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    # TODO: implement this version?
+    # X = A\B where B is sparse
+    # returns X, or NULL
+    cdef cholmod_sparse *SuiteSparseQR_C_backslash_sparse (
+        # inputs:
+        int ordering,               # all, except 3:given treated as 0:fixed
+        double tol,                 # columns with 2-norm <= tol treated as 0
+        cholmod_sparse *A,          # m-by-n sparse matrix
+        cholmod_sparse *B,          # m-by-k
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    ####################################################################################################################
+    # EXPERT MODE
+    ####################################################################################################################
+    cdef SuiteSparseQR_C_factorization *SuiteSparseQR_C_factorize (
+        # inputs:
+        int ordering,               # all, except 3:given treated as 0:fixed
+        double tol,                 # columns with 2-norm <= tol treated as 0
+        cholmod_sparse *A,          # m-by-n sparse matrix
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    cdef SuiteSparseQR_C_factorization *SuiteSparseQR_C_symbolic (
+        # inputs:
+        int ordering,               # all, except 3:given treated as 0:fixed
+        int allow_tol,              # if TRUE allow tol for rank detection
+        cholmod_sparse *A,          # m-by-n sparse matrix, A->x ignored
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    cdef int SuiteSparseQR_C_numeric (
+        # inputs:
+        double tol,                 # treat columns with 2-norm <= tol as zero
+        cholmod_sparse *A,          # sparse matrix to factorize
+        # input/output:
+        SuiteSparseQR_C_factorization *QR,
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    # Free the QR factors computed by SuiteSparseQR_C_factorize
+    # returns TRUE (1) if OK, FALSE (0) otherwise
+    cdef int SuiteSparseQR_C_free (
+        SuiteSparseQR_C_factorization **QR,
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    # returnx X, or NULL if failure
+    cdef cholmod_dense* SuiteSparseQR_C_solve (
+        int system,                 # which system to solve
+        SuiteSparseQR_C_factorization *QR,  # of an m-by-n sparse matrix A
+        cholmod_dense *B,           # right-hand-side, m-by-k or n-by-k
+        cholmod_common *cc          # workspace and parameters
+    )
+
+    # Applies Q in Householder form (as stored in the QR factorization object
+    # returned by SuiteSparseQR_C_factorize) to a dense matrix X.
+    #
+    # method SPQR_QTX (0): Y = Q'*X
+    # method SPQR_QX  (1): Y = Q*X
+    # method SPQR_XQT (2): Y = X*Q'
+    # method SPQR_XQ  (3): Y = X*Q
+
+    # returns Y, or NULL on failure
+    cdef cholmod_dense *SuiteSparseQR_C_qmult (
+        # inputs:
+        int method,                 # 0,1,2,3
+        SuiteSparseQR_C_factorization *QR,  # of an m-by-n sparse matrix A
+        cholmod_dense *X,           # size m-by-n with leading dimension ldx
+        cholmod_common *cc          # workspace and parameters
+    )
+
 
 
 cdef class SPQRSolverBase_INT32_t_FLOAT64_t(Solver_INT32_t_FLOAT64_t):
@@ -265,14 +395,168 @@ cdef class SPQRSolverBase_INT32_t_FLOAT64_t(Solver_INT32_t_FLOAT64_t):
 
         # TODO test if malloc succeeded
 
+        # by default, we expect the user to use the expert mode
+        # only certain solve_XXX() methods cancel this
+        self.need_to_use_factor_explicitely = True
+
         # set default parameters for control
         self.reset_default_parameters()
+
+    ####################################################################################################################
+    # FREE MEMORY
+    ####################################################################################################################
+    def __dealloc__(self):
+        """
+
+        """
+
+
+        if self.__analyzed:
+            SuiteSparseQR_C_free(&self.factor_struct, self.common_struct)
+
+        cholmod_finish(self.common_struct)
 
     ####################################################################################################################
     # COMMON OPERATIONS
     ####################################################################################################################
     def reset_default_parameters(self):
         cholmod_defaults(self.common_struct)
+
+    ####################################################################################################################
+    # CALLBACKS
+    ####################################################################################################################
+    def _analyze(self, *args, **kwargs):
+        if self.need_to_use_factor_explicitely:
+            pass
+
+    def _factorize(self, *args, **kwargs):
+        if self.need_to_use_factor_explicitely:
+            pass
+
+    def _solve(self, cnp.ndarray[cnp.npy_float64, mode="c"] b, str ordering='SPQR_ORDERING_BEST', double drop_tol=0):
+        """
+        Solve `A*x = b` with `b` dense (case `X = A\B`).
+
+        Args:
+            ordering (str):
+            drop_tol (double): Treat columns with 2-norm <= drop_tol as zero.
+
+        """
+        # no expert mode: SPQR is responsible for the factor object
+        self.need_to_use_factor_explicitely = False
+
+        # test argument b
+        cdef cnp.npy_intp * shape_b
+        try:
+            shape_b = b.shape
+        except:
+            raise AttributeError("argument b must implement attribute 'shape'")
+
+        dim_b = shape_b[0]
+        assert dim_b == self.nrow, "array dimensions must agree"
+
+        # TODO: change this (see TODO below)
+        if b.ndim != 1:
+            raise NotImplementedError('Matrices for right member will be implemented soon...')
+
+        # convert NumPy array to CHOLMOD dense vector
+        cdef cholmod_dense B
+
+        # TODO: does it use multidimension (matrix and not vector)
+        # Currently ONLY support vectors...
+        B = numpy_ndarray_to_cholmod_dense(b)
+
+        cdef cholmod_dense * cholmod_sol
+
+        cholmod_sol = SuiteSparseQR_C_backslash(ORDERING_METHOD_DICT[ordering], drop_tol, self.sparse_struct, &B, self.common_struct)
+
+        # test solution
+        if cholmod_sol == NULL:
+            # no solution was found
+            raise RuntimeError('No solution found')
+
+        # TODO: free B
+        # TODO: convert sol to NumPy array
+
+        cdef cnp.ndarray[cnp.npy_float64, ndim=1, mode='c'] sol = np.empty(self.ncol, dtype=np.float64)
+
+        # make a copy
+        cdef INT32_t j
+
+        cdef FLOAT64_t * cholmod_sol_array_ptr = <FLOAT64_t * > cholmod_sol.x
+
+
+
+        for j from 0 <= j < self.ncol:
+            sol[j] = <FLOAT64_t> cholmod_sol_array_ptr[j]
+
+
+        # Free CHOLMOD dense solution
+        cholmod_free_dense(&cholmod_sol, self.common_struct)
+
+        return sol
+
+    #############################################################
+    # SPECIALIZED ROUTINES
+    #############################################################
+    def solve_default(self, cnp.ndarray[cnp.npy_float64, mode="c"] b):
+        """
+        Solve `A*x = b` with `b` dense (case `X = A\B`).
+
+        Args:
+            b
+
+        """
+        # test argument b
+        cdef cnp.npy_intp * shape_b
+        try:
+            shape_b = b.shape
+        except:
+            raise AttributeError("argument b must implement attribute 'shape'")
+
+        dim_b = shape_b[0]
+        assert dim_b == self.nrow, "array dimensions must agree"
+
+        # TODO: change this (see TODO below)
+        if b.ndim != 1:
+            raise NotImplementedError('Matrices for right member will be implemented soon...')
+
+        # convert NumPy array to CHOLMOD dense vector
+        cdef cholmod_dense B
+
+        # TODO: does it use multidimension (matrix and not vector)
+        # Currently ONLY support vectors...
+        B = numpy_ndarray_to_cholmod_dense(b)
+
+        cdef cholmod_dense * cholmod_sol
+
+        cholmod_sol = SuiteSparseQR_C_backslash_default(self.sparse_struct, &B, self.common_struct)
+
+        # test solution
+        if cholmod_sol == NULL:
+            # no solution was found
+            raise RuntimeError('No solution found')
+
+        # TODO: free B
+        # TODO: convert sol to NumPy array
+
+        cdef cnp.ndarray[cnp.npy_float64, ndim=1, mode='c'] sol = np.empty(self.ncol, dtype=np.float64)
+
+        # make a copy
+        cdef INT32_t j
+
+        cdef FLOAT64_t * cholmod_sol_array_ptr = <FLOAT64_t * > cholmod_sol.x
+
+
+
+        for j from 0 <= j < self.ncol:
+            sol[j] = <FLOAT64_t> cholmod_sol_array_ptr[j]
+
+
+        # Free CHOLMOD dense solution
+        cholmod_free_dense(&cholmod_sol, self.common_struct)
+
+        return sol
 
     #############################################################
     # CHECKING ROUTINES
@@ -300,3 +584,37 @@ cdef class SPQRSolverBase_INT32_t_FLOAT64_t(Solver_INT32_t_FLOAT64_t):
     def set_verbosity(self, verbosity_level):
         # TODO: change this!
         pass
+
+    ####################################################################################################################
+    # STATISTICS
+    ####################################################################################################################
+    def SPQR_orderning(self):
+        """
+        Returns the chosen ordering.
+        """
+        return ORDERING_METHOD_LIST[self.common_struct.SPQR_istat[7]]
+
+    def SPQR_drop_tol_used(self):
+        """
+        Return `drop_tol` (`double`). columns with 2-norm <= tol treated as 0
+        """
+        return self.common_struct.SPQR_tol_used
+
+    cdef _SPQR_istat(self):
+        """
+        Main statistic method for SPQR, :program:`Cython` version.
+        """
+        s = ''
+
+        # ordering
+        s += 'ORDERING USED: %s' % self.SPQR_orderning()
+
+        return s
+
+    def spqr_statistics(self):
+        """
+        Main statistic for SPQR.
+
+        """
+        # TODO: todo
+        return self. _SPQR_istat()

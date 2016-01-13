@@ -32,11 +32,6 @@ cdef class SPQRCysparseSolver_INT32_t_FLOAT64_t(SPQRSolverBase_INT32_t_FLOAT64_t
         self.nrow = A.nrow
         self.ncol = A.ncol
 
-        # test if we can use SPQR
-        assert self.nrow == self.ncol, "Only square matrices are handled in SPQR"
-        # TODO: change this. This assumption is too strong
-        assert self.A.store_symmetric, "Only symmetric matrices (using the symmetric storage scheme) are handled in SPQR"
-
         self.nnz = self.A.nnz
 
         self.__matrix_transform_time = 0.0

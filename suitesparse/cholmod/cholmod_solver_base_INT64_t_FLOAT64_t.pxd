@@ -5,6 +5,11 @@ from suitesparse.common_types.suitesparse_types cimport *
 # external definition of this type
 ctypedef long SuiteSparse_long # This is exactly SuiteSparse INT64_t
 
+import numpy as np
+cimport numpy as cnp
+
+
+cdef cholmod_dense numpy_ndarray_to_cholmod_dense(cnp.ndarray[cnp.npy_float64, ndim=1, mode="c"] b)
 
 cdef extern from "cholmod.h":
     # COMMON STRUCT

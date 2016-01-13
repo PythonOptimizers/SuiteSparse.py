@@ -279,6 +279,7 @@ cdef class CholmodCysparseSolver_INT32_t_COMPLEX128_t(CholmodSolverBase_INT32_t_
         self.nrow = A.nrow
         self.ncol = A.ncol
 
+        # TODO: move to base solver...
         # test if we can use CHOLMOD
         assert self.nrow == self.ncol, "Only square matrices are handled in CHOLMOD"
         # TODO: change this. This assumption is too strong
